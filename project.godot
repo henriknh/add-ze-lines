@@ -54,6 +54,8 @@ Random="*res://singletons/random.gd"
 Arithmetic="*res://singletons/arithmetic.gd"
 Level="*res://singletons/level.gd"
 UserInput="*res://singletons/user_input.gd"
+Settings="*res://singletons/settings.gd"
+Data="*res://singletons/data.gd"
 
 [debug]
 
@@ -61,8 +63,8 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/width=540
-window/size/height=1170
+window/size/width=384
+window/size/height=832
 window/vsync/use_vsync=false
 window/handheld/orientation="portrait"
 

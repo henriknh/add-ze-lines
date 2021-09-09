@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/ui/ui.tres" type="Theme" id=1]
 [ext_resource path="res://game/ui/ui.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/font/font_32.tres" type="DynamicFont" id=4]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -24,21 +26,68 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control2/Control"]
+[node name="Label" type="Label" parent="Control2/Control"]
 margin_left = 12.0
-margin_top = 12.0
+margin_top = 578.0
 margin_right = 528.0
-margin_bottom = 1158.0
+margin_bottom = 592.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control2/Control/VBoxContainer"]
-margin_right = 516.0
-margin_bottom = 39.0
-alignment = 2
+[node name="TopLeft" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Button" type="Button" parent="Control2/Control/VBoxContainer/HBoxContainer"]
-margin_left = 443.0
-margin_right = 516.0
+[node name="MarginContainer2" type="MarginContainer" parent="TopLeft"]
+margin_right = 89.0
+margin_bottom = 51.0
+custom_constants/margin_top = 12
+custom_constants/margin_left = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopLeft/MarginContainer2"]
+margin_left = 16.0
+margin_top = 12.0
+margin_right = 231.0
+margin_bottom = 88.0
+
+[node name="LevelTitle" type="Label" parent="TopLeft/MarginContainer2/VBoxContainer"]
+margin_right = 215.0
 margin_bottom = 39.0
+custom_fonts/font = ExtResource( 4 )
+text = "LevelTitle"
+
+[node name="ChapterTitle" type="Label" parent="TopLeft/MarginContainer2/VBoxContainer"]
+margin_top = 43.0
+margin_right = 215.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 3 )
+text = "ChapterTitle"
+
+[node name="TopRight" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="TopRight"]
+grow_horizontal = 0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="TopRight/MarginContainer"]
+margin_top = 12.0
+margin_right = 73.0
+margin_bottom = 51.0
+grow_horizontal = 0
 theme = ExtResource( 1 )
 text = "back"
 align = 2
@@ -46,4 +95,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Control2/Control/VBoxContainer/HBoxContainer/Button" to="." method="_on_back"]
+[connection signal="pressed" from="TopRight/MarginContainer/Button" to="." method="_on_back"]

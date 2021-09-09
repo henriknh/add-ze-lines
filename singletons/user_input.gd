@@ -4,6 +4,9 @@ var current_input_chain: InputChain = null
 var valid_points = []
 
 func _input(event):
+	if not event is InputEventMouseButton or not event is InputEventMouseMotion:
+		return
+	
 	var mouse_coord = _get_mouse_coord(event)
 	
 	if event is InputEventMouseButton:

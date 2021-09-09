@@ -1,14 +1,17 @@
 extends Node2D
 
-var grid_size: int = 5
 var tile_size: int = 64
 var operator_diameter: int = 42
+
+var current_chapter = null
+var current_level = null
 
 var background = Color('#110f3e')
 var background_border = Color('#371a77')
 
 var foreground_black = Color(0,0,0,0.87)
 var foreground_white = Color(1,1,1,1)
+
 
 # https://lospec.com/palette-list/bloom-16
 var colors = [
@@ -33,8 +36,8 @@ var colors = [
 var grid = {}
 
 func init(level: int):
-	for x in range(grid_size):
-		for y in range(grid_size):
+	for x in range(current_level.grid_size):
+		for y in range(current_level.grid_size):
 			grid[Vector2(x, y) * tile_size + Vector2.ONE * tile_size / 2] = null
 	
 	get_node("/root/Game/Grid").generate_grid()

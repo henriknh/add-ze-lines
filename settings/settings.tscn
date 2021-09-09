@@ -50,39 +50,14 @@ margin_bottom = 1074.0
 size_flags_vertical = 3
 custom_constants/separation = 32
 
-[node name="setting1" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="Editor" type="CheckButton" parent="VBoxContainer/VBoxContainer"]
 margin_right = 444.0
 margin_bottom = 39.0
 theme = ExtResource( 2 )
-text = "not"
-align = 0
-
-[node name="setting2" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_top = 71.0
-margin_right = 444.0
-margin_bottom = 110.0
-theme = ExtResource( 2 )
-text = "a lot"
-align = 0
-
-[node name="setting3" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_top = 142.0
-margin_right = 444.0
-margin_bottom = 181.0
-theme = ExtResource( 2 )
-text = "here"
-align = 0
-
-[node name="setting4" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_top = 213.0
-margin_right = 444.0
-margin_bottom = 252.0
-theme = ExtResource( 2 )
-text = "yet :)"
-align = 0
+text = "Editor"
 
 [node name="Control" type="Control" parent="VBoxContainer/VBoxContainer"]
-margin_top = 284.0
+margin_top = 71.0
 margin_right = 444.0
 margin_bottom = 330.0
 size_flags_vertical = 3
@@ -95,4 +70,5 @@ theme = ExtResource( 2 )
 text = "back"
 align = 0
 
+[connection signal="toggled" from="VBoxContainer/VBoxContainer/Editor" to="." method="_on_editor_toggled"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Back" to="." method="_on_back"]

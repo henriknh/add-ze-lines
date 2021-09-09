@@ -1,0 +1,21 @@
+[
+	{
+		"title": "chapter 1",
+		"levels": [
+			{
+				"title": "level 1",
+				"grid_size": 5,
+				"nodes": [
+
+				]
+			},
+			{
+				"title": "level 2",
+				"grid_size": 5,
+				"nodes": [
+
+				]
+			}
+		]
+	}
+]
