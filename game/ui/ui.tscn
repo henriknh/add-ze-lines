@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/ui/ui.tres" type="Theme" id=1]
+[ext_resource path="res://game/ui/ui.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Control2" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="MarginContainer" parent="Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 12
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 12
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/Control"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 528.0
+margin_bottom = 1158.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/Control/VBoxContainer"]
+margin_right = 516.0
+margin_bottom = 39.0
+alignment = 2
+
+[node name="Button" type="Button" parent="Control2/Control/VBoxContainer/HBoxContainer"]
+margin_left = 443.0
+margin_right = 516.0
+margin_bottom = 39.0
+theme = ExtResource( 1 )
+text = "back"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Control2/Control/VBoxContainer/HBoxContainer/Button" to="." method="_on_back"]

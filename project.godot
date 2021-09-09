@@ -9,20 +9,62 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "Tile",
+"base": "Operator",
+"class": "End",
 "language": "GDScript",
-"path": "res://tile.gd"
+"path": "res://operators/end.gd"
+}, {
+"base": "Operator",
+"class": "Hub",
+"language": "GDScript",
+"path": "res://operators/hub.gd"
+}, {
+"base": "Line2D",
+"class": "InputChain",
+"language": "GDScript",
+"path": "res://operators/input_chain/input_chain.gd"
+}, {
+"base": "Node2D",
+"class": "Operator",
+"language": "GDScript",
+"path": "res://operators/operator.gd"
+}, {
+"base": "Operator",
+"class": "Start",
+"language": "GDScript",
+"path": "res://operators/start.gd"
 } ]
 _global_script_class_icons={
-"Tile": ""
+"End": "",
+"Hub": "",
+"InputChain": "",
+"Operator": "",
+"Start": ""
 }
 
 [application]
 
 config/name="lines"
-run/main_scene="res://game.tscn"
+run/main_scene="res://menu/menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Random="*res://singletons/random.gd"
+Arithmetic="*res://singletons/arithmetic.gd"
+Level="*res://singletons/level.gd"
+UserInput="*res://singletons/user_input.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
+
+[display]
+
+window/size/width=540
+window/size/height=1170
+window/vsync/use_vsync=false
+window/handheld/orientation="portrait"
 
 [importer_defaults]
 
@@ -53,4 +95,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0.0666667, 0.0588235, 0.243137, 1 )
+quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"

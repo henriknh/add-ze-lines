@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/font/font_192.tres" type="DynamicFont" id=1]
+[ext_resource path="res://theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://menu/menu.gd" type="Script" id=4]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 48
+custom_constants/margin_top = 48
+custom_constants/margin_left = 48
+custom_constants/margin_bottom = 48
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 492.0
+margin_bottom = 1122.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 48
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_right = 444.0
+margin_bottom = 373.0
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="VBoxContainer"]
+margin_top = 421.0
+margin_right = 444.0
+margin_bottom = 652.0
+custom_fonts/font = ExtResource( 1 )
+text = "lines."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 700.0
+margin_right = 444.0
+margin_bottom = 1074.0
+size_flags_vertical = 3
+custom_constants/separation = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_right = 444.0
+margin_bottom = 63.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" type="Button" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+margin_right = 444.0
+margin_bottom = 39.0
+theme = ExtResource( 2 )
+text = "continue"
+align = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 444.0
+margin_bottom = 63.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 0.588235 )
+text = "Chapter 1, task 2"
+
+[node name="Levels" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_top = 111.0
+margin_right = 444.0
+margin_bottom = 150.0
+theme = ExtResource( 2 )
+text = "levels"
+align = 0
+
+[node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_top = 198.0
+margin_right = 444.0
+margin_bottom = 237.0
+theme = ExtResource( 2 )
+text = "settings"
+align = 0
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_continue"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Levels" to="." method="_on_levels"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings"]

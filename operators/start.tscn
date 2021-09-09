@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://operators/start.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/font_24.tres" type="DynamicFont" id=2]
+
+[node name="Start" type="Node2D"]
+position = Vector2( 96, 0 )
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "asdf1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
