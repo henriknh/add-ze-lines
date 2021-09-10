@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Operator",
+"class": "Block",
+"language": "GDScript",
+"path": "res://operators/block.gd"
+}, {
+"base": "Operator",
 "class": "End",
 "language": "GDScript",
 "path": "res://operators/end.gd"
@@ -35,6 +40,7 @@ _global_script_classes=[ {
 "path": "res://operators/start.gd"
 } ]
 _global_script_class_icons={
+"Block": "",
 "End": "",
 "Hub": "",
 "InputChain": "",
@@ -54,8 +60,8 @@ Random="*res://singletons/random.gd"
 Arithmetic="*res://singletons/arithmetic.gd"
 Level="*res://singletons/level.gd"
 UserInput="*res://singletons/user_input.gd"
-Settings="*res://singletons/settings.gd"
 Data="*res://singletons/data.gd"
+Storage="*res://singletons/storage.gd"
 
 [debug]
 
@@ -63,8 +69,8 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/width=540
-window/size/height=1170
+window/size/width=400
+window/size/height=800
 window/vsync/use_vsync=false
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"

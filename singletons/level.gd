@@ -33,12 +33,15 @@ var colors = [
 	}
 ]
 
+signal level_changed
+
 func _ready():
 	VisualServer.set_default_clear_color(background)
 
 func init(_current_chapter, _current_level):
 	current_chapter = _current_chapter
 	current_level = _current_level
+	emit_signal("level_changed")
 
 func get_coord_operators(caller: InputChain, point: Vector2) -> Array:
 	var operators = []

@@ -24,8 +24,3 @@ func load_data():
 		breakpoint
 	
 	data = data_json.result
-	
-func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		
-		print('exit')

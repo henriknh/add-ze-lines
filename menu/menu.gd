@@ -1,23 +1,53 @@
 extends MarginContainer
 
-var continue_chapter = null
-var continue_level = null
+var next_chapter = null
+var next_level = null
 
 func _ready():
-	if Data.data.size():
-		continue_chapter = Data.data[0]
-	if continue_chapter and continue_chapter.levels.size():
-		continue_level = continue_chapter.levels[0]
 		
-	if continue_chapter and continue_level:
-		$VBoxContainer/VBoxContainer/ContinueContainer.visible = true
-		$VBoxContainer/VBoxContainer/ContinueContainer/ChapterAndLevelTitles.text = "%s, %s" % [continue_chapter.title, continue_level.title]
-	else:
-		$VBoxContainer/VBoxContainer/ContinueContainer.visible = false
-		
+	var storage_next = Storage.get_last_completed_level()
 	
+	if storage_next:
+		var last_chapter = null
+		var last_level = null
+		for chapter in Data.data:
+			if chapter.title == storage_next[0]:
+				last_chapter = chapter
+				var idx_next_chapter = Data.data.find(last_chapter) + 1
+				
+				for level in last_chapter.levels:
+					if level.title == storage_next[1]:
+						last_level = level
+				var idx_next_level = last_chapter.levels.find(last_level) + 1
+				
+				if idx_next_level > last_chapter.levels.size() - 1:
+					if idx_next_chapter > Data.data.size() - 1:
+						# All completed
+						pass
+					else:
+						next_chapter = Data.data[idx_next_chapter]
+						if next_chapter.levels.size():
+							next_level = next_chapter.levels[0]
+				else:
+					next_chapter = last_chapter
+					next_level = last_chapter.levels[idx_next_level]
+	else:
+		if Data.data.size():
+			next_chapter = Data.data[0]
+		if next_chapter and next_chapter.levels.size():
+			next_level = next_chapter.levels[0]
+		else:
+			breakpoint
+	
+	$VBoxContainer/VBoxContainer/PlayContainer/Play.visible = next_chapter and next_level
+	$VBoxContainer/VBoxContainer/PlayContainer/Play.text = "Continue" if storage_next else "Play"
+	if next_chapter and next_level:
+		$VBoxContainer/VBoxContainer/PlayContainer/ChapterAndLevelTitles.text = "%s, %s" % [next_chapter.title, next_level.title]
+	else:
+		$VBoxContainer/VBoxContainer/PlayContainer/ChapterAndLevelTitles.text = "All levels completed!"
+
 func _on_continue():
-	Level.init(continue_chapter, continue_level)
+	Level.init(next_chapter, next_level)
 	get_tree().change_scene("res://game/game.tscn")
 	
 func _on_levels():
@@ -25,7 +55,3 @@ func _on_levels():
 	
 func _on_settings():
 	get_tree().change_scene("res://settings/settings.tscn")
-
-
-
-

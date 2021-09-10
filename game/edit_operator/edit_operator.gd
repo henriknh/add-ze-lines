@@ -20,15 +20,18 @@ func on_add_operator():
 	container.add_child(type_label)
 	
 	var type = OptionButton.new()
-	type.add_item("Start", 0)
-	type.add_item("End", 1)
-	type.add_item("Hub", 2)
+	type.add_item("Start", Operator.OperatorType.START)
+	type.add_item("End", Operator.OperatorType.END)
+	type.add_item("Hub", Operator.OperatorType.HUB)
+	type.add_item("Block", Operator.OperatorType.BLOCK)
 	if operator is Start:
-		type.select(0)
+		type.select(Operator.OperatorType.START)
 	if operator is End:
-		type.select(1)
+		type.select(Operator.OperatorType.END)
 	if operator is Hub:
-		type.select(2)
+		type.select(Operator.OperatorType.HUB)
+	if operator is Block:
+		type.select(Operator.OperatorType.BLOCK)
 	container.add_child(type)
 	
 	# Coord
@@ -81,7 +84,7 @@ func on_add_operator():
 	var operation = OptionButton.new()
 	for _operation in Arithmetic.Operation:
 		operation.add_item(_operation, Arithmetic.Operation.get(_operation))
-	if operator is Start:
+	if operator:
 		operation.select(operator.operation)
 	container.add_child(operation)
 	
@@ -99,6 +102,9 @@ func on_add_operator():
 
 func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox, value: SpinBox, operation: OptionButton):
 	var coord = Vector2(coord_x.value, coord_y.value)
+	
+	if type.selected == Operator.OperatorType.END:
+		operation.select(Arithmetic.Operation.equals)
 	
 	if Level.get_operator(coord):
 		print('Coord already used by operator')
@@ -133,7 +139,7 @@ func on_custom_action(action):
 		if Level.current_level.operators[i].coord_x == operator.coord.x and Level.current_level.operators[i].coord_y == operator.coord.y:
 			idx_operator = i
 			break
-	print(idx_operator)
+	
 	if idx_operator >= 0:
 		Level.current_level.operators.remove(idx_operator)
 	

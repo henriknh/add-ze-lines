@@ -28,7 +28,7 @@ func load_levels():
 		container_title.add_child(chapter_title)
 		
 		# edit chapter
-		if Settings.editor:
+		if Storage.editor:
 			var edit_chapter = Button.new()
 			edit_chapter.text = "edit"
 			edit_chapter.theme = preload("res://levels/levels.tres")
@@ -39,7 +39,7 @@ func load_levels():
 		
 		# Levels
 		var container_grid = GridContainer.new()
-		container_grid.columns = 2
+		container_grid.columns = 1 if Storage.editor else 2
 		
 		for level in chapter.levels:
 			var level_container = HBoxContainer.new()
@@ -53,7 +53,7 @@ func load_levels():
 			level_container.add_child(play_level)
 			
 			# edit level
-			if Settings.editor:
+			if Storage.editor:
 				var edit_level = Button.new()
 				edit_level.theme = preload("res://levels/levels.tres")
 				edit_level.text = "edit"
@@ -63,7 +63,7 @@ func load_levels():
 			container_grid.add_child(level_container)
 		
 		# add new level
-		if Settings.editor:
+		if Storage.editor:
 			var button_add_level = Button.new()
 			button_add_level.text = "new"
 			button_add_level.theme = preload("res://levels/levels.tres")
@@ -74,7 +74,7 @@ func load_levels():
 		chapters_outlet.add_child(container)
 	
 	# add new chapter
-	if Settings.editor:
+	if Storage.editor:
 		var button_add_chapter = Button.new()
 		button_add_chapter.text = "new chapter"
 		button_add_chapter.theme = preload("res://levels/levels.tres")

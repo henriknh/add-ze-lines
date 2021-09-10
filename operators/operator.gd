@@ -2,6 +2,7 @@ extends Node2D
 
 class_name Operator
 
+enum OperatorType { START, END, HUB, BLOCK }
 enum OperatorStatus {PENDING, SUCCESS, FAIL = -1}
 
 export(Vector2) var coord = Vector2.ZERO

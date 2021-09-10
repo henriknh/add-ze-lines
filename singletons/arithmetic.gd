@@ -2,7 +2,6 @@ extends Node
 
 enum Operation {
 	addition,
-	subtraction,
 	multiplication,
 	division,
 	equals,
@@ -14,8 +13,6 @@ func compute(operators: Array):
 		match operator.operation:
 			Arithmetic.Operation.addition:
 				result += operator.value
-			Arithmetic.Operation.subtraction:
-				result -= operator.value
 			Arithmetic.Operation.multiplication:
 				result *= operator.value
 			Arithmetic.Operation.division:
@@ -30,8 +27,6 @@ func get_operation_string(operation: int) -> String:
 	match operation:
 		Arithmetic.Operation.addition:
 			return ''
-		Arithmetic.Operation.subtraction:
-			return '-'
 		Arithmetic.Operation.multiplication:
 			return '*'
 		Arithmetic.Operation.division:

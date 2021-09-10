@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/ui/ui.tres" type="Theme" id=1]
 [ext_resource path="res://game/ui/ui.gd" type="Script" id=2]
 [ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/font/font_32.tres" type="DynamicFont" id=4]
+[ext_resource path="res://levels/levels.tres" type="Theme" id=5]
+[ext_resource path="res://assets/font/font_48.tres" type="DynamicFont" id=6]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -73,4 +75,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="OnLevelComplete" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="OnLevelComplete"]
+anchor_right = 1.0
+grow_vertical = 0
+custom_constants/margin_right = 48
+custom_constants/margin_top = 48
+custom_constants/margin_left = 48
+custom_constants/margin_bottom = 48
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="OnLevelComplete/MarginContainer"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 492.0
+margin_bottom = 264.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OnLevelComplete/MarginContainer/CenterContainer"]
+margin_left = 115.0
+margin_right = 329.0
+margin_bottom = 216.0
+custom_constants/separation = 24
+
+[node name="NextLevel" type="Button" parent="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 214.0
+margin_bottom = 71.0
+theme = ExtResource( 5 )
+text = "Next level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoMoreLevels" type="Label" parent="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 95.0
+margin_right = 214.0
+margin_bottom = 153.0
+custom_fonts/font = ExtResource( 6 )
+text = "You rock!!"
+
+[node name="RedoLevel" type="Button" parent="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 177.0
+margin_right = 214.0
+margin_bottom = 216.0
+theme = ExtResource( 1 )
+text = "Redo"
+
 [connection signal="pressed" from="TopRight/MarginContainer/Button" to="." method="_on_back"]
+[connection signal="pressed" from="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel" to="." method="_on_next_level"]
+[connection signal="pressed" from="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/RedoLevel" to="." method="_on_redo_level"]

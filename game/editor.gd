@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	if Settings.editor:
+	if Storage.editor:
 		get_parent().connect("level_loaded", self, "editable_cells")
 	
 func editable_cells():

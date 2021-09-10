@@ -24,12 +24,6 @@ func _physics_process(delta):
 		color_background = Level.background
 	update()
 
-func success():
-	pass
-
-func fail():
-	pass
-
 func _draw():
 	
 	get_node("Label").add_color_override("font_color", color_foreground)
