@@ -13,15 +13,15 @@ func compute(operators: Array):
 	for operator in operators:
 		match operator.operation:
 			Arithmetic.Operation.addition:
-				result += operator.number
+				result += operator.value
 			Arithmetic.Operation.subtraction:
-				result -= operator.number
+				result -= operator.value
 			Arithmetic.Operation.multiplication:
-				result *= operator.number
+				result *= operator.value
 			Arithmetic.Operation.division:
-				result /= operator.number
+				result /= operator.value
 			Arithmetic.Operation.equals:
-				return result == operator.number
+				return result == operator.value
 	
 	# https://docs.godotengine.org/en/stable/classes/class_expression.html
 	return result

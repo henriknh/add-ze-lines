@@ -1,6 +1,7 @@
 extends Node
 
 var data = []
+signal data_loaded
 
 func _ready():
 	load_data()
@@ -23,3 +24,5 @@ func load_data():
 		breakpoint
 	
 	data = data_json.result
+	
+	emit_signal("data_loaded")

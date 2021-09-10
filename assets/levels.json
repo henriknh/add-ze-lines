@@ -5,14 +5,27 @@
 			{
 				"title": "level 1",
 				"grid_size": 5,
-				"nodes": [
-
+				"operators": [
+					{
+						"type": 0,
+						"coord_x": 2,
+						"coord_y": 0,
+						"value": 1,
+						"operation": 0
+					},
+					{
+						"type": 1,
+						"coord_x": 2,
+						"coord_y": 4,
+						"value": 1,
+						"operation": 4
+					}
 				]
 			},
 			{
 				"title": "level 2",
 				"grid_size": 5,
-				"nodes": [
+				"operators": [
 
 				]
 			}

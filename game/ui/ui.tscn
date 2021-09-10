@@ -8,30 +8,6 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="Control2" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="MarginContainer" parent="Control2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 12
-custom_constants/margin_top = 12
-custom_constants/margin_left = 12
-custom_constants/margin_bottom = 12
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Control2/Control"]
-margin_left = 12.0
-margin_top = 578.0
-margin_right = 528.0
-margin_bottom = 592.0
-
 [node name="TopLeft" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -42,6 +18,7 @@ __meta__ = {
 [node name="MarginContainer2" type="MarginContainer" parent="TopLeft"]
 margin_right = 89.0
 margin_bottom = 51.0
+mouse_filter = 2
 custom_constants/margin_top = 12
 custom_constants/margin_left = 16
 __meta__ = {
@@ -51,18 +28,18 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="TopLeft/MarginContainer2"]
 margin_left = 16.0
 margin_top = 12.0
-margin_right = 231.0
-margin_bottom = 88.0
+margin_right = 160.0
+margin_bottom = 75.0
 
 [node name="LevelTitle" type="Label" parent="TopLeft/MarginContainer2/VBoxContainer"]
-margin_right = 215.0
+margin_right = 144.0
 margin_bottom = 39.0
 custom_fonts/font = ExtResource( 4 )
 text = "LevelTitle"
 
 [node name="ChapterTitle" type="Label" parent="TopLeft/MarginContainer2/VBoxContainer"]
 margin_top = 43.0
-margin_right = 215.0
+margin_right = 144.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 3 )
 text = "ChapterTitle"
@@ -77,6 +54,7 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="TopRight"]
 grow_horizontal = 0
+mouse_filter = 2
 custom_constants/margin_right = 16
 custom_constants/margin_top = 12
 __meta__ = {

@@ -30,7 +30,7 @@ func _remove_on_other_input_chain():
 		if points.size() == 0:
 			break
 		
-		var end_on_other_input_chain = UserInput.any_input_chain_has_point(_points[_points.size() - 1], self)
+		var end_on_other_input_chain = get_node("/root/Game").any_input_chain_has_point(_points[_points.size() - 1], self)
 		
 		if end_on_other_input_chain:
 			_points.remove(_points.size() - 1)

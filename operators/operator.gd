@@ -5,7 +5,7 @@ class_name Operator
 enum OperatorStatus {PENDING, SUCCESS, FAIL = -1}
 
 export(Vector2) var coord = Vector2.ZERO
-export(int) var number = 1
+export(int) var value = 1
 export(Arithmetic.Operation) var operation: int = Arithmetic.Operation.addition
 export(Color) var color_background = Color.black
 export(Color) var color_foreground = Color.white
@@ -25,7 +25,7 @@ func _ready():
 		label.valign = Label.VALIGN_CENTER
 		label.rect_position = Vector2.ONE * (-Level.tile_size / 2)
 		label.rect_size = Vector2.ONE * (Level.tile_size)
-		label.text = ("%s%d" % [Arithmetic.get_operation_string(operation), number]).strip_edges()
+		label.text = ("%s%d" % [Arithmetic.get_operation_string(operation), value]).strip_edges()
 		label.add_color_override("font_color", color_foreground)
 
 func success():

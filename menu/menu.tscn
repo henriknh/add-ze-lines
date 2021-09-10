@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=3]
 [ext_resource path="res://menu/menu.gd" type="Script" id=4]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/margin_right = 48
@@ -20,8 +20,8 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 48.0
 margin_top = 48.0
-margin_right = 485.0
-margin_bottom = 784.0
+margin_right = 492.0
+margin_bottom = 1122.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 48
@@ -30,33 +30,33 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_right = 437.0
-margin_bottom = 172.0
+margin_right = 444.0
+margin_bottom = 373.0
 size_flags_vertical = 3
 
 [node name="Header" type="Label" parent="VBoxContainer"]
-margin_top = 220.0
-margin_right = 437.0
-margin_bottom = 451.0
+margin_top = 421.0
+margin_right = 444.0
+margin_bottom = 652.0
 custom_fonts/font = ExtResource( 1 )
 text = "lines."
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 499.0
-margin_right = 437.0
-margin_bottom = 736.0
+margin_top = 700.0
+margin_right = 444.0
+margin_bottom = 1074.0
 size_flags_vertical = 3
 custom_constants/separation = 48
 
 [node name="ContinueContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
-margin_right = 437.0
+margin_right = 444.0
 margin_bottom = 63.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Continue" type="Button" parent="VBoxContainer/VBoxContainer/ContinueContainer"]
-margin_right = 437.0
+margin_right = 444.0
 margin_bottom = 39.0
 theme = ExtResource( 2 )
 text = "continue"
@@ -64,7 +64,7 @@ align = 0
 
 [node name="ChapterAndLevelTitles" type="Label" parent="VBoxContainer/VBoxContainer/ContinueContainer"]
 margin_top = 43.0
-margin_right = 437.0
+margin_right = 444.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 0.588235 )
@@ -72,7 +72,7 @@ text = "Chapter 1, task 2"
 
 [node name="Levels" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 111.0
-margin_right = 437.0
+margin_right = 444.0
 margin_bottom = 150.0
 theme = ExtResource( 2 )
 text = "levels"
@@ -80,7 +80,7 @@ align = 0
 
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 198.0
-margin_right = 437.0
+margin_right = 444.0
 margin_bottom = 237.0
 theme = ExtResource( 2 )
 text = "settings"

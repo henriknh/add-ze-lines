@@ -88,8 +88,7 @@ func _on_back():
 	get_tree().change_scene("res://menu/menu.tscn")
 	
 func play_level(chapter, level):
-	Level.current_chapter = chapter
-	Level.current_level = level
+	Level.init(chapter, level)
 	get_tree().change_scene("res://game/game.tscn")
 	
 func new_chapter():
@@ -140,7 +139,7 @@ func new_level(chapter):
 	chapter.levels.append({
 		"title": "level %d" % (chapter.levels.size() + 1),
 		"grid_size": 5,
-		"nodes": []
+		"operators": []
 	})
 	save_and_reload()
 

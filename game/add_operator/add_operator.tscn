@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/ui/ui.tres" type="Theme" id=1]
+[ext_resource path="res://game/add_operator/add_operator.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = -9.5
+margin_top = -19.5
+margin_right = 9.5
+margin_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 40, 0 )
+theme = ExtResource( 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="on_add_operator"]
