@@ -1,7 +1,7 @@
 extends Node
 
 var data = []
-signal data_loaded
+signal data_saved
 
 func _ready():
 	load_data()
@@ -12,7 +12,7 @@ func save_data():
 	file.store_string(JSON.print(data, "\t"))
 	file.close()
 	
-	load_data()
+	emit_signal("data_saved")
 
 func load_data():
 	var file = File.new()
@@ -25,4 +25,7 @@ func load_data():
 	
 	data = data_json.result
 	
-	emit_signal("data_loaded")
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		
+		print('exit')

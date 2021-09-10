@@ -47,7 +47,8 @@ func get_coord_operators(caller: InputChain, point: Vector2) -> Array:
 	if cell_operator:
 		operators.append(cell_operator)
 	
-	operators.append_array(get_input_chains(point, caller))
+	for input_chain in get_input_chains(point, caller):
+		operators.append(input_chain.start_operator)
 	
 	return operators
 

@@ -4,7 +4,7 @@ func _ready():
 	visible = false
 
 func redraw(result):
-	visible = result is int
+	visible = typeof(result) == TYPE_REAL 
 	if get_parent().points.size():
 		position = get_parent().points[get_parent().points.size() - 1]
 	

@@ -26,7 +26,114 @@
 				"title": "level 2",
 				"grid_size": 5,
 				"operators": [
-
+					{
+						"type": 0,
+						"coord_x": 0,
+						"coord_y": 2,
+						"value": 1,
+						"operation": 0
+					},
+					{
+						"type": 0,
+						"coord_x": 2,
+						"coord_y": 0,
+						"value": -1,
+						"operation": 0
+					},
+					{
+						"type": 1,
+						"coord_x": 2,
+						"coord_y": 4,
+						"value": 0,
+						"operation": 0
+					},
+					{
+						"type": 1,
+						"coord_x": 4,
+						"coord_y": 2,
+						"value": 0,
+						"operation": 4
+					}
+				]
+			}
+		]
+	},
+	{
+		"title": "chapter 2",
+		"levels": [
+			{
+				"title": "level 1",
+				"grid_size": 5,
+				"operators": [
+					{
+						"type": 2,
+						"coord_x": 1,
+						"coord_y": 4,
+						"value": 2,
+						"operation": 0
+					},
+					{
+						"type": 2,
+						"coord_x": 3,
+						"coord_y": 4,
+						"value": 1,
+						"operation": 1
+					},
+					{
+						"type": 1,
+						"coord_x": 2,
+						"coord_y": 2,
+						"value": 2,
+						"operation": 0
+					},
+					{
+						"type": 0,
+						"coord_x": 2,
+						"coord_y": 0,
+						"value": 1,
+						"operation": 0
+					}
+				]
+			},
+			{
+				"title": "level 2",
+				"grid_size": 5,
+				"operators": [
+					{
+						"type": 0,
+						"coord_x": 1,
+						"coord_y": 0,
+						"value": 1,
+						"operation": 0
+					},
+					{
+						"type": 0,
+						"coord_x": 3,
+						"coord_y": 0,
+						"value": 2,
+						"operation": 1
+					},
+					{
+						"type": 2,
+						"coord_x": 0,
+						"coord_y": 2,
+						"value": 2,
+						"operation": 0
+					},
+					{
+						"type": 1,
+						"coord_x": 1,
+						"coord_y": 4,
+						"value": 0,
+						"operation": 4
+					},
+					{
+						"type": 1,
+						"coord_x": 3,
+						"coord_y": 4,
+						"value": 2,
+						"operation": 0
+					}
 				]
 			}
 		]

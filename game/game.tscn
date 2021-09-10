@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://operators/start.tscn" type="PackedScene" id=1]
 [ext_resource path="res://operators/end.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://game/grid.gd" type="Script" id=5]
 [ext_resource path="res://operators/hub.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/ui/ui.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/editor.gd" type="Script" id=8]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
@@ -17,8 +18,6 @@ script = ExtResource( 3 )
 
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource( 5 )
-
-[node name="AddOperators" type="Node2D" parent="Grid"]
 
 [node name="InputChains" type="Node2D" parent="."]
 
@@ -42,5 +41,8 @@ coord = Vector2( 3, 4 )
 [node name="Hub" parent="Nodes2" instance=ExtResource( 6 )]
 coord = Vector2( 0, 2 )
 operation = 1
+
+[node name="Editor" type="Node2D" parent="."]
+script = ExtResource( 8 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 7 )]

@@ -2,9 +2,6 @@ extends Node2D
 
 func _ready():
 	generate_grid()
-	if Settings.editor:
-		get_parent().connect("level_loaded", self, "editable_cells")
-		print('grid')
 
 func generate_grid():
 	var points = []
@@ -30,17 +27,3 @@ func generate_grid():
 	line.points = points
 	add_child(line)
 	
-func editable_cells():
-	for child in $AddOperators.get_children():
-		$AddOperators.remove_child(child)
-	
-	for x in range(Level.current_level.grid_size):
-		for y in range(Level.current_level.grid_size):
-			var point = Vector2(x, y) * Level.tile_size + Vector2.ONE * Level.tile_size / 2
-			var cell_operator = Level.get_operator(point)
-			if not cell_operator:
-				
-				var add_operator = preload("res://game/add_operator/add_operator.tscn").instance()
-				add_operator.position = point
-				$AddOperators.add_child(add_operator)
-	pass

@@ -17,10 +17,13 @@ func _ready():
 	if fallback_chapter and fallback_level:
 		Level.init(fallback_chapter, fallback_level)
 	
-	Data.connect("data_loaded", self, "load_level")
+	Data.connect("data_saved", self, "load_level")
 	load_level()
 
 func load_level():
+	
+	for input_chain in get_tree().get_nodes_in_group("InputChain"):
+			input_chain.get_parent().remove_child(input_chain)
 	
 	add_operators()
 	
@@ -33,8 +36,6 @@ func add_operators():
 	
 	for operator in Level.current_level.operators:
 		
-		print(operator)
-		
 		var operator_node = null
 		match operator.type as int:
 			0:
@@ -43,8 +44,6 @@ func add_operators():
 				operator_node = preload("res://operators/end.tscn").instance()
 			2:
 				operator_node = preload("res://operators/hub.tscn").instance()
-				
-		print(operator_node)
 		
 		operator_node.coord = Vector2(operator.coord_x, operator.coord_y)
 		operator_node.value = operator.value
