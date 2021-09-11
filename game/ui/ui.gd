@@ -31,7 +31,10 @@ func _physics_process(delta):
 	$OnLevelComplete.visible = get_parent().level_complete
 
 func _on_back():
-	get_tree().change_scene("res://menu/menu.tscn")
+	if Level.previous_scene:
+		get_tree().change_scene(Level.previous_scene)
+	else:
+		get_tree().change_scene("res://main_menu/main_menu.tscn")
 
 func _on_next_level():
 	if next_chapter:

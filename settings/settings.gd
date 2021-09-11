@@ -8,4 +8,4 @@ func _on_editor_toggled(editor: bool):
 	Storage.editor = editor
 
 func _on_back():
-	get_tree().change_scene("res://menu/menu.tscn")
+	get_tree().change_scene("res://main_menu/main_menu.tscn")

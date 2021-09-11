@@ -1,5 +1,7 @@
 extends MarginContainer
 
+class_name MainMenu
+
 var next_chapter = null
 var next_level = null
 
@@ -48,7 +50,6 @@ func _ready():
 
 func _on_continue():
 	Level.init(next_chapter, next_level)
-	get_tree().change_scene("res://game/game.tscn")
 	
 func _on_levels():
 	get_tree().change_scene("res://levels/levels.tscn")

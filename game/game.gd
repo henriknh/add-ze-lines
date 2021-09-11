@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Game
+
 var current_line: Line = null
 var valid_points = []
 
@@ -24,12 +26,23 @@ func _ready():
 	load_level()
 	
 func _physics_process(delta):
+	
+	var to_satisfy = 0
 	var satisfied = 0
 	for end in get_tree().get_nodes_in_group("End"):
+		to_satisfy += 1
 		if end.status == Operator.OperatorStatus.SUCCESS:
 			satisfied += 1
+	for equals_hub in get_tree().get_nodes_in_group("Hub"):
+		if equals_hub.operation ==  Arithmetic.Operation.equals:
+			to_satisfy += 1
+			
+			for line in Level.get_lines(equals_hub.position):
+				if line.compute(equals_hub.position) == equals_hub.value:
+					satisfied += 1
+					break
 	
-	level_complete = get_tree().get_nodes_in_group("End").size() > 0 and get_tree().get_nodes_in_group("End").size() == satisfied
+	level_complete = to_satisfy > 0 and to_satisfy == satisfied
 	
 	if level_complete:
 		Storage.set_level_complete(Level.current_chapter, Level.current_level)
@@ -153,10 +166,11 @@ func _get_existing_or_create(mouse_coord: Vector2):
 				is_on_start = start
 		
 		if is_on_start:
-			var input = Line.new()
-			input.start_operator = is_on_start
-			get_node("/root/Game/Lines").add_child(input)
-			current_line = input
+			var line = preload("res://operators/line/line.tscn").instance()
+			line.points = [is_on_start.position]
+			line.color = is_on_start.color_background
+			get_node("/root/Game/Lines").add_child(line)
+			current_line = line
 
 func _get_mouse_coord(event) -> Vector2:
 	if not event.get('position'):

@@ -22,7 +22,7 @@ __meta__ = {
 margin_left = 48.0
 margin_top = 48.0
 margin_right = 390.0
-margin_bottom = 784.0
+margin_bottom = 752.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 24
@@ -40,7 +40,7 @@ valign = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 140.0
 margin_right = 342.0
-margin_bottom = 673.0
+margin_bottom = 641.0
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 scroll_horizontal_enabled = false
@@ -305,9 +305,9 @@ margin_right = 83.0
 margin_bottom = 77.0
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_top = 697.0
+margin_top = 665.0
 margin_right = 342.0
-margin_bottom = 736.0
+margin_bottom = 704.0
 theme = ExtResource( 3 )
 text = "back"
 align = 0

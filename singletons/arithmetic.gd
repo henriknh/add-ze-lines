@@ -18,7 +18,7 @@ func compute(operators: Array):
 			Arithmetic.Operation.division:
 				result /= operator.value
 			Arithmetic.Operation.equals:
-				return result == operator.value
+				return result
 	
 	# https://docs.godotengine.org/en/stable/classes/class_expression.html
 	return result

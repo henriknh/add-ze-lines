@@ -1,5 +1,7 @@
 extends MarginContainer
 
+class_name Levels
+
 onready var chapters_outlet = $VBoxContainer/ScrollContainer/VBoxContainer
 
 func _ready():
@@ -80,16 +82,12 @@ func load_levels():
 		button_add_chapter.theme = preload("res://levels/levels.tres")
 		button_add_chapter.connect("pressed", self, "new_chapter")
 		chapters_outlet.add_child(button_add_chapter)
-
-func _on_load_level():
-	get_tree().change_scene("res://game/game.tscn")
 	
 func _on_back():
-	get_tree().change_scene("res://menu/menu.tscn")
+	get_tree().change_scene("res://main_menu/main_menu.tscn")
 	
-func play_level(chapter, level):
-	Level.init(chapter, level)
-	get_tree().change_scene("res://game/game.tscn")
+func play_level(chapter, level, is_editor = false):
+	Level.init(chapter, level, is_editor)
 	
 func new_chapter():
 	Data.data.append({
@@ -148,6 +146,7 @@ func edit_level(chapter, level):
 	
 	var dialog = AcceptDialog.new()
 	dialog.connect("custom_action", self, "on_edit_level", [level, chapter, dialog])
+	dialog.add_button("Edit level", true, "edit")
 	if idx > 0:
 		dialog.add_button("Move up", true, "move_up")
 	if idx < chapter.levels.size() - 1:
@@ -166,7 +165,9 @@ func edit_level(chapter, level):
 func on_edit_level(action, level, chapter, dialog: AcceptDialog):
 	var idx = chapter.levels.find(level)
 	
-	if action is String and action == "move_up":
+	if action is String and action == "edit":
+		play_level(chapter, level, true)
+	elif action is String and action == "move_up":
 		chapter.levels.remove(idx)
 		chapter.levels.insert(idx - 1, level)
 	elif action is String and action == "move_down":

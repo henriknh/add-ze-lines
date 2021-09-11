@@ -5,6 +5,8 @@ var operator_diameter: int = 42
 
 var current_chapter = null
 var current_level = null
+var is_editor = false
+var previous_scene = null
 
 var background = Color('#110f3e')
 var background_border = Color('#371a77')
@@ -38,10 +40,17 @@ signal level_changed
 func _ready():
 	VisualServer.set_default_clear_color(background)
 
-func init(_current_chapter, _current_level):
+func init(_current_chapter, _current_level, _is_editor = false):
 	current_chapter = _current_chapter
 	current_level = _current_level
+	is_editor = _is_editor
+	
+	if not get_tree().current_scene is Game:
+		previous_scene = get_tree().current_scene.filename
+	
 	emit_signal("level_changed")
+	
+	get_tree().change_scene("res://game/game.tscn")
 
 func get_coord_operators(caller: Line, point: Vector2) -> Array:
 	var operators = []
@@ -51,7 +60,7 @@ func get_coord_operators(caller: Line, point: Vector2) -> Array:
 		operators.append(cell_operator)
 	
 	for line in get_lines(point, caller):
-		operators.append(line.start_operator)
+		operators.append(get_operator(line.points[0]))
 	
 	return operators
 

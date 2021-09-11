@@ -1,6 +1,10 @@
 extends Node2D
 
 func _ready():
+	
+	if Level.is_editor == false:
+		return 
+	
 	if Storage.editor:
 		get_parent().connect("level_loaded", self, "editable_cells")
 	

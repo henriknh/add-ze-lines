@@ -19,15 +19,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://operators/end.gd"
 }, {
+"base": "Node2D",
+"class": "Game",
+"language": "GDScript",
+"path": "res://game/game.gd"
+}, {
 "base": "Operator",
 "class": "Hub",
 "language": "GDScript",
 "path": "res://operators/hub.gd"
 }, {
-"base": "Line2D",
+"base": "MarginContainer",
+"class": "Levels",
+"language": "GDScript",
+"path": "res://levels/levels.gd"
+}, {
+"base": "Node2D",
 "class": "Line",
 "language": "GDScript",
-"path": "res://operators/line/input_chain.gd"
+"path": "res://operators/line/line.gd"
+}, {
+"base": "MarginContainer",
+"class": "MainMenu",
+"language": "GDScript",
+"path": "res://main_menu/main_menu.gd"
 }, {
 "base": "Node2D",
 "class": "Operator",
@@ -42,8 +57,11 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Block": "",
 "End": "",
+"Game": "",
 "Hub": "",
+"Levels": "",
 "Line": "",
+"MainMenu": "",
 "Operator": "",
 "Start": ""
 }
@@ -51,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="lines"
-run/main_scene="res://menu/menu.tscn"
+run/main_scene="res://main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
