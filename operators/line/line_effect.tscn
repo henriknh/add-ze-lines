@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.923864 ), 0.0, -0.923864, 0, 1, Vector2( 1, 0 ), -0.923864, 0.0, 1, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.555682 ), 0.0, 0.545455, 0, 0, Vector2( 0.877273, 0.973864 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -11.75, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 50.0
+damping_curve = SubResource( 2 )
+scale_curve = SubResource( 4 )
+
+[node name="LineEffect" type="Particles2D"]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource( 5 )

@@ -50,8 +50,8 @@ func get_coord_operators(caller: Line, point: Vector2) -> Array:
 	if cell_operator:
 		operators.append(cell_operator)
 	
-	for input_chain in get_input_chains(point, caller):
-		operators.append(input_chain.start_operator)
+	for line in get_lines(point, caller):
+		operators.append(line.start_operator)
 	
 	return operators
 
@@ -61,9 +61,9 @@ func get_operator(point: Vector2) -> Operator:
 			return operator
 	return null
 
-func get_input_chains(point: Vector2, exclude = null) -> Array:
-	var input_chains = []
-	for input_chain in get_tree().get_nodes_in_group("Line"):
-		if point in input_chain.points and input_chain != exclude:
-			input_chains.append(input_chain)
-	return input_chains
+func get_lines(point: Vector2, exclude = null) -> Array:
+	var lines = []
+	for line in get_tree().get_nodes_in_group("Line"):
+		if point in line.points and line != exclude:
+			lines.append(line)
+	return lines

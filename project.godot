@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Line2D",
 "class": "Line",
 "language": "GDScript",
-"path": "res://operators/input_chain/input_chain.gd"
+"path": "res://operators/line/input_chain.gd"
 }, {
 "base": "Node2D",
 "class": "Operator",

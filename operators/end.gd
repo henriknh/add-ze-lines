@@ -6,15 +6,15 @@ func _ready():
 	add_to_group("End")
 
 func _physics_process(delta):
-	var input_chains = Level.get_input_chains(position)
-	if input_chains.size() == 1:
+	var lines = Level.get_lines(position)
+	if lines.size() == 1:
 		
-		if input_chains[0].compute():
+		if lines[0].compute():
 			status = OperatorStatus.SUCCESS
 		else:
 			status = OperatorStatus.FAIL
 		
-		var start = Level.get_operator(input_chains[0].points[0])
+		var start = Level.get_operator(lines[0].points[0])
 		color_foreground = start.color_foreground
 		color_background = start.color_background
 	else:

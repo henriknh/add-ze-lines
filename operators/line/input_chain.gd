@@ -3,7 +3,7 @@ extends Line2D
 class_name Line
 
 var start_operator = null
-onready var head = preload("res://operators/input_chain/head/head.tscn").instance()
+onready var head = preload("res://operators/line/head/head.tscn").instance()
 
 func _ready():
 	add_to_group("Line")
@@ -18,21 +18,21 @@ func _ready():
 	add_child(head)
 
 func on_end_input():
-	_remove_on_other_input_chain()
+	_remove_on_other_line()
 	
 	if points.size() <= 1:
 		points = []
 		queue_free()
 
-func _remove_on_other_input_chain():
+func _remove_on_other_line():
 	var _points = points
 	while true:
 		if points.size() == 0:
 			break
 		
-		var end_on_other_input_chain = get_node("/root/Game").any_input_chain_has_point(_points[_points.size() - 1], self)
+		var end_on_other_line = get_node("/root/Game").any_line_has_point(_points[_points.size() - 1], self)
 		
-		if end_on_other_input_chain:
+		if end_on_other_line:
 			_points.remove(_points.size() - 1)
 		else:
 			points = _points

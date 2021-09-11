@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_input_chain: Line = null
+var current_line: Line = null
 var valid_points = []
 
 signal level_loaded
@@ -38,11 +38,11 @@ func _physics_process(delta):
 
 func load_level():
 	level_complete = false
-	current_input_chain = null
+	current_line = null
 	
-	for input_chain in get_tree().get_nodes_in_group("Line"):
-		input_chain.get_parent().remove_child(input_chain)
-		input_chain.queue_free()
+	for line in get_tree().get_nodes_in_group("Line"):
+		line.get_parent().remove_child(line)
+		line.queue_free()
 	
 	add_operators()
 	
@@ -85,13 +85,13 @@ func _input(event):
 	var mouse_coord = _get_mouse_coord(event)
 	
 	if event is InputEventMouseButton or event is InputEventScreenTouch:
-		if event.pressed and current_input_chain == null:
+		if event.pressed and current_line == null:
 			_get_existing_or_create(mouse_coord)
 		else:
 			end_input()
 	
-	elif (event is InputEventMouseMotion or event is InputEventScreenDrag) and current_input_chain and point_on_grid(mouse_coord):
-		var points = current_input_chain.points
+	elif (event is InputEventMouseMotion or event is InputEventScreenDrag) and current_line and point_on_grid(mouse_coord):
+		var points = current_line.points
 		
 		if points.size() > 0 and points[points.size() - 1] == mouse_coord:
 			valid_points = []
@@ -120,30 +120,30 @@ func _input(event):
 			if valid_points.size() > 0 and valid_points[valid_points.size() - 1] == mouse_coord:
 				valid_points = []
 		
-		current_input_chain.points = points
+		current_line.points = points
 		
-		for input_chain in get_tree().get_nodes_in_group("Line"):
-			input_chain.compute()
+		for line in get_tree().get_nodes_in_group("Line"):
+			line.compute()
 			
 func point_on_grid(point: Vector2) -> bool:
 	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.current_level.grid_size and point.y <= Level.tile_size * Level.current_level.grid_size
 
 func end_input():
-	if current_input_chain:
-		current_input_chain.on_end_input()
+	if current_line:
+		current_line.on_end_input()
 	
-	current_input_chain = null
+	current_line = null
 	valid_points = []
 
 func _get_existing_or_create(mouse_coord: Vector2):
 	if not point_on_grid(mouse_coord):
 		return
 	
-	var exists = any_input_chain_has_point(mouse_coord)
+	var exists = any_line_has_point(mouse_coord)
 	if exists:
 		# If is end point
 		if exists.points.size() > 0 and exists.points[exists.points.size() - 1] == mouse_coord:
-			current_input_chain = exists
+			current_line = exists
 		else:
 			return
 	else:
@@ -156,7 +156,7 @@ func _get_existing_or_create(mouse_coord: Vector2):
 			var input = Line.new()
 			input.start_operator = is_on_start
 			get_node("/root/Game/Lines").add_child(input)
-			current_input_chain = input
+			current_line = input
 
 func _get_mouse_coord(event) -> Vector2:
 	if not event.get('position'):
@@ -169,17 +169,17 @@ func _get_mouse_coord(event) -> Vector2:
 	mouse_coord += Vector2.ONE * Level.tile_size / 2
 	return mouse_coord
 
-func any_input_chain_has_point(point: Vector2, exclude = null) -> Line:
+func any_line_has_point(point: Vector2, exclude = null) -> Line:
 	if not exclude:
-		exclude = current_input_chain
+		exclude = current_line
 	
-	for input_chain in get_tree().get_nodes_in_group("Line"):
-		if input_chain != exclude and point in input_chain.points:
-			return input_chain
+	for line in get_tree().get_nodes_in_group("Line"):
+		if line != exclude and point in line.points:
+			return line
 	return null
 
 func cross_existing_and_valid(from: Vector2, to: Vector2) -> Array:
-	var crossing = any_input_chain_has_point(to)
+	var crossing = any_line_has_point(to)
 	if crossing:
 		var valid_points = [from]
 		var diff = to - from 
@@ -190,7 +190,7 @@ func cross_existing_and_valid(from: Vector2, to: Vector2) -> Array:
 			
 			from = to
 			to = from + diff
-			crossing = any_input_chain_has_point(to)
+			crossing = any_line_has_point(to)
 		if valid_points.size() > 1:
 			valid_points.append(to)
 		
@@ -198,19 +198,19 @@ func cross_existing_and_valid(from: Vector2, to: Vector2) -> Array:
 	else:
 		return []
 
-func is_valid_cross(from: Vector2, to: Vector2, input_chain: Line) -> bool:
+func is_valid_cross(from: Vector2, to: Vector2, line: Line) -> bool:
 	var diff = to - from 
 	var destination = to + diff
 	var idx = -1
-	for i in range(input_chain.points.size()):
-		if input_chain.points[i] == to:
+	for i in range(line.points.size()):
+		if line.points[i] == to:
 			idx = i
 			break
 	
-	if idx == 0 or idx == input_chain.points.size() - 1:
+	if idx == 0 or idx == line.points.size() - 1:
 		# First point or last point
 		return false
-	elif input_chain.points[idx - 1] != destination and input_chain.points[idx + 1] != destination:
+	elif line.points[idx - 1] != destination and line.points[idx + 1] != destination:
 		return true
 	else:
 		return false

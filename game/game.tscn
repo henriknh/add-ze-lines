@@ -66,6 +66,7 @@ script = ExtResource( 8 )
 [node name="CanvasLayer" parent="." instance=ExtResource( 7 )]
 
 [node name="PostGame" type="Node2D" parent="."]
+visible = false
 position = Vector2( 196.431, 580.313 )
 
 [node name="Left1" type="Particles2D" parent="PostGame"]
