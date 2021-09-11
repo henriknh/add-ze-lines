@@ -1,12 +1,12 @@
 extends Line2D
 
-class_name InputChain
+class_name Line
 
 var start_operator = null
 onready var head = preload("res://operators/input_chain/head/head.tscn").instance()
 
 func _ready():
-	add_to_group("InputChain")
+	add_to_group("Line")
 	
 	joint_mode = Line2D.LINE_JOINT_ROUND
 	begin_cap_mode = Line2D.LINE_CAP_ROUND
@@ -45,5 +45,6 @@ func compute() -> bool:
 	
 	var result = Arithmetic.compute(operators)
 	head.redraw(result)
+	print(points.size())
 	return result is bool and result == true
 

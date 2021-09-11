@@ -37,7 +37,7 @@ script = ExtResource( 3 )
 [node name="Grid" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="InputChains" type="Node2D" parent="."]
+[node name="Lines" type="Node2D" parent="."]
 
 [node name="Nodes" type="Node2D" parent="."]
 

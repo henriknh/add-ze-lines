@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_input_chain: InputChain = null
+var current_input_chain: Line = null
 var valid_points = []
 
 signal level_loaded
@@ -40,7 +40,7 @@ func load_level():
 	level_complete = false
 	current_input_chain = null
 	
-	for input_chain in get_tree().get_nodes_in_group("InputChain"):
+	for input_chain in get_tree().get_nodes_in_group("Line"):
 		input_chain.get_parent().remove_child(input_chain)
 		input_chain.queue_free()
 	
@@ -122,7 +122,7 @@ func _input(event):
 		
 		current_input_chain.points = points
 		
-		for input_chain in get_tree().get_nodes_in_group("InputChain"):
+		for input_chain in get_tree().get_nodes_in_group("Line"):
 			input_chain.compute()
 			
 func point_on_grid(point: Vector2) -> bool:
@@ -153,9 +153,9 @@ func _get_existing_or_create(mouse_coord: Vector2):
 				is_on_start = start
 		
 		if is_on_start:
-			var input = InputChain.new()
+			var input = Line.new()
 			input.start_operator = is_on_start
-			get_node("/root/Game/InputChains").add_child(input)
+			get_node("/root/Game/Lines").add_child(input)
 			current_input_chain = input
 
 func _get_mouse_coord(event) -> Vector2:
@@ -169,11 +169,11 @@ func _get_mouse_coord(event) -> Vector2:
 	mouse_coord += Vector2.ONE * Level.tile_size / 2
 	return mouse_coord
 
-func any_input_chain_has_point(point: Vector2, exclude = null) -> InputChain:
+func any_input_chain_has_point(point: Vector2, exclude = null) -> Line:
 	if not exclude:
 		exclude = current_input_chain
 	
-	for input_chain in get_tree().get_nodes_in_group("InputChain"):
+	for input_chain in get_tree().get_nodes_in_group("Line"):
 		if input_chain != exclude and point in input_chain.points:
 			return input_chain
 	return null
@@ -198,7 +198,7 @@ func cross_existing_and_valid(from: Vector2, to: Vector2) -> Array:
 	else:
 		return []
 
-func is_valid_cross(from: Vector2, to: Vector2, input_chain: InputChain) -> bool:
+func is_valid_cross(from: Vector2, to: Vector2, input_chain: Line) -> bool:
 	var diff = to - from 
 	var destination = to + diff
 	var idx = -1

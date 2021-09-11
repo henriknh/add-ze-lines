@@ -25,7 +25,7 @@ _global_script_classes=[ {
 "path": "res://operators/hub.gd"
 }, {
 "base": "Line2D",
-"class": "InputChain",
+"class": "Line",
 "language": "GDScript",
 "path": "res://operators/input_chain/input_chain.gd"
 }, {
@@ -43,7 +43,7 @@ _global_script_class_icons={
 "Block": "",
 "End": "",
 "Hub": "",
-"InputChain": "",
+"Line": "",
 "Operator": "",
 "Start": ""
 }

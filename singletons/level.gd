@@ -43,7 +43,7 @@ func init(_current_chapter, _current_level):
 	current_level = _current_level
 	emit_signal("level_changed")
 
-func get_coord_operators(caller: InputChain, point: Vector2) -> Array:
+func get_coord_operators(caller: Line, point: Vector2) -> Array:
 	var operators = []
 	
 	var cell_operator = get_operator(point)
@@ -63,7 +63,7 @@ func get_operator(point: Vector2) -> Operator:
 
 func get_input_chains(point: Vector2, exclude = null) -> Array:
 	var input_chains = []
-	for input_chain in get_tree().get_nodes_in_group("InputChain"):
+	for input_chain in get_tree().get_nodes_in_group("Line"):
 		if point in input_chain.points and input_chain != exclude:
 			input_chains.append(input_chain)
 	return input_chains
