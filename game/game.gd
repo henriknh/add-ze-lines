@@ -7,6 +7,7 @@ var valid_points = []
 
 signal level_loaded
 
+var level_ready = false
 var level_complete = false
 
 func _ready():
@@ -26,6 +27,9 @@ func _ready():
 	load_level()
 	
 func _physics_process(delta):
+	
+	if not level_ready:
+		return
 	
 	var to_satisfy = 0
 	var satisfied = 0
@@ -50,6 +54,7 @@ func _physics_process(delta):
 	$PostGame.visible = level_complete
 
 func load_level():
+	level_ready = false
 	level_complete = false
 	current_line = null
 	
@@ -60,6 +65,7 @@ func load_level():
 	add_operators()
 	
 	emit_signal("level_loaded")
+	level_ready = true
 
 func add_operators():
 	for operator in get_tree().get_nodes_in_group("Operator"):

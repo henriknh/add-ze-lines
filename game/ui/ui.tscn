@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/ui/ui.tres" type="Theme" id=1]
 [ext_resource path="res://game/ui/ui.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/font/font_32.tres" type="DynamicFont" id=4]
 [ext_resource path="res://levels/levels.tres" type="Theme" id=5]
 [ext_resource path="res://assets/font/font_48.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/icons/replay.png" type="Texture" id=7]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -63,10 +64,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="TopRight/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopRight/MarginContainer"]
 margin_top = 12.0
-margin_right = 73.0
+margin_right = 125.0
 margin_bottom = 51.0
+custom_constants/separation = 16
+alignment = 2
+
+[node name="Restart" type="TextureButton" parent="TopRight/MarginContainer/HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 39.0
+grow_horizontal = 0
+theme = ExtResource( 1 )
+texture_normal = ExtResource( 7 )
+
+[node name="Back" type="Button" parent="TopRight/MarginContainer/HBoxContainer"]
+margin_left = 52.0
+margin_right = 125.0
+margin_bottom = 39.0
 grow_horizontal = 0
 theme = ExtResource( 1 )
 text = "back"
@@ -129,6 +144,7 @@ margin_bottom = 216.0
 theme = ExtResource( 1 )
 text = "Redo"
 
-[connection signal="pressed" from="TopRight/MarginContainer/Button" to="." method="_on_back"]
+[connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Restart" to="." method="_on_redo_level"]
+[connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Back" to="." method="_on_back"]
 [connection signal="pressed" from="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel" to="." method="_on_next_level"]
 [connection signal="pressed" from="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/RedoLevel" to="." method="_on_redo_level"]

@@ -4,6 +4,7 @@ var next_chapter = null
 var next_level = null
 
 func _ready():
+	_show_hide_ui()
 	Level.connect("level_changed", self, "on_level_changed")
 	on_level_changed()
 
@@ -28,7 +29,11 @@ func on_level_changed():
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NoMoreLevels.visible = not next_chapter and not next_level
 
 func _physics_process(delta):
-	$OnLevelComplete.visible = get_parent().level_complete
+	_show_hide_ui()
+	
+func _show_hide_ui():
+	$OnLevelComplete.visible = get_parent().level_ready and get_parent().level_complete
+	$TopRight/MarginContainer/HBoxContainer/Restart.visible = get_parent().level_ready and get_tree().get_nodes_in_group("Line").size() > 0
 
 func _on_back():
 	if Level.previous_scene:
