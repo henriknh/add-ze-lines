@@ -8,37 +8,7 @@ var current_level = null
 var is_editor = false
 var previous_scene = null
 
-var background = Color('#110f3e')
-var background_border = Color('#371a77')
-
-var foreground_black = Color(0,0,0,0.87)
-var foreground_white = Color(1,1,1,1)
-
-
-# https://lospec.com/palette-list/bloom-16
-var colors = [
-	{
-		'background': Color('#afe48d'),
-		'foreground': foreground_black
-	}, {
-		'background': Color('#ff9072'),
-		'foreground': foreground_white
-	}, {
-		'background': Color('#ffc567'),
-		'foreground': foreground_white
-	}, {
-		'background': Color('#2b75b7'),
-		'foreground': foreground_white
-	}, {
-		'background': Color('#371a77'),
-		'foreground': foreground_white
-	}
-]
-
 signal level_changed
-
-func _ready():
-	VisualServer.set_default_clear_color(background)
 
 func init(_current_chapter, _current_level, _is_editor = false):
 	current_chapter = _current_chapter
@@ -50,7 +20,7 @@ func init(_current_chapter, _current_level, _is_editor = false):
 	
 	emit_signal("level_changed")
 	
-	get_tree().change_scene("res://game/game.tscn")
+	get_tree().change_scene("res://scenes/game/game.tscn")
 
 func get_coord_operators(caller: Line, point: Vector2) -> Array:
 	var operators = []

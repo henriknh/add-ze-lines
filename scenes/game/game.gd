@@ -50,9 +50,7 @@ func _physics_process(delta):
 	
 	if level_complete:
 		Storage.set_level_complete(Level.current_chapter, Level.current_level)
-		
-	$PostGame.visible = level_complete
-
+	
 func load_level():
 	level_ready = false
 	level_complete = false
@@ -174,7 +172,7 @@ func _get_existing_or_create(mouse_coord: Vector2):
 		if is_on_start:
 			var line = preload("res://operators/line/line.tscn").instance()
 			line.points = [is_on_start.position]
-			line.color = is_on_start.color_background
+			line.color = is_on_start.background
 			get_node("/root/Game/Lines").add_child(line)
 			current_line = line
 

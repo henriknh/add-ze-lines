@@ -4,9 +4,23 @@ var next_chapter = null
 var next_level = null
 
 func _ready():
+		
+	var center = get_viewport().get_visible_rect().size.x / 2
+	$OnLevelComplete/ConfettiLeft.position = Vector2(center - 150, -80)
+	$OnLevelComplete/ConfettiRight.position = Vector2(center + 150, -80)
+
+	print(get_viewport().get_visible_rect().size.y - 80)
+	
 	_show_hide_ui()
+	
+	Themes.connect("theme_changed", self, "_on_theme_changed")
+	_on_theme_changed()
+	
 	Level.connect("level_changed", self, "on_level_changed")
 	on_level_changed()
+
+func _on_theme_changed():
+	$TopRight/MarginContainer/HBoxContainer/Restart.self_modulate = Themes.theme.on_background
 
 func on_level_changed():
 	$TopLeft/MarginContainer2/VBoxContainer/LevelTitle.text = Level.current_level.title
@@ -39,7 +53,7 @@ func _on_back():
 	if Level.previous_scene:
 		get_tree().change_scene(Level.previous_scene)
 	else:
-		get_tree().change_scene("res://main_menu/main_menu.tscn")
+		get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
 
 func _on_next_level():
 	if next_chapter:

@@ -52,7 +52,10 @@ func _on_continue():
 	Level.init(next_chapter, next_level)
 	
 func _on_levels():
-	get_tree().change_scene("res://levels/levels.tscn")
+	get_tree().change_scene("res://scenes/levels/levels.tscn")
+	
+func _on_themes():
+	get_tree().change_scene("res://scenes/themes/themes.tscn")
 	
 func _on_settings():
-	get_tree().change_scene("res://settings/settings.tscn")
+	get_tree().change_scene("res://scenes/settings/settings.tscn")

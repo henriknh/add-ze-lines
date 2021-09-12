@@ -3,6 +3,7 @@ extends MarginContainer
 class_name Levels
 
 onready var chapters_outlet = $VBoxContainer/ScrollContainer/VBoxContainer
+var _theme = preload("res://theme_solid.tres")
 
 func _ready():
 	load_levels()
@@ -26,14 +27,14 @@ func load_levels():
 		var chapter_title = Label.new()
 		chapter_title.text = chapter.title
 		chapter_title.size_flags_horizontal = SIZE_EXPAND_FILL
-		chapter_title.set("custom_fonts/font", preload("res://assets/font/font_48.tres"))
+		chapter_title.set("custom_fonts/font", preload("res://assets/font/font_32.tres"))
 		container_title.add_child(chapter_title)
 		
 		# edit chapter
 		if Storage.editor:
 			var edit_chapter = Button.new()
 			edit_chapter.text = "edit"
-			edit_chapter.theme = preload("res://levels/levels.tres")
+			edit_chapter.theme = _theme
 			edit_chapter.connect("pressed", self, "edit_chapter", [chapter])
 			container_title.add_child(edit_chapter)
 		
@@ -48,7 +49,7 @@ func load_levels():
 			
 			# play level
 			var play_level = Button.new()
-			play_level.theme = preload("res://levels/levels.tres")
+			play_level.theme = _theme
 			play_level.text = level.title
 			play_level.size_flags_horizontal = SIZE_EXPAND_FILL
 			play_level.connect("pressed", self, "play_level", [chapter, level])
@@ -57,7 +58,7 @@ func load_levels():
 			# edit level
 			if Storage.editor:
 				var edit_level = Button.new()
-				edit_level.theme = preload("res://levels/levels.tres")
+				edit_level.theme = _theme
 				edit_level.text = "edit"
 				edit_level.connect("pressed", self, "edit_level", [chapter, level])
 				level_container.add_child(edit_level)
@@ -68,7 +69,7 @@ func load_levels():
 		if Storage.editor:
 			var button_add_level = Button.new()
 			button_add_level.text = "new"
-			button_add_level.theme = preload("res://levels/levels.tres")
+			button_add_level.theme = _theme
 			button_add_level.connect("pressed", self, "new_level", [chapter])
 			container_grid.add_child(button_add_level)
 		
@@ -79,12 +80,12 @@ func load_levels():
 	if Storage.editor:
 		var button_add_chapter = Button.new()
 		button_add_chapter.text = "new chapter"
-		button_add_chapter.theme = preload("res://levels/levels.tres")
+		button_add_chapter.theme = _theme
 		button_add_chapter.connect("pressed", self, "new_chapter")
 		chapters_outlet.add_child(button_add_chapter)
 	
 func _on_back():
-	get_tree().change_scene("res://main_menu/main_menu.tscn")
+	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
 	
 func play_level(chapter, level, is_editor = false):
 	Level.init(chapter, level, is_editor)

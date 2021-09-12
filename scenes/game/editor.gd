@@ -17,6 +17,6 @@ func editable_cells():
 			var point = Vector2(x, y) * Level.tile_size + Vector2.ONE * Level.tile_size / 2
 			var cell_operator = Level.get_operator(point)
 
-			var add_operator = preload("res://game/edit_operator/edit_operator.tscn").instance()
+			var add_operator = preload("res://scenes/game/edit_operator/edit_operator.tscn").instance()
 			add_operator.position = point
 			add_child(add_operator)

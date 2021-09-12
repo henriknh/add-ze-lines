@@ -21,7 +21,7 @@ func generate_grid():
 		points.append(bottom)
 
 	var line = Line2D.new()
-	line.default_color = Color.white
+	line.default_color = Themes.theme.grid
 	line.width = 1
 	line.antialiased = true
 	line.points = points

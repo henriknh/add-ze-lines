@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://game/edit_operator/edit_operator.gd" type="Script" id=1]
-[ext_resource path="res://game/ui/ui.tres" type="Theme" id=2]
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/game/edit_operator/edit_operator.gd" type="Script" id=2]
 
 [node name="EditOperator" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = -9.5
@@ -14,7 +14,7 @@ margin_bottom = 19.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 40, 0 )
-theme = ExtResource( 2 )
+theme = ExtResource( 1 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false

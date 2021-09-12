@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Game",
 "language": "GDScript",
-"path": "res://game/game.gd"
+"path": "res://scenes/game/game.gd"
 }, {
 "base": "Operator",
 "class": "Hub",
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "MarginContainer",
 "class": "Levels",
 "language": "GDScript",
-"path": "res://levels/levels.gd"
+"path": "res://scenes/levels/levels.gd"
 }, {
 "base": "Node2D",
 "class": "Line",
@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "MarginContainer",
 "class": "MainMenu",
 "language": "GDScript",
-"path": "res://main_menu/main_menu.gd"
+"path": "res://scenes/main_menu/main_menu.gd"
 }, {
 "base": "Node2D",
 "class": "Operator",
@@ -69,11 +69,12 @@ _global_script_class_icons={
 [application]
 
 config/name="lines"
-run/main_scene="res://main_menu/main_menu.tscn"
+run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
+Themes="*res://singletons/themes.gd"
 Random="*res://singletons/random.gd"
 Arithmetic="*res://singletons/arithmetic.gd"
 Level="*res://singletons/level.gd"
@@ -87,8 +88,8 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/width=400
-window/size/height=800
+window/size/width=1280
+window/size/height=720
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
