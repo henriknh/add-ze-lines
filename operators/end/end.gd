@@ -25,8 +25,8 @@ func _physics_process(delta):
 	update()
 
 func _draw():
-	var _background = Themes.theme.background
-	var text_color = Themes.theme.on_background
+	var _background = Themes.on_background_white
+	var text_color = Themes.on_background_black
 	if status == OperatorStatus.SUCCESS:
 		_background = background 
 		text_color = on_background
@@ -46,4 +46,6 @@ func _draw():
 	
 	draw_polygon(points_arc, [_background], [], null, null, true)
 	
-	draw_arc(Vector2.ZERO, Level.operator_diameter / 2 - Level.operator_diameter / 12, 0, 2 * PI, 32, border, Level.operator_diameter / 6, true)
+	#draw_arc(Vector2.ZERO, Level.operator_diameter / 2 - Level.operator_diameter / 12, 0, 2 * PI, 32, border, Level.operator_diameter / 6, true)
+	
+	draw_arc(Vector2.ZERO, Level.operator_diameter / 2, 0, 2 * PI, 32, Color.black, 2, true)

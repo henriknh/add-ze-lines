@@ -6,8 +6,8 @@
 [ext_resource path="res://scenes/main_menu/main_menu.gd" type="Script" id=4]
 
 [node name="MainMenu" type="MarginContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 720.0
 theme = ExtResource( 1 )
 custom_constants/margin_right = 48
 custom_constants/margin_top = 48
@@ -21,8 +21,8 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 48.0
 margin_top = 48.0
-margin_right = 352.0
-margin_bottom = 752.0
+margin_right = 1232.0
+margin_bottom = 672.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 32
@@ -32,28 +32,28 @@ __meta__ = {
 }
 
 [node name="Header" type="Label" parent="VBoxContainer"]
-margin_right = 304.0
-margin_bottom = 325.0
+margin_right = 1184.0
+margin_bottom = 245.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
 text = "lines."
 valign = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 357.0
-margin_right = 304.0
-margin_bottom = 704.0
+margin_top = 277.0
+margin_right = 1184.0
+margin_bottom = 624.0
 custom_constants/separation = 32
 
 [node name="PlayContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
-margin_right = 304.0
+margin_right = 1184.0
 margin_bottom = 63.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Play" type="Button" parent="VBoxContainer/VBoxContainer/PlayContainer"]
-margin_right = 304.0
+margin_right = 1184.0
 margin_bottom = 39.0
 theme = ExtResource( 1 )
 text = "continue"
@@ -62,14 +62,14 @@ align = 0
 [node name="ChapterAndLevelTitles" type="Label" parent="VBoxContainer/VBoxContainer/PlayContainer"]
 self_modulate = Color( 1, 1, 1, 0.38 )
 margin_top = 43.0
-margin_right = 304.0
+margin_right = 1184.0
 margin_bottom = 63.0
 custom_fonts/font = ExtResource( 2 )
 text = "Chapter 1, task 2"
 
 [node name="Levels" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 95.0
-margin_right = 304.0
+margin_right = 1184.0
 margin_bottom = 134.0
 theme = ExtResource( 1 )
 text = "levels"
@@ -77,7 +77,7 @@ align = 0
 
 [node name="Challanges" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 166.0
-margin_right = 304.0
+margin_right = 1184.0
 margin_bottom = 205.0
 theme = ExtResource( 1 )
 disabled = true
@@ -86,7 +86,7 @@ align = 0
 
 [node name="Themes" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 237.0
-margin_right = 304.0
+margin_right = 1184.0
 margin_bottom = 276.0
 theme = ExtResource( 1 )
 text = "themes"
@@ -94,7 +94,7 @@ align = 0
 
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 308.0
-margin_right = 304.0
+margin_right = 1184.0
 margin_bottom = 347.0
 theme = ExtResource( 1 )
 text = "settings"

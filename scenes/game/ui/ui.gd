@@ -8,8 +8,6 @@ func _ready():
 	var center = get_viewport().get_visible_rect().size.x / 2
 	$OnLevelComplete/ConfettiLeft.position = Vector2(center - 150, -80)
 	$OnLevelComplete/ConfettiRight.position = Vector2(center + 150, -80)
-
-	print(get_viewport().get_visible_rect().size.y - 80)
 	
 	_show_hide_ui()
 	
@@ -47,7 +45,13 @@ func _physics_process(delta):
 	
 func _show_hide_ui():
 	$OnLevelComplete.visible = get_parent().level_ready and get_parent().level_complete
-	$TopRight/MarginContainer/HBoxContainer/Restart.visible = get_parent().level_ready and get_tree().get_nodes_in_group("Line").size() > 0
+	var line_has_two_points = false
+	for line in get_tree().get_nodes_in_group("Line"):
+		if line.points.size() >= 2:
+			line_has_two_points = true
+			break
+	
+	$TopRight/MarginContainer/HBoxContainer/Restart.visible = get_parent().level_ready and line_has_two_points
 
 func _on_back():
 	if Level.previous_scene:
@@ -62,4 +66,4 @@ func _on_next_level():
 		Level.init(Level.current_chapter, next_level)
 
 func _on_redo_level():
-	Level.init(Level.current_chapter, Level.current_level)
+	Level.init(Level.current_chapter, Level.current_level, Level.is_editor)

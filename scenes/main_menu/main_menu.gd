@@ -6,6 +6,8 @@ var next_chapter = null
 var next_level = null
 
 func _ready():
+	if rect_size.x > 600:
+		rect_size = Vector2(600, rect_size.y)
 		
 	var storage_next = Storage.get_last_completed_level()
 	

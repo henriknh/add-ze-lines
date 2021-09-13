@@ -23,14 +23,14 @@ func compute(operators: Array):
 	# https://docs.godotengine.org/en/stable/classes/class_expression.html
 	return result
 
-func get_operation_string(operation: int) -> String:
+func get_operation_string(operation: int, value: int) -> String:
 	match operation:
 		Arithmetic.Operation.addition:
-			return ''
+			return '+' if Storage.show_addition_symbol and value >= 0 else ''
 		Arithmetic.Operation.multiplication:
-			return '*'
+			return '×'
 		Arithmetic.Operation.division:
-			return '/'
+			return '÷'
 		Arithmetic.Operation.equals:
 			return ''
 	return 'X'

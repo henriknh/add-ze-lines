@@ -3,6 +3,7 @@ extends Node
 const SAVE_FILE: String = "user://settings.cfg"
 var config = ConfigFile.new()
 
+var show_addition_symbol: bool = false setget set_show_addition_symbol, get_show_addition_symbol
 var editor: bool = false setget set_editor, get_editor
 
 func _ready():
@@ -23,6 +24,12 @@ func _set_config_value(section, key, value):
 
 func _get_config_value(section, key, default):
 	return config.get_value(section, key, default)
+
+func set_show_addition_symbol(show_addition_symbol):
+	_set_config_value("setting", "show_addition_symbol", show_addition_symbol)
+
+func get_show_addition_symbol() -> bool:
+	return OS.is_debug_build() and _get_config_value("setting", "show_addition_symbol", false)
 
 func set_editor(_editor):
 	_set_config_value("setting", "editor", _editor)

@@ -137,7 +137,7 @@ func on_edit_chapter(action, chapter, dialog: AcceptDialog):
 func new_level(chapter):
 	chapter.levels.append({
 		"title": "level %d" % (chapter.levels.size() + 1),
-		"grid_size": 5,
+		"grid_size": [5,5],
 		"operators": []
 	})
 	save_and_reload()
@@ -154,11 +154,37 @@ func edit_level(chapter, level):
 		dialog.add_button("Move down", true, "move_down")
 	dialog.add_button("Delete", true, "delete")
 	
-	var line_edit = LineEdit.new()
-	line_edit.text = level.title
-	dialog.register_text_enter(line_edit)
-	dialog.add_child(line_edit)
-	dialog.connect("confirmed", self, "on_edit_level", [line_edit, level, chapter, dialog])
+	var container = VBoxContainer.new()
+	
+	# Title
+	var label_title = Label.new()
+	label_title.text = "Title"
+	container.add_child(label_title)
+	
+	var level_title = LineEdit.new()
+	level_title.text = level.title
+	container.add_child(level_title)
+	
+	# Coord
+	var label_coord = Label.new()
+	label_coord.text = "Coord"
+	container.add_child(label_coord)
+
+	var coord_container = HBoxContainer.new()
+	
+	var grid_size_x = SpinBox.new()
+	grid_size_x.value = level.grid_size[0]
+	coord_container.add_child(grid_size_x)
+	
+	var grid_size_y = SpinBox.new()
+	grid_size_y.value = level.grid_size[1]
+	coord_container.add_child(grid_size_y)
+	
+	container.add_child(coord_container)
+	
+	dialog.add_child(container)
+	
+	dialog.connect("confirmed", self, "on_edit_level", [[level_title, grid_size_x, grid_size_y], level, chapter, dialog])
 	
 	add_child(dialog)
 	dialog.popup_centered()
@@ -177,7 +203,10 @@ func on_edit_level(action, level, chapter, dialog: AcceptDialog):
 	elif action is String and action == "delete":
 		chapter.levels.remove(idx)
 	else:
-		level.title = action.text
+		level.title = action[0].text
+		if level.grid_size[0] != action[1].value or level.grid_size[1] != action[2].value:
+			level.grid_size = [action[1].value, action[2].value]
+			level.operators = []
 	
 	dialog.queue_free()
 	save_and_reload()

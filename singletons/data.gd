@@ -24,3 +24,6 @@ func load_data():
 		breakpoint
 	
 	data = data_json.result
+	
+func is_mobile():
+	return OS.get_name() in ["Android", "iOS"]

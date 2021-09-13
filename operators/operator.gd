@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Operator
 
-enum OperatorType { START, END, HUB, BLOCK }
+enum OperatorType { START, END, HUB, BLOCK, TWIST, VOID }
 enum OperatorStatus {PENDING, SUCCESS, FAIL = -1}
 
 export(Vector2) var coord = Vector2.ZERO
@@ -26,7 +26,7 @@ func _ready():
 		label.valign = Label.VALIGN_CENTER
 		label.rect_position = Vector2.ONE * (-Level.tile_size / 2)
 		label.rect_size = Vector2.ONE * (Level.tile_size)
-		label.text = ("%s%d" % [Arithmetic.get_operation_string(operation), value]).strip_edges()
+		label.text = ("%s%d" % [Arithmetic.get_operation_string(operation, value), value]).strip_edges()
 		label.add_color_override("font_color", on_background)
 
 func success():

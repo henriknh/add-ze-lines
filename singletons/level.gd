@@ -1,6 +1,6 @@
 extends Node2D
 
-var tile_size: int = 64
+onready var tile_size: int = 64
 var operator_diameter: int = 42
 
 var current_chapter = null
@@ -11,6 +11,7 @@ var previous_scene = null
 signal level_changed
 
 func init(_current_chapter, _current_level, _is_editor = false):
+	tile_size = min(OS.window_size.x, get_viewport().get_size_override().x) / 6
 	current_chapter = _current_chapter
 	current_level = _current_level
 	is_editor = _is_editor

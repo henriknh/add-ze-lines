@@ -74,29 +74,32 @@ func add_operators():
 		var operator_node = null
 		match operator.type as int:
 			Operator.OperatorType.START:
-				operator_node = preload("res://operators/start.tscn").instance()
+				operator_node = preload("res://operators/start/start.tscn").instance()
 			Operator.OperatorType.END:
-				operator_node = preload("res://operators/end.tscn").instance()
+				operator_node = preload("res://operators/end/end.tscn").instance()
 			Operator.OperatorType.HUB:
-				operator_node = preload("res://operators/hub.tscn").instance()
+				operator_node = preload("res://operators/hub/hub.tscn").instance()
 			Operator.OperatorType.BLOCK:
-				operator_node = preload("res://operators/block.tscn").instance()
+				operator_node = preload("res://operators/block/block.tscn").instance()
+			Operator.OperatorType.TWIST:
+				operator_node = preload("res://operators/twist/twist.tscn").instance()
+			Operator.OperatorType.VOID:
+				operator_node = preload("res://operators/void/void.tscn").instance()
 		
-		operator_node.coord = Vector2(operator.coord_x, operator.coord_y)
+		operator_node.coord = Vector2(operator.coord[0], operator.coord[1])
 		operator_node.value = operator.value
 		operator_node.operation = operator.operation
 		get_node("/root/Game/Nodes").add_child(operator_node)
 
-func is_mobile():
-	return OS.get_name() in ["Android", "iOS"]
+
 	
 func _input(event):
 	if level_complete:
 		return
 	
-	if is_mobile() and not event is InputEventScreenTouch and not event is InputEventScreenDrag:
+	if Data.is_mobile() and not event is InputEventScreenTouch and not event is InputEventScreenDrag:
 		return 
-	if not is_mobile() and not event is InputEventMouseButton and not event is InputEventMouseMotion:
+	if not Data.is_mobile() and not event is InputEventMouseButton and not event is InputEventMouseMotion:
 		return
 	
 	var mouse_coord = _get_mouse_coord(event)
@@ -109,6 +112,7 @@ func _input(event):
 	
 	elif (event is InputEventMouseMotion or event is InputEventScreenDrag) and current_line and point_on_grid(mouse_coord):
 		var points = current_line.points
+		var mouse_operator = Level.get_operator(mouse_coord)
 		
 		if points.size() > 0 and points[points.size() - 1] == mouse_coord:
 			valid_points = []
@@ -119,9 +123,7 @@ func _input(event):
 			return
 		elif points.size() > 0 and Level.get_operator(points[points.size() - 1]) is End:
 			return
-		elif Level.get_operator(mouse_coord) is Block:
-			return
-		elif Level.get_operator(mouse_coord) is Start:
+		elif mouse_operator is Start or mouse_operator is Block or mouse_operator is Void:
 			return
 		elif points[points.size() - 1] != mouse_coord and mouse_coord.distance_to(points[points.size() - 1]) == Level.tile_size:
 			if valid_points.size() == 0:
@@ -143,7 +145,7 @@ func _input(event):
 			line.compute()
 			
 func point_on_grid(point: Vector2) -> bool:
-	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.current_level.grid_size and point.y <= Level.tile_size * Level.current_level.grid_size
+	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.current_level.grid_size[0] and point.y <= Level.tile_size * Level.current_level.grid_size[1]
 
 func end_input():
 	if current_line:
@@ -180,7 +182,8 @@ func _get_mouse_coord(event) -> Vector2:
 	if not event.get('position'):
 		return Vector2.INF
 	
-	var mouse_coord = event.position - get_viewport().get_visible_rect().size / 2  + Vector2.ONE * Level.tile_size * Level.current_level.grid_size / 2
+	var offset = Vector2(Level.current_level.grid_size[0], Level.current_level.grid_size[1]) * Level.tile_size / 2
+	var mouse_coord = event.position - get_viewport().get_visible_rect().size / 2  + offset
 	mouse_coord /= Level.tile_size
 	mouse_coord = mouse_coord.floor()
 	mouse_coord *= Level.tile_size
@@ -197,10 +200,34 @@ func any_line_has_point(point: Vector2, exclude = null) -> Line:
 	return null
 
 func cross_existing_and_valid(from: Vector2, to: Vector2) -> Array:
+	var to_operator = Level.get_operator(to)
 	var crossing = any_line_has_point(to)
-	if crossing:
-		var valid_points = [from]
-		var diff = to - from 
+	var valid_points = [from]
+	
+	if to_operator and to_operator is Twist:
+		var up = to + Vector2(0,1) * Level.tile_size
+		if up != from and not any_line_has_point(up):
+			valid_points.append(up)
+		
+		var left = to + Vector2(-1,0) * Level.tile_size
+		if left != from and not any_line_has_point(left):
+			valid_points.append(left)
+		
+		var down = to + Vector2(0,-1) * Level.tile_size
+		if down != from and not any_line_has_point(down):
+			valid_points.append(down)
+		
+		var right = to + Vector2(1,0) * Level.tile_size
+		if right != from and not any_line_has_point(right):
+			valid_points.append(right)
+			
+		
+		if valid_points.size() > 1:
+			valid_points.append(to)
+		
+		return valid_points
+	elif crossing:
+		var diff = to - from
 		to = from + diff
 		
 		while crossing and is_valid_cross(from, to, crossing):

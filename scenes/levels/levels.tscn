@@ -21,8 +21,8 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 48.0
 margin_top = 48.0
-margin_right = 1232.0
-margin_bottom = 672.0
+margin_right = 390.0
+margin_bottom = 652.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 24
@@ -31,7 +31,7 @@ __meta__ = {
 }
 
 [node name="Header" type="Label" parent="VBoxContainer"]
-margin_right = 1184.0
+margin_right = 342.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 4 )
 text = "levels"
@@ -39,8 +39,8 @@ valign = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 82.0
-margin_right = 1184.0
-margin_bottom = 561.0
+margin_right = 342.0
+margin_bottom = 541.0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
 scroll_horizontal_enabled = false
@@ -49,36 +49,36 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 1580.0
 size_flags_horizontal = 3
 custom_constants/separation = 48
 
 [node name="Chapter1" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 462.0
 custom_constants/separation = 24
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1"]
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 58.0
 
 [node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/HBoxContainer"]
-margin_right = 1162.0
+margin_right = 320.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 text = "chapter 1"
 
 [node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/HBoxContainer"]
-margin_left = 1166.0
-margin_right = 1180.0
+margin_left = 324.0
+margin_right = 338.0
 margin_bottom = 58.0
 text = "-"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1"]
 margin_top = 82.0
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 462.0
 custom_constants/vseparation = 32
 custom_constants/hseparation = 64
@@ -136,19 +136,19 @@ text = "LEVEL"
 
 [node name="Chapter2" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 510.0
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 766.0
 custom_constants/separation = 24
 
 [node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2"]
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 4 )
 text = "chapter 2"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2"]
 margin_top = 82.0
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 256.0
 custom_constants/vseparation = 32
 custom_constants/hseparation = 64
@@ -184,19 +184,19 @@ text = "LEVEL"
 
 [node name="Chapter3" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 814.0
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 1173.0
 custom_constants/separation = 24
 
 [node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3"]
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 4 )
 text = "chapter 3"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3"]
 margin_top = 82.0
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 359.0
 custom_constants/vseparation = 32
 custom_constants/hseparation = 64
@@ -247,19 +247,19 @@ text = "LEVEL"
 
 [node name="Chapter4" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 1221.0
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 1580.0
 custom_constants/separation = 24
 
 [node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4"]
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 4 )
 text = "chapter 4"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4"]
 margin_top = 82.0
-margin_right = 1180.0
+margin_right = 338.0
 margin_bottom = 359.0
 custom_constants/vseparation = 32
 custom_constants/hseparation = 64
@@ -305,9 +305,9 @@ margin_right = 83.0
 margin_bottom = 102.0
 
 [node name="Button" type="Button" parent="VBoxContainer"]
-margin_top = 585.0
-margin_right = 1184.0
-margin_bottom = 624.0
+margin_top = 565.0
+margin_right = 342.0
+margin_bottom = 604.0
 theme = ExtResource( 2 )
 text = "back"
 align = 0

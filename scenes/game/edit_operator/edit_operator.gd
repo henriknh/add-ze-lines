@@ -20,10 +20,9 @@ func on_add_operator():
 	container.add_child(type_label)
 	
 	var type = OptionButton.new()
-	type.add_item("Start", Operator.OperatorType.START)
-	type.add_item("End", Operator.OperatorType.END)
-	type.add_item("Hub", Operator.OperatorType.HUB)
-	type.add_item("Block", Operator.OperatorType.BLOCK)
+	
+	for _operator in Operator.OperatorType:
+		type.add_item(_operator, Operator.OperatorType[_operator])
 	if operator is Start:
 		type.select(Operator.OperatorType.START)
 	if operator is End:
@@ -32,6 +31,10 @@ func on_add_operator():
 		type.select(Operator.OperatorType.HUB)
 	if operator is Block:
 		type.select(Operator.OperatorType.BLOCK)
+	if operator is Twist:
+		type.select(Operator.OperatorType.TWIST)
+	if operator is Void:
+		type.select(Operator.OperatorType.VOID)
 	container.add_child(type)
 	
 	# Coord
@@ -44,7 +47,7 @@ func on_add_operator():
 	
 	var coord_x = SpinBox.new()
 	coord_x.min_value = 0
-	coord_x.max_value = Level.current_level.grid_size - 1
+	coord_x.max_value = Level.current_level.grid_size[0] - 1
 	if operator:
 		coord_x.value = operator.coord.x
 	else:
@@ -53,7 +56,7 @@ func on_add_operator():
 	
 	var coord_y = SpinBox.new()
 	coord_y.min_value = 0
-	coord_y.max_value = Level.current_level.grid_size - 1
+	coord_y.max_value = Level.current_level.grid_size[1] - 1
 	if operator:
 		coord_y.value = operator.coord.y
 	else:
@@ -114,19 +117,17 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 	if operator:
 		var level_operator = null
 		for _operator in Level.current_level.operators:
-			if _operator.coord_x == operator.coord.x and _operator.coord_y == operator.coord.y:
+			if _operator.coord[0] == operator.coord.x and _operator.coord[1] == operator.coord.y:
 				level_operator = _operator
 		
 		level_operator.type = type.selected
-		level_operator.coord_x = coord_x.value
-		level_operator.coord_y = coord_y.value
+		level_operator.coord = [coord_x.value, coord_y.value]
 		level_operator.value = value.value
 		level_operator.operation = operation.selected
 	else:
 		Level.current_level.operators.append({
 			"type": type.selected,
-			"coord_x": coord_x.value,
-			"coord_y": coord_y.value,
+			"coord": [coord_x.value, coord_y.value],
 			"value": value.value,
 			"operation": operation.selected
 		})
@@ -136,7 +137,7 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 func on_custom_action(action):
 	var idx_operator = null
 	for i in range(Level.current_level.operators.size()):
-		if Level.current_level.operators[i].coord_x == operator.coord.x and Level.current_level.operators[i].coord_y == operator.coord.y:
+		if Level.current_level.operators[i].coord[0] == operator.coord.x and Level.current_level.operators[i].coord[1] == operator.coord.y:
 			idx_operator = i
 			break
 	

@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Operator",
 "class": "Block",
 "language": "GDScript",
-"path": "res://operators/block.gd"
+"path": "res://operators/block/block.gd"
 }, {
 "base": "Operator",
 "class": "End",
 "language": "GDScript",
-"path": "res://operators/end.gd"
+"path": "res://operators/end/end.gd"
 }, {
 "base": "Node2D",
 "class": "Game",
@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Operator",
 "class": "Hub",
 "language": "GDScript",
-"path": "res://operators/hub.gd"
+"path": "res://operators/hub/hub.gd"
 }, {
 "base": "MarginContainer",
 "class": "Levels",
@@ -52,7 +52,17 @@ _global_script_classes=[ {
 "base": "Operator",
 "class": "Start",
 "language": "GDScript",
-"path": "res://operators/start.gd"
+"path": "res://operators/start/start.gd"
+}, {
+"base": "Operator",
+"class": "Twist",
+"language": "GDScript",
+"path": "res://operators/twist/twist.gd"
+}, {
+"base": "Operator",
+"class": "Void",
+"language": "GDScript",
+"path": "res://operators/void/void.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
@@ -63,7 +73,9 @@ _global_script_class_icons={
 "Line": "",
 "MainMenu": "",
 "Operator": "",
-"Start": ""
+"Start": "",
+"Twist": "",
+"Void": ""
 }
 
 [application]
@@ -88,8 +100,8 @@ settings/stdout/print_fps=true
 
 [display]
 
-window/size/width=1280
-window/size/height=720
+window/size/width=400
+window/size/height=700
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"

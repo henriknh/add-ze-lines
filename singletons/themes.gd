@@ -7,11 +7,11 @@ var on_background_white = Color(1,1,1,1)
 
 var themes = [
 	{
-		"title": "default",
-		"background": Color('#110f3e'),
-		"on_background": on_background_white,
-		"grid": Color(1,1,1,1),
-		"error": Color('#ff9072'),
+		"title": "light",
+		"background": Color('#fffce8'),
+		"on_background": Color('#110f3e'),
+		"grid": Color("#110f3e"),
+		"error": Color('#ff0f0f'),
 		"on_error": on_background_white,
 		"colors": [
 			{
@@ -32,11 +32,11 @@ var themes = [
 			}
 		]
 	}, {
-		"title": "light",
-		"background": Color('#fce39a'),
-		"on_background": Color('#110f3e'),
+		"title": "dark",
+		"background": Color('#110f3e'),
+		"on_background": on_background_white,
 		"grid": Color(1,1,1,1),
-		"error": Color('#ff9072'),
+		"error": Color('#ff0f0f'),
 		"on_error": on_background_white,
 		"colors": [
 			{
