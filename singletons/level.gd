@@ -13,8 +13,6 @@ signal level_changed
 func init(_current_chapter, _current_level, _is_editor = false):
 	tile_size = min(OS.window_size.x, get_viewport().get_size_override().x) / 6
 	tile_size = min(tile_size, 64)
-	print(OS.window_size)
-	print(get_viewport().get_size_override())
 	current_chapter = _current_chapter
 	current_level = _current_level
 	is_editor = _is_editor
