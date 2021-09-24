@@ -6,6 +6,8 @@ var next_chapter = null
 var next_level = null
 
 func _ready():
+	$VBoxContainer/VBoxContainer/QuitDesktop.visible = !Data.is_mobile()
+	
 	if rect_size.x > 600:
 		rect_size = Vector2(600, rect_size.y)
 		
@@ -61,3 +63,6 @@ func _on_themes():
 	
 func _on_settings():
 	get_tree().change_scene("res://scenes/settings/settings.tscn")
+
+func _on_quit():
+	get_tree().quit()

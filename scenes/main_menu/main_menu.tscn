@@ -33,14 +33,14 @@ __meta__ = {
 
 [node name="Header" type="Label" parent="VBoxContainer"]
 margin_right = 1184.0
-margin_bottom = 245.0
+margin_bottom = 174.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
 text = "lines."
 valign = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 277.0
+margin_top = 206.0
 margin_right = 1184.0
 margin_bottom = 624.0
 custom_constants/separation = 32
@@ -100,7 +100,16 @@ theme = ExtResource( 1 )
 text = "settings"
 align = 0
 
+[node name="QuitDesktop" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_top = 379.0
+margin_right = 1184.0
+margin_bottom = 418.0
+theme = ExtResource( 1 )
+text = "quit"
+align = 0
+
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/PlayContainer/Play" to="." method="_on_continue"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Levels" to="." method="_on_levels"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Themes" to="." method="_on_themes"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_settings"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitDesktop" to="." method="_on_quit"]
