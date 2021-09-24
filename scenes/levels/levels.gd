@@ -49,6 +49,7 @@ func load_levels():
 			
 			# play level
 			var play_level = Button.new()
+			play_level.mouse_filter = Control.MOUSE_FILTER_PASS
 			play_level.theme = _theme
 			play_level.text = level.title
 			play_level.size_flags_horizontal = SIZE_EXPAND_FILL
