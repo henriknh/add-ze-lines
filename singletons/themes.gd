@@ -56,6 +56,56 @@ var themes = [
 				'on_background': on_background_white
 			}
 		]
+	}, {
+		"title": "outrun", # https://lospec.com/palette-list/funkyfuture-8
+		"background": Color('#2b0f54'),
+		"on_background": on_background_white,
+		"grid": Color('#ab1f65'),
+		"error": Color('#ff0f0f'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color('#ff4f69'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#ff8142'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#ffda45'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#3368dc'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#49e7ec'),
+				'on_background': on_background_white
+			}
+		]
+	}, {
+		"title": "sunset", # https://lospec.com/palette-list/dialup-sunset
+		"background": Color('#ffd7d7'),
+		"on_background": on_background_black,
+		"grid": Color('#f0a6a6'),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color('#cd5981'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#824882'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#b26e9b'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#dd94d2'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#ebcbeb'),
+				'on_background': on_background_black
+			}
+		]
 	}
 ]
 
