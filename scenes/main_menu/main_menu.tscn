@@ -36,7 +36,7 @@ margin_right = 1184.0
 margin_bottom = 174.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 3 )
-text = "lines."
+text = "Xross"
 valign = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
@@ -67,21 +67,21 @@ margin_bottom = 63.0
 custom_fonts/font = ExtResource( 2 )
 text = "Chapter 1, task 2"
 
-[node name="Levels" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="Challanges" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 95.0
 margin_right = 1184.0
 margin_bottom = 134.0
 theme = ExtResource( 1 )
-text = "levels"
+disabled = true
+text = "challanges"
 align = 0
 
-[node name="Challanges" type="Button" parent="VBoxContainer/VBoxContainer"]
+[node name="Levels" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_top = 166.0
 margin_right = 1184.0
 margin_bottom = 205.0
 theme = ExtResource( 1 )
-disabled = true
-text = "challanges"
+text = "levels"
 align = 0
 
 [node name="Themes" type="Button" parent="VBoxContainer/VBoxContainer"]
