@@ -3,19 +3,19 @@ extends Node2D
 class_name Line
 
 var points = [] setget set_points
-var color: Color
+var start: Start
 
 func _ready():
 	add_to_group("Line")
 	
-	$Line2D.default_color = color
+	$Line2D.default_color = start.background
 	$Line2D.points = points
 
 func set_points(_points):
 	if _points.size() and _points.size() > $Line2D.points.size():
 		var line_effect = preload("res://operators/line/line_effect/line_effect.tscn").instance()
 		line_effect.position = _points[_points.size() - 1]
-		line_effect.self_modulate = color
+		line_effect.self_modulate = start.background
 		add_child(line_effect)
 	points = _points
 	$Line2D.points = points

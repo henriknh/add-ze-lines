@@ -173,8 +173,8 @@ func _get_existing_or_create(mouse_coord: Vector2):
 		
 		if is_on_start:
 			var line = preload("res://operators/line/line.tscn").instance()
+			line.start = is_on_start
 			line.points = [is_on_start.position]
-			line.color = is_on_start.background
 			get_node("/root/Game/Lines").add_child(line)
 			current_line = line
 

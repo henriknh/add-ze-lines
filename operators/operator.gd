@@ -15,9 +15,9 @@ export(OperatorStatus) var status = OperatorStatus.PENDING
 
 func _ready():
 	add_to_group("Operator")
-	var colors = Themes.theme.colors[get_tree().get_nodes_in_group("Operator").size() % Themes.theme.colors.size()]
-	background = colors.background
-	on_background = colors.on_background
+	var color = Themes.theme.colors[get_tree().get_nodes_in_group("Operator").size() % Themes.theme.colors.size()]
+	background = color.background
+	on_background = color.on_background
 	position = coord * Level.tile_size + Vector2.ONE * Level.tile_size / 2
 	
 	var label: Label = get_node_or_null("Label")

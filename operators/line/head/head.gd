@@ -9,6 +9,7 @@ func redraw(result):
 		position = get_parent().points[get_parent().points.size() - 1]
 	
 	$Label.text = result as String
+	$Label.add_color_override("font_color", get_parent().start.on_background)
 	
 	update()
 
@@ -20,4 +21,4 @@ func _draw():
 		var angle_point = deg2rad((360 / nb_points) * i)
 		points_arc.push_back(Vector2(cos(angle_point), sin(angle_point)) * Level.operator_diameter / 4)
 	
-	draw_polygon(points_arc, [get_parent().color], [], null, null, true)
+	draw_polygon(points_arc, [get_parent().start.background], [], null, null, true)
