@@ -29,7 +29,7 @@ func set_show_addition_symbol(show_addition_symbol):
 	_set_config_value("setting", "show_addition_symbol", show_addition_symbol)
 
 func get_show_addition_symbol() -> bool:
-	return OS.is_debug_build() and _get_config_value("setting", "show_addition_symbol", false)
+	return OS.is_debug_build() and _get_config_value("setting", "show_addition_symbol", true)
 
 func set_editor(_editor):
 	_set_config_value("setting", "editor", _editor)
