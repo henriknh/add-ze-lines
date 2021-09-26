@@ -121,7 +121,16 @@ func set_theme(idx: int):
 	VisualServer.set_default_clear_color(theme.background)
 	
 	var _theme = preload("res://theme.tres")
+	update_theme(_theme, theme)
 	
+	var _theme_solid = preload("res://theme_solid.tres")
+	update_theme_solid(_theme_solid, theme)
+	
+	propagate_call("update")
+	emit_signal("theme_changed")
+
+
+func update_theme(_theme: Theme, theme) -> Theme:
 	var font_color = theme.on_background
 	var font_color_disabled = font_color
 	font_color_disabled.a = 0.38
@@ -140,10 +149,12 @@ func set_theme(idx: int):
 		if _theme.has_color("font_color_pressed", node_type):
 			_theme.set_color("font_color_pressed", node_type, font_color_pressed)
 	
+	return _theme
+
+func update_theme_solid(_theme_solid: Theme, theme) -> Theme:
 	
-	var _theme_solid = preload("res://theme_solid.tres")
-	
-	var font_color_solid = theme.background
+	_theme_solid = update_theme(_theme_solid, theme)
+	var font_color_solid = theme.on_background
 	var font_color_solid_disabled = font_color_solid
 	font_color_solid_disabled.a = 0.38
 	var font_color_solid_hover = font_color_solid
@@ -151,7 +162,7 @@ func set_theme(idx: int):
 	var font_color_solid_pressed = font_color_solid
 	font_color_solid_pressed.lightened(0.3)
 	
-	var background = theme.on_background
+	var background = theme.background
 	var background_disabled = background
 	background_disabled.a = 0.38
 	var background_hover = background
@@ -181,11 +192,12 @@ func set_theme(idx: int):
 		if _theme_solid.has_stylebox("normal", node_type):
 			var style_box_normal = _theme_solid.get_stylebox("normal", node_type)
 			style_box_normal.bg_color = background
+			print(background)
+			print(node_type)
 			_theme_solid.set_stylebox("normal", node_type, style_box_normal)
 		if _theme_solid.has_stylebox("pressed", node_type):
 			var style_box_pressed = _theme_solid.get_stylebox("pressed", node_type)
 			style_box_pressed.bg_color = background_pressed
 			_theme_solid.set_stylebox("pressed", node_type, style_box_pressed)
 	
-	propagate_call("update")
-	emit_signal("theme_changed")
+	return _theme_solid

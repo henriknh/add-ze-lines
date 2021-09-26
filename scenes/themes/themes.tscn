@@ -21,7 +21,7 @@ __meta__ = {
 margin_left = 48.0
 margin_top = 48.0
 margin_right = 352.0
-margin_bottom = 752.0
+margin_bottom = 652.0
 custom_constants/separation = 48
 
 [node name="Themes" type="Label" parent="VBoxContainer"]
@@ -33,16 +33,16 @@ text = "themes"
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 margin_top = 106.0
 margin_right = 304.0
-margin_bottom = 617.0
+margin_bottom = 517.0
 size_flags_vertical = 3
 custom_constants/vseparation = 24
 custom_constants/hseparation = 24
 columns = 2
 
 [node name="Back" type="Button" parent="VBoxContainer"]
-margin_top = 665.0
+margin_top = 565.0
 margin_right = 304.0
-margin_bottom = 704.0
+margin_bottom = 604.0
 text = "back"
 align = 0
 
