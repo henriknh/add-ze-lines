@@ -26,7 +26,7 @@ func compute(operators: Array):
 func get_operation_string(operation: int, value: int) -> String:
 	match operation:
 		Arithmetic.Operation.addition:
-			return '+' if Storage.show_addition_symbol and value >= 0 else ''
+			return '+' if Storage.show_addition_symbol else ''
 		Arithmetic.Operation.multiplication:
 			return '×'
 		Arithmetic.Operation.division:

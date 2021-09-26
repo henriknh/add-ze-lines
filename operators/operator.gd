@@ -26,7 +26,12 @@ func _ready():
 		label.valign = Label.VALIGN_CENTER
 		label.rect_position = Vector2.ONE * (-Level.tile_size / 2)
 		label.rect_size = Vector2.ONE * (Level.tile_size)
-		label.text = ("%s%d" % [Arithmetic.get_operation_string(operation, value), value]).strip_edges()
+		var arithmetic_symbol = Arithmetic.get_operation_string(operation, value)
+		var string_format = "%s(%d)" if value < 0 else "%s%d"
+		if value < 0 and arithmetic_symbol != '':
+			# Since parentheses and symbol take more space
+			label.set("custom_fonts/font", preload("res://assets/font/font_16.tres"))
+		label.text = (string_format % [arithmetic_symbol, value]).strip_edges()
 		label.add_color_override("font_color", on_background)
 
 func success():
