@@ -4,6 +4,10 @@ class_name Goal
 
 func _ready():
 	add_to_group("Goal")
+	
+	var tutorial_label = get_node_or_null("TutorialLabel")
+	if tutorial_label:
+		tutorial_label.rect_position = Vector2(1, -0.5) * (-Level.tile_size / 2)
 
 func _physics_process(delta):
 	return

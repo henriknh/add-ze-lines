@@ -31,6 +31,16 @@ func _ready():
 		label.text = (string_format % [arithmetic_symbol, value]).strip_edges()
 		label.add_color_override("font_color", colors.on_background)
 		
+	var is_tutorial = Level.current_level.title == "First line" or Level.current_level.title == "The cross"
+	var tutorial_label = get_node_or_null("TutorialLabel")
+	if is_tutorial and tutorial_label:
+		tutorial_label.set("custom_fonts/font", preload("res://assets/font/font_16.tres"))
+		tutorial_label.add_color_override("font_color", Themes.theme.on_background)
+		tutorial_label.align = Label.ALIGN_CENTER
+		tutorial_label.valign = Label.VALIGN_CENTER
+		#tutorial_label.rect_position = Vector2.ONE * (-Level.tile_size / 2)
+		tutorial_label.rect_size = Vector2.ONE * (Level.tile_size)
+
 func get_color_from_theme(idx: int):
 	colors.get_from_theme(idx)
 	label.add_color_override("font_color", colors.on_background)
