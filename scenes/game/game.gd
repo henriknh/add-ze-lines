@@ -33,9 +33,9 @@ func _physics_process(delta):
 	
 	var to_satisfy = 0
 	var satisfied = 0
-	for end in get_tree().get_nodes_in_group("End"):
+	for goal in get_tree().get_nodes_in_group("Goal"):
 		to_satisfy += 1
-		if end.status == Operator.OperatorStatus.SUCCESS:
+		if goal.status == Operator.OperatorStatus.SUCCESS:
 			satisfied += 1
 	for equals_hub in get_tree().get_nodes_in_group("Hub"):
 		if equals_hub.operation ==  Arithmetic.Operation.equals:
@@ -75,8 +75,8 @@ func add_operators():
 		match operator.type as int:
 			Operator.OperatorType.START:
 				operator_node = preload("res://operators/start/start.tscn").instance()
-			Operator.OperatorType.END:
-				operator_node = preload("res://operators/end/end.tscn").instance()
+			Operator.OperatorType.GOAL:
+				operator_node = preload("res://operators/goal/goal.tscn").instance()
 			Operator.OperatorType.HUB:
 				operator_node = preload("res://operators/hub/hub.tscn").instance()
 			Operator.OperatorType.BLOCK:
@@ -108,7 +108,7 @@ func _input(event):
 		if event.pressed and current_line == null:
 			_get_existing_or_create(mouse_coord)
 		else:
-			end_input()
+			goal_input()
 	
 	elif (event is InputEventMouseMotion or event is InputEventScreenDrag) and current_line and point_on_grid(mouse_coord):
 		var points = current_line.points
@@ -121,7 +121,7 @@ func _input(event):
 			points.remove(points.size() - 1)
 		elif mouse_coord in points:
 			return
-		elif points.size() > 0 and Level.get_operator(points[points.size() - 1]) is End:
+		elif points.size() > 0 and Level.get_operator(points[points.size() - 1]) is Goal:
 			return
 		elif mouse_operator is Start or mouse_operator is Block or mouse_operator is Void:
 			return
@@ -141,15 +141,18 @@ func _input(event):
 		
 		current_line.points = points
 		
+		for goal in get_tree().get_nodes_in_group("Goal"):
+			goal.status = Operator.OperatorStatus.PENDING
+		
 		for line in get_tree().get_nodes_in_group("Line"):
 			line.compute()
 			
 func point_on_grid(point: Vector2) -> bool:
 	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.current_level.grid_size[0] and point.y <= Level.tile_size * Level.current_level.grid_size[1]
 
-func end_input():
+func goal_input():
 	if current_line:
-		current_line.on_end_input()
+		current_line.on_goal_input()
 	
 	current_line = null
 	valid_points = []
@@ -160,7 +163,7 @@ func _get_existing_or_create(mouse_coord: Vector2):
 	
 	var exists = any_line_has_point(mouse_coord)
 	if exists:
-		# If is end point
+		# If is goal point
 		if exists.points.size() > 0 and exists.points[exists.points.size() - 1] == mouse_coord:
 			current_line = exists
 		else:
@@ -173,7 +176,7 @@ func _get_existing_or_create(mouse_coord: Vector2):
 		
 		if is_on_start:
 			var line = preload("res://operators/line/line.tscn").instance()
-			line.start = is_on_start
+			line.colors = is_on_start.colors
 			line.points = [is_on_start.position]
 			get_node("/root/Game/Lines").add_child(line)
 			current_line = line

@@ -1,11 +1,12 @@
 extends Operator
 
-class_name End
+class_name Goal
 
 func _ready():
-	add_to_group("End")
+	add_to_group("Goal")
 
 func _physics_process(delta):
+	return
 	var lines = Level.get_lines(position)
 	if lines.size() == 1:
 		
@@ -15,26 +16,23 @@ func _physics_process(delta):
 			status = OperatorStatus.FAIL
 		
 		var start = Level.get_operator(lines[0].points[0])
-		on_background = start.on_background
-		background = start.background
+		colors = colors.duplicate()
 	else:
 		status = OperatorStatus.PENDING
-		
-		on_background = Themes.theme.on_background
-		background = Themes.theme.background
+		colors.reset()
 	update()
 
 func _draw():
 	var _background = Themes.on_background_white
 	var text_color = Themes.on_background_black
 	if status == OperatorStatus.SUCCESS:
-		_background = background 
-		text_color = on_background
+		_background = colors.background 
+		text_color = colors.on_background
 	elif status == OperatorStatus.FAIL:
 		_background = Themes.theme.error
 		text_color = Themes.theme.on_error
 		
-	var border = Themes.on_background_white if status == OperatorStatus.PENDING else background
+	var border = colors.background if status == OperatorStatus.SUCCESS else Color.black
 	
 	get_node("Label").add_color_override("font_color", text_color)
 	
@@ -48,4 +46,13 @@ func _draw():
 	
 	#draw_arc(Vector2.ZERO, Level.operator_diameter / 2 - Level.operator_diameter / 12, 0, 2 * PI, 32, border, Level.operator_diameter / 6, true)
 	
-	draw_arc(Vector2.ZERO, Level.operator_diameter / 2, 0, 2 * PI, 32, Color.black, 2, true)
+	draw_arc(Vector2.ZERO, Level.operator_diameter / 2, 0, 2 * PI, 32, border, 2, true)
+
+
+func compute(_value: int, start: Start = null) -> int:
+	
+	if _value == value:
+		status = OperatorStatus.SUCCESS
+	else:
+		status = OperatorStatus.FAIL
+	return value

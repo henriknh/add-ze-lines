@@ -14,15 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://operators/block/block.gd"
 }, {
-"base": "Operator",
-"class": "End",
+"base": "Node",
+"class": "Colors",
 "language": "GDScript",
-"path": "res://operators/end/end.gd"
+"path": "res://operators/colors.gd"
 }, {
 "base": "Node2D",
 "class": "Game",
 "language": "GDScript",
 "path": "res://scenes/game/game.gd"
+}, {
+"base": "Operator",
+"class": "Goal",
+"language": "GDScript",
+"path": "res://operators/goal/goal.gd"
 }, {
 "base": "Operator",
 "class": "Hub",
@@ -71,8 +76,9 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Block": "",
-"End": "",
+"Colors": "",
 "Game": "",
+"Goal": "",
 "Hub": "",
 "Levels": "",
 "LevelsNew": "",
@@ -99,10 +105,6 @@ Level="*res://singletons/level.gd"
 UserInput="*res://singletons/user_input.gd"
 Data="*res://singletons/data.gd"
 Storage="*res://singletons/storage.gd"
-
-[debug]
-
-settings/stdout/print_fps=true
 
 [display]
 

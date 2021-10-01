@@ -1,18 +1,13 @@
 extends Node2D
 
+onready var label = $Label
+var value
+var colors: Colors
+
 func _ready():
-	visible = false
-
-func redraw(result):
-	visible = typeof(result) == TYPE_REAL 
-	if get_parent().points.size():
-		position = get_parent().points[get_parent().points.size() - 1]
+	label.text = value as String
+	label.add_color_override("font_color", colors.on_background)
 	
-	$Label.text = result as String
-	$Label.add_color_override("font_color", get_parent().start.on_background)
-	
-	update()
-
 func _draw():
 	var nb_points = 32
 	var points_arc = PoolVector2Array()
@@ -21,4 +16,4 @@ func _draw():
 		var angle_point = deg2rad((360 / nb_points) * i)
 		points_arc.push_back(Vector2(cos(angle_point), sin(angle_point)) * Level.operator_diameter / 4)
 	
-	draw_polygon(points_arc, [get_parent().start.background], [], null, null, true)
+	draw_polygon(points_arc, [colors.background], [], null, null, true)

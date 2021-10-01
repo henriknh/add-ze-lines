@@ -4,12 +4,7 @@ class_name Start
 
 func _ready():
 	add_to_group("Start")
-
-func success():
-	pass
-
-func fail():
-	pass
+	get_color_from_theme(get_tree().get_nodes_in_group("Start").size())
 
 func _draw():
 	var nb_points = 32
@@ -19,4 +14,4 @@ func _draw():
 		var angle_point = deg2rad((360 / nb_points) * i)
 		points_arc.push_back(Vector2(cos(angle_point), sin(angle_point)) * Level.operator_diameter / 2)
 	
-	draw_polygon(points_arc, [background], [], null, null, true)
+	draw_polygon(points_arc, [colors.background], [], null, null, true)

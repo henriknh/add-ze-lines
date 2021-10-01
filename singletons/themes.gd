@@ -129,7 +129,6 @@ func set_theme(idx: int):
 	propagate_call("update")
 	emit_signal("theme_changed")
 
-
 func update_theme(_theme: Theme, theme) -> Theme:
 	var font_color = theme.on_background
 	var font_color_disabled = font_color
@@ -192,8 +191,6 @@ func update_theme_solid(_theme_solid: Theme, theme) -> Theme:
 		if _theme_solid.has_stylebox("normal", node_type):
 			var style_box_normal = _theme_solid.get_stylebox("normal", node_type)
 			style_box_normal.bg_color = background
-			print(background)
-			print(node_type)
 			_theme_solid.set_stylebox("normal", node_type, style_box_normal)
 		if _theme_solid.has_stylebox("pressed", node_type):
 			var style_box_pressed = _theme_solid.get_stylebox("pressed", node_type)

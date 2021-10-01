@@ -7,18 +7,21 @@ enum Operation {
 	equals,
 }
 
-func compute(operators: Array):
+func compute(value, operator):
+	match operator.operation:
+		Arithmetic.Operation.addition:
+			return value + operator.value
+		Arithmetic.Operation.multiplication:
+			return value * operator.value
+		Arithmetic.Operation.division:
+			return value / operator.value
+		Arithmetic.Operation.equals:
+			return value
+	
+func compute_operators(operators: Array):
 	var result = 0
 	for operator in operators:
-		match operator.operation:
-			Arithmetic.Operation.addition:
-				result += operator.value
-			Arithmetic.Operation.multiplication:
-				result *= operator.value
-			Arithmetic.Operation.division:
-				result /= operator.value
-			Arithmetic.Operation.equals:
-				return result
+		result = compute(result, operator)
 	
 	# https://docs.godotengine.org/en/stable/classes/class_expression.html
 	return result

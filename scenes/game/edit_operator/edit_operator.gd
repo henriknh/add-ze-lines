@@ -25,8 +25,8 @@ func on_add_operator():
 		type.add_item(_operator, Operator.OperatorType[_operator])
 	if operator is Start:
 		type.select(Operator.OperatorType.START)
-	if operator is End:
-		type.select(Operator.OperatorType.END)
+	if operator is Goal:
+		type.select(Operator.OperatorType.GOAL)
 	if operator is Hub:
 		type.select(Operator.OperatorType.HUB)
 	if operator is Block:
@@ -106,7 +106,7 @@ func on_add_operator():
 func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox, value: SpinBox, operation: OptionButton):
 	var coord = Vector2(coord_x.value, coord_y.value)
 	
-	if type.selected == Operator.OperatorType.END:
+	if type.selected == Operator.OperatorType.GOAL:
 		operation.select(Arithmetic.Operation.equals)
 	
 	if Level.get_operator(coord):

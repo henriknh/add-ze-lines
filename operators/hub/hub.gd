@@ -5,12 +5,6 @@ class_name Hub
 func _ready():
 	add_to_group("Hub")
 
-func success():
-	pass
-
-func fail():
-	pass
-
 func _draw():
 	var nb_points = 6
 	var points_arc = PoolVector2Array()
@@ -19,4 +13,4 @@ func _draw():
 		var angle_point = deg2rad((360 / nb_points) * i + -90)
 		points_arc.push_back(Vector2(cos(angle_point), sin(angle_point)) * Level.operator_diameter / 2)
 	
-	draw_polygon(points_arc, [background], [], null, null, true)
+	draw_polygon(points_arc, [colors.background], [], null, null, true)
