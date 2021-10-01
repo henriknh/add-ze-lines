@@ -33,6 +33,8 @@ func _ready():
 		
 	var is_tutorial = Level.current_level.title == "First line" or Level.current_level.title == "The cross"
 	var tutorial_label = get_node_or_null("TutorialLabel")
+	if tutorial_label:
+		tutorial_label.visible = is_tutorial
 	if is_tutorial and tutorial_label:
 		tutorial_label.set("custom_fonts/font", preload("res://assets/font/font_16.tres"))
 		tutorial_label.add_color_override("font_color", Themes.theme.on_background)
