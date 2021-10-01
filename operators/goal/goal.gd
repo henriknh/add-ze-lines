@@ -9,23 +9,6 @@ func _ready():
 	if tutorial_label:
 		tutorial_label.rect_position = Vector2(1, -0.5) * (-Level.tile_size / 2)
 
-func _physics_process(delta):
-	return
-	var lines = Level.get_lines(position)
-	if lines.size() == 1:
-		
-		if lines[0].compute():
-			status = OperatorStatus.SUCCESS
-		else:
-			status = OperatorStatus.FAIL
-		
-		var start = Level.get_operator(lines[0].points[0])
-		colors = colors.duplicate()
-	else:
-		status = OperatorStatus.PENDING
-		colors.reset()
-	update()
-
 func _draw():
 	var _background = Themes.on_background_white
 	var text_color = Themes.on_background_black
