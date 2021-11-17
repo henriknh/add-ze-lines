@@ -29,11 +29,24 @@ func generate_grid():
 
 	var line = Line2D.new()
 	line.default_color = Themes.theme.grid
-	line.width = 2
+	line.width = 1
 	line.joint_mode =Line2D.LINE_JOINT_SHARP
 	line.begin_cap_mode = Line2D.LINE_CAP_BOX
 	line.end_cap_mode = Line2D.LINE_CAP_BOX
 	line.antialiased = true
 	line.points = points
 	add_child(line)
+	
+	var edge = line.duplicate()
+	edge.width = 2
+	edge.points = [
+		Vector2(0.5, 0) * Level.tile_size * Level.current_level.grid_size[0],
+		Vector2(0, 0),
+		Vector2(0, 1) * Level.tile_size * Level.current_level.grid_size[1], #bottomleft
+		Vector2(1, 1) * Level.tile_size * max(Level.current_level.grid_size[0], Level.current_level.grid_size[1]), #bottomright
+		Vector2(1, 0) * Level.tile_size * Level.current_level.grid_size[0], #topright
+		Vector2(0.5, 0) * Level.tile_size * Level.current_level.grid_size[0]
+	]
+	add_child(edge)
+	
 	
