@@ -83,7 +83,7 @@ func on_add_operator():
 	node_dialog.window_title = "Edit operator" if operator else "Add new operator"
 	if operator:
 		node_dialog.add_button("delete", false, "delete")
-	node_dialog.popup_centered()
+	node_dialog.popup(Rect2(-80, -130, 160, 260))
 	node_dialog.connect("custom_action", self, "on_custom_action")
 	node_dialog.connect("confirmed", self, "dialog_edit_operator", [type, coord_x, coord_y, value, operation])
 

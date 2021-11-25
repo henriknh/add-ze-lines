@@ -5,7 +5,6 @@
 
 [node name="Hub" type="Node2D"]
 position = Vector2( 96, 0 )
-z_index = 1
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]

@@ -5,7 +5,6 @@
 [ext_resource path="res://operators/goal/goal.gd" type="Script" id=3]
 
 [node name="Goal" type="Node2D"]
-z_index = 1
 script = ExtResource( 3 )
 operation = 4
 
