@@ -66,3 +66,6 @@ func get_level_completed(chapter: int, level: int) -> bool:
 	var value = chapter * CHAPTER_MULTIPLIER + level
 	var completed_levels = _get_config_value("level", "completed", [])
 	return value in completed_levels
+	
+func clear_completed_levels():
+	_set_config_value("level", "completed", [])
