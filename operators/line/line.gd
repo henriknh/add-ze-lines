@@ -49,7 +49,8 @@ func compute(last_point = null) -> bool:
 		
 	if points.size() <= 1:
 		return false
-		
+	
+	var start = Level.get_operator(points[0])
 	var last_point_has_hub = false
 	
 	for i in range(points.size()):
@@ -66,6 +67,10 @@ func compute(last_point = null) -> bool:
 			
 			if operator is Goal:
 				var line_successful = result == operator.value
+				
+				if operator.color_idx > 0 and operator.color_idx != start.color_idx:
+					line_successful = false
+				
 				operator.status = Operator.OperatorStatus.SUCCESS if line_successful else Operator.OperatorStatus.FAIL
 				if line_successful:
 					operator.colors = colors.duplicate()
@@ -90,9 +95,9 @@ func compute(last_point = null) -> bool:
 		return false
 
 func instance_head(value, position: Vector2):
-		var head = preload("res://operators/line/head/head.tscn").instance()
-		head.value = value
-		head.colors = colors
-		head.position = position
-		$Heads.add_child(head)
+	var head = preload("res://operators/line/head/head.tscn").instance()
+	head.value = value
+	head.colors = colors
+	head.position = position
+	$Heads.add_child(head)
 	

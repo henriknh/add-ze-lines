@@ -4,7 +4,6 @@ var next_chapter = null
 var next_level = null
 
 func _ready():
-		
 	var center = get_viewport().get_visible_rect().size.x / 2
 	$OnLevelComplete/ConfettiLeft.position = Vector2(center - 150, -80)
 	$OnLevelComplete/ConfettiRight.position = Vector2(center + 150, -80)
