@@ -15,6 +15,9 @@ var themes = [
 		"on_error": on_background_white,
 		"colors": [
 			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
 				'background': Color('#afe48d'),
 				'on_background': on_background_black
 			}, {
@@ -40,6 +43,9 @@ var themes = [
 		"on_error": on_background_white,
 		"colors": [
 			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
 				'background': Color('#afe48d'),
 				'on_background': on_background_black
 			}, {
@@ -65,6 +71,9 @@ var themes = [
 		"on_error": on_background_white,
 		"colors": [
 			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
 				'background': Color('#ff4f69'),
 				'on_background': on_background_white
 			}, {
@@ -90,6 +99,9 @@ var themes = [
 		"on_error": on_background_white,
 		"colors": [
 			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
 				'background': Color('#cd5981'),
 				'on_background': on_background_white
 			}, {

@@ -20,4 +20,112 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+margin_right = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AcceptDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Type" type="VBoxContainer" parent="AcceptDialog/VBoxContainer"]
+margin_right = 152.0
+margin_bottom = 38.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AcceptDialog/VBoxContainer/Type"]
+margin_right = 152.0
+margin_bottom = 14.0
+text = "Type:"
+
+[node name="OptionButton" type="OptionButton" parent="AcceptDialog/VBoxContainer/Type"]
+margin_top = 18.0
+margin_right = 152.0
+margin_bottom = 38.0
+
+[node name="Coord" type="VBoxContainer" parent="AcceptDialog/VBoxContainer"]
+margin_top = 42.0
+margin_right = 152.0
+margin_bottom = 84.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="AcceptDialog/VBoxContainer/Coord"]
+margin_right = 152.0
+margin_bottom = 14.0
+text = "Coords:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AcceptDialog/VBoxContainer/Coord"]
+margin_top = 18.0
+margin_right = 152.0
+margin_bottom = 42.0
+
+[node name="XSpinBox" type="SpinBox" parent="AcceptDialog/VBoxContainer/Coord/HBoxContainer"]
+margin_right = 74.0
+margin_bottom = 24.0
+
+[node name="YSpinBox" type="SpinBox" parent="AcceptDialog/VBoxContainer/Coord/HBoxContainer"]
+margin_left = 78.0
+margin_right = 152.0
+margin_bottom = 24.0
+
+[node name="Value" type="VBoxContainer" parent="AcceptDialog/VBoxContainer"]
+margin_top = 88.0
+margin_right = 152.0
+margin_bottom = 130.0
+
+[node name="Label" type="Label" parent="AcceptDialog/VBoxContainer/Value"]
+margin_right = 152.0
+margin_bottom = 14.0
+text = "Value:"
+
+[node name="SpinBox" type="SpinBox" parent="AcceptDialog/VBoxContainer/Value"]
+margin_top = 18.0
+margin_right = 152.0
+margin_bottom = 42.0
+min_value = -100.0
+
+[node name="Operation" type="VBoxContainer" parent="AcceptDialog/VBoxContainer"]
+margin_top = 134.0
+margin_right = 152.0
+margin_bottom = 172.0
+
+[node name="Label" type="Label" parent="AcceptDialog/VBoxContainer/Operation"]
+margin_right = 152.0
+margin_bottom = 14.0
+text = "Operation:"
+
+[node name="OptionButton" type="OptionButton" parent="AcceptDialog/VBoxContainer/Operation"]
+margin_top = 18.0
+margin_right = 152.0
+margin_bottom = 38.0
+
+[node name="Color" type="VBoxContainer" parent="AcceptDialog/VBoxContainer"]
+margin_top = 176.0
+margin_right = 152.0
+margin_bottom = 194.0
+
+[node name="Label" type="Label" parent="AcceptDialog/VBoxContainer/Color"]
+margin_right = 152.0
+margin_bottom = 14.0
+text = "Color:"
+
+[node name="GridContainer" type="GridContainer" parent="AcceptDialog/VBoxContainer/Color"]
+margin_top = 18.0
+margin_right = 152.0
+margin_bottom = 18.0
+columns = 3
+
 [connection signal="pressed" from="Button" to="." method="on_add_operator"]

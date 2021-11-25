@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/levels/chapter/chapter.gd" type="Script" id=1]
+
+[node name="Chapter" type="VBoxContainer"]
+margin_left = 400.0
+margin_right = 400.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
+visible = false
+margin_right = 5.0
+rect_min_size = Vector2( 5, 0 )
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+size_flags_horizontal = 3
+custom_constants/vseparation = 12
+custom_constants/hseparation = 16
+columns = 4

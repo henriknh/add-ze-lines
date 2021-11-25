@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/levels/chapter/level/level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/levels/level_button.tres" type="Theme" id=2]
+
+[node name="Level" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 60, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+margin_right = 133.0
+margin_bottom = 700.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move" type="VBoxContainer" parent="."]
+margin_left = 133.0
+margin_right = 266.0
+margin_bottom = 700.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="Up" type="Button" parent="Move"]
+margin_right = 133.0
+margin_bottom = 350.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "^"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Down" type="Button" parent="Move"]
+margin_top = 350.0
+margin_right = 133.0
+margin_bottom = 700.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "v"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete" type="Button" parent="."]
+margin_left = 266.0
+margin_right = 400.0
+margin_bottom = 700.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Play" to="." method="_on_play"]
+[connection signal="pressed" from="Move/Up" to="." method="_on_move" binds= [ -1 ]]
+[connection signal="pressed" from="Move/Down" to="." method="_on_move" binds= [ 1 ]]
+[connection signal="pressed" from="Delete" to="." method="_on_delete"]

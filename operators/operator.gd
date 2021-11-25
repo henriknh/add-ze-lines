@@ -4,11 +4,12 @@ class_name Operator
 
 onready var label = $Label
 enum OperatorType { START, GOAL, HUB, BLOCK, TWIST, VOID }
-enum OperatorStatus {PENDING, SUCCESS, FAIL = -1}
+enum OperatorStatus {PENDING = 0, SUCCESS = 1, FAIL = -1}
 
 export(Vector2) var coord = Vector2.ZERO
 export(int) var value = 1
 export(Arithmetic.Operation) var operation: int = Arithmetic.Operation.addition
+export(int) var color_idx: int = 0
 
 export(OperatorStatus) var status = OperatorStatus.PENDING setget set_status
 
@@ -16,6 +17,8 @@ onready var colors: Colors = Colors.new()
 
 func _ready():
 	add_to_group("Operator")
+	
+	get_color_from_theme(color_idx || 0)
 	position = coord * Level.tile_size + Vector2.ONE * Level.tile_size / 2
 	
 	if get_node("Label"):
@@ -31,7 +34,7 @@ func _ready():
 		label.text = (string_format % [arithmetic_symbol, value]).strip_edges()
 		label.add_color_override("font_color", colors.on_background)
 		
-	var is_tutorial = Level.current_level.title == "First line" or Level.current_level.title == "The cross"
+	var is_tutorial = Level.chapter == 0 and (Level.level == 0 or Level.level == 1)
 	var tutorial_label = get_node_or_null("TutorialLabel")
 	if tutorial_label:
 		tutorial_label.visible = is_tutorial
@@ -45,7 +48,8 @@ func _ready():
 
 func get_color_from_theme(idx: int):
 	colors.get_from_theme(idx)
-	label.add_color_override("font_color", colors.on_background)
+	if label:
+		label.add_color_override("font_color", colors.on_background)
 	
 func compute(_value: int) -> int:
 	return _value

@@ -6,11 +6,11 @@ func _ready():
 func generate_grid():
 	var points = []
 	
-	for y in range(Level.current_level.grid_size[1]):
-		for x in range(Level.current_level.grid_size[0]):
+	for y in range(Level.level_data.grid_size[1]):
+		for x in range(Level.level_data.grid_size[0]):
 			
 			var has_void = false
-			for operator in Level.current_level.operators:
+			for operator in Level.level_data.operators:
 				if operator.coord[0] == x and operator.coord[1] == y and operator.type == Operator.OperatorType.VOID:
 					has_void = true
 					break

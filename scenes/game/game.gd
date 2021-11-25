@@ -14,10 +14,10 @@ func _ready():
 	var fallback_chapter = null
 	var fallback_level = null
 	
-	if not Level.current_chapter and Data.data.size():
+	if not Level.chapter_data and Data.data.size():
 		fallback_chapter = Data.data[0]
-	if not Level.current_chapter and Level.current_chapter and Level.current_chapter.levels.size():
-		fallback_level = Level.current_chapter.levels[0]
+	if not Level.chapter_data and Level.chapter_data and Level.chapter_data.levels.size():
+		fallback_level = Level.chapter_data.levels[0]
 	
 	if fallback_chapter and fallback_level:
 		Level.init(fallback_chapter, fallback_level)
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	level_complete = to_satisfy > 0 and to_satisfy == satisfied
 	
 	if level_complete:
-		Storage.set_level_complete(Level.current_chapter, Level.current_level)
+		Storage.set_level_complete(Level.chapter, Level.level)
 	
 func load_level():
 	level_ready = false
@@ -69,7 +69,7 @@ func add_operators():
 	for operator in get_tree().get_nodes_in_group("Operator"):
 		operator.get_parent().remove_child(operator)
 	
-	for operator in Level.current_level.operators:
+	for operator in Level.level_data.operators:
 		
 		var operator_node = null
 		match operator.type as int:
@@ -89,10 +89,9 @@ func add_operators():
 		operator_node.coord = Vector2(operator.coord[0], operator.coord[1])
 		operator_node.value = operator.value
 		operator_node.operation = operator.operation
+		operator_node.color_idx = operator.color_idx
 		get_node("/root/Game/Nodes").add_child(operator_node)
 
-
-	
 func _input(event):
 	if level_complete:
 		return
@@ -148,7 +147,7 @@ func _input(event):
 			line.compute()
 			
 func point_on_grid(point: Vector2) -> bool:
-	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.current_level.grid_size[0] and point.y <= Level.tile_size * Level.current_level.grid_size[1]
+	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.level_data.grid_size[0] and point.y <= Level.tile_size * Level.level_data.grid_size[1]
 
 func goal_input():
 	if current_line:
@@ -185,7 +184,7 @@ func _get_mouse_coord(event) -> Vector2:
 	if not event.get('position'):
 		return Vector2.INF
 	
-	var offset = Vector2(Level.current_level.grid_size[0], Level.current_level.grid_size[1]) * Level.tile_size / 2
+	var offset = Vector2(Level.level_data.grid_size[0], Level.level_data.grid_size[1]) * Level.tile_size / 2
 	var mouse_coord = event.position - get_viewport().get_visible_rect().size / 2  + offset
 	mouse_coord /= Level.tile_size
 	mouse_coord = mouse_coord.floor()

@@ -14,41 +14,32 @@ func _ready():
 	var storage_next = Storage.get_last_completed_level()
 	
 	if storage_next:
-		var last_chapter = null
-		var last_level = null
-		for chapter in Data.data:
-			if chapter.title == storage_next[0]:
-				last_chapter = chapter
-				var idx_next_chapter = Data.data.find(last_chapter) + 1
-				
-				for level in last_chapter.levels:
-					if level.title == storage_next[1]:
-						last_level = level
-				var idx_next_level = last_chapter.levels.find(last_level) + 1
-				
-				if idx_next_level > last_chapter.levels.size() - 1:
-					if idx_next_chapter > Data.data.size() - 1:
-						# All completed
-						pass
-					else:
-						next_chapter = Data.data[idx_next_chapter]
-						if next_chapter.levels.size():
-							next_level = next_chapter.levels[0]
-				else:
-					next_chapter = last_chapter
-					next_level = last_chapter.levels[idx_next_level]
+		var last_chapter = storage_next[0]
+		var last_level = storage_next[1]
+		
+		var chapter_has_next_level = Data.data.size() > last_chapter and Data.data[last_chapter].levels.size() > last_level + 1
+		
+		if chapter_has_next_level:
+			 next_chapter = last_chapter
+			 next_level = last_level + 1
+		else:
+			var next_chapter_has_level = Data.data.size() > (last_chapter + 1) and Data.data[last_chapter + 1].levels.size() > 1
+			
+			if next_chapter_has_level:
+				next_chapter = last_chapter + 1
+				next_level = 0
 	else:
 		if Data.data.size():
-			next_chapter = Data.data[0]
-		if next_chapter and next_chapter.levels.size():
-			next_level = next_chapter.levels[0]
+			next_chapter = 0
+		if Data.data[next_chapter] and Data.data[next_chapter].levels.size():
+			next_level = 0
 		else:
 			breakpoint
 	
-	$VBoxContainer/VBoxContainer/PlayContainer/Play.visible = next_chapter and next_level
+	$VBoxContainer/VBoxContainer/PlayContainer/Play.visible = next_chapter != null and next_level != null
 	$VBoxContainer/VBoxContainer/PlayContainer/Play.text = "Continue" if storage_next else "Play"
-	if next_chapter and next_level:
-		$VBoxContainer/VBoxContainer/PlayContainer/ChapterAndLevelTitles.text = "%s, %s" % [next_chapter.title, next_level.title]
+	if next_chapter != null and next_level != null:
+		$VBoxContainer/VBoxContainer/PlayContainer/ChapterAndLevelTitles.text = "Chapter %s, Level %s" % [next_chapter + 1, next_level + 1]
 	else:
 		$VBoxContainer/VBoxContainer/PlayContainer/ChapterAndLevelTitles.text = "All levels completed!"
 

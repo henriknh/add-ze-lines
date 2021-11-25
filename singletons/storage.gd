@@ -1,10 +1,13 @@
 extends Node
 
 const SAVE_FILE: String = "user://settings.cfg"
+const CHAPTER_MULTIPLIER = 1000
 var config = ConfigFile.new()
 
 var show_addition_symbol: bool = false setget set_show_addition_symbol, get_show_addition_symbol
 var editor: bool = false setget set_editor, get_editor
+
+
 
 func _ready():
 	var directory = Directory.new();
@@ -29,7 +32,7 @@ func set_show_addition_symbol(show_addition_symbol):
 	_set_config_value("setting", "show_addition_symbol", show_addition_symbol)
 
 func get_show_addition_symbol() -> bool:
-	return OS.is_debug_build() and _get_config_value("setting", "show_addition_symbol", true)
+	return OS.is_debug_build() and _get_config_value("setting", "show_addition_symbol", false)
 
 func set_editor(_editor):
 	_set_config_value("setting", "editor", _editor)
@@ -37,17 +40,29 @@ func set_editor(_editor):
 func get_editor() -> bool:
 	return OS.is_debug_build() and _get_config_value("setting", "editor", false)
 
-func set_level_complete(chapter, level):
-	var completed_levels = _get_config_value("level", chapter.title, [])
-	if not level.title in completed_levels:
-		completed_levels.append(level.title)
-	_set_config_value("level", chapter.title, completed_levels)
+func set_level_complete(chapter: int, level: int):
+	var value = chapter * CHAPTER_MULTIPLIER + level
+	var completed_levels = _get_config_value("level", "completed", [])
+	if not value in completed_levels:
+		completed_levels.append(value)
+	_set_config_value("level", "completed", completed_levels)
 
 func get_last_completed_level():
-	var chapters = Data.data.duplicate()
-	chapters.invert()
-	for chapter in chapters:
-		if config.has_section_key("level", chapter.title):
-			return [chapter.title, _get_config_value("level", chapter.title, null).back()]
-	return null
+	var completed_levels = _get_config_value("level", "completed", [])
 	
+	if completed_levels.size() > 0:
+		var largest = 0
+		
+		for level in completed_levels:
+			if level > largest:
+				largest = level
+		
+		var level = largest % CHAPTER_MULTIPLIER
+		var chapter = int(largest / CHAPTER_MULTIPLIER)
+		return [chapter, level]
+	return null
+
+func get_level_completed(chapter: int, level: int) -> bool:
+	var value = chapter * CHAPTER_MULTIPLIER + level
+	var completed_levels = _get_config_value("level", "completed", [])
+	return value in completed_levels

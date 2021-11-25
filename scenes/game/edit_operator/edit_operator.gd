@@ -1,26 +1,17 @@
 extends Node2D
 
-
 onready var operator = Level.get_operator(position)
+
+var color_idx = 0
 
 func _ready():
 	if operator:
 		$Button.text = ''
 	
 func on_add_operator():
-	var dialog = AcceptDialog.new()
-	dialog.window_title = "Edit operator" if operator else "Add new operator"
-	
-	var container = VBoxContainer.new()
 	
 	# Type
-	
-	var type_label = Label.new()
-	type_label.text = "Type"
-	container.add_child(type_label)
-	
-	var type = OptionButton.new()
-	
+	var type = $AcceptDialog/VBoxContainer/Type/OptionButton
 	for _operator in Operator.OperatorType:
 		type.add_item(_operator, Operator.OperatorType[_operator])
 	if operator is Start:
@@ -35,73 +26,66 @@ func on_add_operator():
 		type.select(Operator.OperatorType.TWIST)
 	if operator is Void:
 		type.select(Operator.OperatorType.VOID)
-	container.add_child(type)
 	
 	# Coord
-	
-	var coord_label = Label.new()
-	coord_label.text = "Coord"
-	container.add_child(coord_label)
-	
-	var coord_container = HBoxContainer.new()
-	
-	var coord_x = SpinBox.new()
-	coord_x.min_value = 0
-	coord_x.max_value = Level.current_level.grid_size[0] - 1
-	if operator:
-		coord_x.value = operator.coord.x
-	else:
-		coord_x.value = ((position - Vector2.ONE * Level.tile_size / 2) / Level.tile_size).x
-	coord_container.add_child(coord_x)
-	
-	var coord_y = SpinBox.new()
-	coord_y.min_value = 0
-	coord_y.max_value = Level.current_level.grid_size[1] - 1
-	if operator:
-		coord_y.value = operator.coord.y
-	else:
-		coord_y.value = ((position - Vector2.ONE * Level.tile_size / 2) / Level.tile_size).y
-	coord_container.add_child(coord_y)
-	
-	container.add_child(coord_container)
-	
+	var coord_x = $AcceptDialog/VBoxContainer/Coord/HBoxContainer/XSpinBox
+	coord_x.max_value = Level.level_data.grid_size[0] - 1
+	coord_x.value = operator.coord.x if operator else ((position - Vector2.ONE * Level.tile_size / 2) / Level.tile_size).x
+	var coord_y = $AcceptDialog/VBoxContainer/Coord/HBoxContainer/YSpinBox
+	coord_y.max_value = Level.level_data.grid_size[1] - 1
+	coord_y.value = operator.coord.y if operator else ((position - Vector2.ONE * Level.tile_size / 2) / Level.tile_size).y
+
 	# Value
-	
-	var value_label = Label.new()
-	value_label.text = "Value"
-	container.add_child(value_label)
-	
-	var value = SpinBox.new()
-	value.min_value = -100
-	value.max_value = 100
+	var value = $AcceptDialog/VBoxContainer/Value/SpinBox
 	if operator:
 		value.value = operator.value
-	container.add_child(value)
 	
 	# Operation
-	
-	var operation_label = Label.new()
-	operation_label.text = "Operation"
-	container.add_child(operation_label)
-	
-	var operation = OptionButton.new()
+	var operation = $AcceptDialog/VBoxContainer/Operation/OptionButton
 	for _operation in Arithmetic.Operation:
 		operation.add_item(_operation, Arithmetic.Operation.get(_operation))
 	if operator:
 		operation.select(operator.operation)
-	container.add_child(operation)
 	
-	if operator:
-		dialog.add_button("delete", false, "delete")
+	# Color
+	var color = $AcceptDialog/VBoxContainer/Color/GridContainer
+	var color_button_group = ButtonGroup.new()
+	
+	for theme_color_idx in range(Themes.theme.colors.size()):
+		var theme_color = Themes.theme.colors[theme_color_idx]
 		
+		var color_button = TextureButton.new()
+		color_button.toggle_mode = true
+		color_button.group = color_button_group
+		color_button.connect("pressed", self, "on_color_idx", [theme_color_idx])
+		if operator and operator.color_idx == theme_color_idx:
+			color_button.pressed = true
+		
+		var texture_normal = ImageTexture.new()
+		var image_normal = Image.new()
+		image_normal.create(32, 32, false, 4)
+		image_normal.fill(theme_color.background.darkened(0.5))
+		image_normal.lock()
+		texture_normal.create_from_image(image_normal)
+		color_button.texture_normal = texture_normal
 	
-	dialog.add_child(container)
-	add_child(dialog)
-	dialog.popup_centered()
+		var texture_pressed = ImageTexture.new()
+		var image_pressed = Image.new()
+		image_pressed.create(32, 32, false, 4)
+		image_pressed.fill(theme_color.background)
+		image_pressed.lock()
+		texture_pressed.create_from_image(image_pressed)
+		color_button.texture_pressed = texture_pressed
+		
+		color.add_child(color_button)
 	
-	dialog.connect("custom_action", self, "on_custom_action")
-	
-	dialog.connect("confirmed", self, "dialog_edit_operator", [type, coord_x, coord_y, value, operation])
+	var node_dialog = $AcceptDialog
+	node_dialog.window_title = "Edit operator" if operator else "Add new operator"
+	if operator:
+		node_dialog.add_button("delete", false, "delete")
+	node_dialog.popup_centered()
+	node_dialog.connect("custom_action", self, "on_custom_action")
+	node_dialog.connect("confirmed", self, "dialog_edit_operator", [type, coord_x, coord_y, value, operation])
 
 func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox, value: SpinBox, operation: OptionButton):
 	var coord = Vector2(coord_x.value, coord_y.value)
@@ -113,10 +97,10 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 		print('Coord already used by operator')
 		breakpoint
 		return
-	
+
 	if operator:
 		var level_operator = null
-		for _operator in Level.current_level.operators:
+		for _operator in Level.level_data.operators:
 			if _operator.coord[0] == operator.coord.x and _operator.coord[1] == operator.coord.y:
 				level_operator = _operator
 		
@@ -124,24 +108,29 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 		level_operator.coord = [coord_x.value, coord_y.value]
 		level_operator.value = value.value
 		level_operator.operation = operation.selected
+		level_operator.color_idx = color_idx
 	else:
-		Level.current_level.operators.append({
+		Level.level_data.operators.append({
 			"type": type.selected,
 			"coord": [coord_x.value, coord_y.value],
 			"value": value.value,
-			"operation": operation.selected
+			"operation": operation.selected,
+			"color_idx": color_idx
 		})
 	
 	Data.save_data()
 
 func on_custom_action(action):
 	var idx_operator = null
-	for i in range(Level.current_level.operators.size()):
-		if Level.current_level.operators[i].coord[0] == operator.coord.x and Level.current_level.operators[i].coord[1] == operator.coord.y:
+	for i in range(Level.level_data.operators.size()):
+		if Level.level_data.operators[i].coord[0] == operator.coord.x and Level.level_data.operators[i].coord[1] == operator.coord.y:
 			idx_operator = i
 			break
 	
 	if idx_operator >= 0:
-		Level.current_level.operators.remove(idx_operator)
+		Level.level_data.operators.remove(idx_operator)
 	
 	Data.save_data()
+
+func on_color_idx(_color_idx: int):
+	color_idx = _color_idx

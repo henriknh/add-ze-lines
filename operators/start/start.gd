@@ -4,7 +4,6 @@ class_name Start
 
 func _ready():
 	add_to_group("Start")
-	get_color_from_theme(get_tree().get_nodes_in_group("Start").size())
 	
 	var tutorial_label = get_node_or_null("TutorialLabel")
 	if tutorial_label:

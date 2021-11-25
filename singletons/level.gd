@@ -3,18 +3,22 @@ extends Node2D
 onready var tile_size: int = 64
 var operator_diameter: int = 42
 
-var current_chapter = null
-var current_level = null
+var chapter: int = 0
+var level: int = 0
+var chapter_data = null
+var level_data = null
 var is_editor = false
 var previous_scene = null
 
 signal level_changed
 
-func init(_current_chapter, _current_level, _is_editor = false):
+func init(_chapter: int, _level: int, _is_editor = false):
 	tile_size = min(OS.window_size.x, get_viewport().get_size_override().x) / 6
 	tile_size = min(tile_size, 64)
-	current_chapter = _current_chapter
-	current_level = _current_level
+	chapter = _chapter
+	level = _level
+	chapter_data = Data.data[chapter]
+	level_data = chapter_data.levels[level]
 	is_editor = _is_editor
 	
 	if not get_tree().current_scene is Game:

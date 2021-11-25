@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://theme_solid.tres" type="Theme" id=1]
 [ext_resource path="res://theme.tres" type="Theme" id=2]
 [ext_resource path="res://assets/font/font_48.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/levels/levels.gd" type="Script" id=5]
@@ -21,7 +20,7 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 48.0
 margin_top = 48.0
-margin_right = 390.0
+margin_right = 352.0
 margin_bottom = 652.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -31,7 +30,7 @@ __meta__ = {
 }
 
 [node name="Header" type="Label" parent="VBoxContainer"]
-margin_right = 342.0
+margin_right = 304.0
 margin_bottom = 58.0
 custom_fonts/font = ExtResource( 4 )
 text = "levels"
@@ -39,7 +38,7 @@ valign = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 82.0
-margin_right = 342.0
+margin_right = 304.0
 margin_bottom = 541.0
 size_flags_vertical = 3
 theme = ExtResource( 2 )
@@ -49,256 +48,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 338.0
-margin_bottom = 1580.0
+margin_right = 304.0
 size_flags_horizontal = 3
-custom_constants/separation = 48
-
-[node name="Chapter1" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_right = 338.0
-margin_bottom = 462.0
-custom_constants/separation = 24
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1"]
-margin_right = 338.0
-margin_bottom = 58.0
-
-[node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/HBoxContainer"]
-margin_right = 320.0
-margin_bottom = 58.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 4 )
-text = "chapter 1"
-
-[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/HBoxContainer"]
-margin_left = 324.0
-margin_right = 338.0
-margin_bottom = 58.0
-text = "-"
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1"]
-margin_top = 82.0
-margin_right = 338.0
-margin_bottom = 462.0
-custom_constants/vseparation = 32
-custom_constants/hseparation = 64
-columns = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer"]
-margin_right = 137.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button2" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer"]
-margin_left = 201.0
-margin_right = 338.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button3" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer"]
-margin_top = 103.0
-margin_right = 137.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button4" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer"]
-margin_left = 201.0
-margin_top = 103.0
-margin_right = 338.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button5" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer"]
-margin_top = 206.0
-margin_right = 137.0
-margin_bottom = 277.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button6" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer"]
-margin_left = 201.0
-margin_top = 206.0
-margin_right = 338.0
-margin_bottom = 277.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button7" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer"]
-margin_top = 309.0
-margin_right = 137.0
-margin_bottom = 380.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Chapter2" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 510.0
-margin_right = 338.0
-margin_bottom = 766.0
-custom_constants/separation = 24
-
-[node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2"]
-margin_right = 338.0
-margin_bottom = 58.0
-custom_fonts/font = ExtResource( 4 )
-text = "chapter 2"
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2"]
-margin_top = 82.0
-margin_right = 338.0
-margin_bottom = 256.0
-custom_constants/vseparation = 32
-custom_constants/hseparation = 64
-columns = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer"]
-margin_right = 137.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button2" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer"]
-margin_left = 201.0
-margin_right = 338.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button3" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer"]
-margin_top = 103.0
-margin_right = 137.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button4" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer"]
-margin_left = 201.0
-margin_top = 103.0
-margin_right = 338.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Chapter3" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 814.0
-margin_right = 338.0
-margin_bottom = 1173.0
-custom_constants/separation = 24
-
-[node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3"]
-margin_right = 338.0
-margin_bottom = 58.0
-custom_fonts/font = ExtResource( 4 )
-text = "chapter 3"
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3"]
-margin_top = 82.0
-margin_right = 338.0
-margin_bottom = 359.0
-custom_constants/vseparation = 32
-custom_constants/hseparation = 64
-columns = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer"]
-margin_right = 137.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button2" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer"]
-margin_left = 201.0
-margin_right = 338.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button3" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer"]
-margin_top = 103.0
-margin_right = 137.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button4" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer"]
-margin_left = 201.0
-margin_top = 103.0
-margin_right = 338.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button5" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer"]
-margin_top = 206.0
-margin_right = 137.0
-margin_bottom = 277.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button6" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer"]
-margin_left = 201.0
-margin_top = 206.0
-margin_right = 338.0
-margin_bottom = 277.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Chapter4" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 1221.0
-margin_right = 338.0
-margin_bottom = 1580.0
-custom_constants/separation = 24
-
-[node name="ChapterLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4"]
-margin_right = 338.0
-margin_bottom = 58.0
-custom_fonts/font = ExtResource( 4 )
-text = "chapter 4"
-
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4"]
-margin_top = 82.0
-margin_right = 338.0
-margin_bottom = 359.0
-custom_constants/vseparation = 32
-custom_constants/hseparation = 64
-columns = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer"]
-margin_right = 137.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button2" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer"]
-margin_left = 201.0
-margin_right = 338.0
-margin_bottom = 71.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button3" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer"]
-margin_top = 103.0
-margin_right = 137.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button4" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer"]
-margin_left = 201.0
-margin_top = 103.0
-margin_right = 338.0
-margin_bottom = 174.0
-theme = ExtResource( 1 )
-text = "LEVEL"
-
-[node name="Button5" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer"]
-margin_top = 206.0
-margin_right = 137.0
-margin_bottom = 277.0
-theme = ExtResource( 1 )
-text = "LEVEL"
+custom_constants/separation = 16
 
 [node name="AcceptDialog" type="AcceptDialog" parent="VBoxContainer/ScrollContainer"]
 margin_right = 83.0
@@ -306,32 +58,10 @@ margin_bottom = 102.0
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 margin_top = 565.0
-margin_right = 342.0
+margin_right = 304.0
 margin_bottom = 604.0
 theme = ExtResource( 2 )
 text = "back"
 align = 0
 
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer/Button" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer/Button2" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer/Button3" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer/Button4" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer/Button5" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer/Button6" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter1/GridContainer/Button7" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer/Button" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer/Button2" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer/Button3" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter2/GridContainer/Button4" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer/Button" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer/Button2" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer/Button3" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer/Button4" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer/Button5" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter3/GridContainer/Button6" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer/Button" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer/Button2" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer/Button3" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer/Button4" to="." method="_on_load_level"]
-[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/Chapter4/GridContainer/Button5" to="." method="_on_load_level"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_back"]

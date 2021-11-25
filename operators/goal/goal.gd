@@ -10,8 +10,9 @@ func _ready():
 		tutorial_label.rect_position = Vector2(1, -0.5) * (-Level.tile_size / 2)
 
 func _draw():
-	var _background = Themes.on_background_white
-	var text_color = Themes.on_background_black
+	
+	var _background = colors.background
+	var text_color = colors.on_background
 	if status == OperatorStatus.SUCCESS:
 		_background = colors.background 
 		text_color = colors.on_background
