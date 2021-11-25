@@ -70,16 +70,6 @@
 						"value": 0,
 						"operation": 0,
 						"coord": [
-							1,
-							1
-						],
-						"color_idx": 1
-					},
-					{
-						"type": 5,
-						"value": 0,
-						"operation": 0,
-						"coord": [
 							0,
 							3
 						],
@@ -203,7 +193,7 @@
 							0,
 							2
 						],
-						"color_idx": 1
+						"color_idx": 2
 					},
 					{
 						"type": 0,
@@ -223,17 +213,219 @@
 							2,
 							4
 						],
+						"color_idx": 1
+					},
+					{
+						"type": 1,
+						"value": 0,
+						"operation": 3,
+						"coord": [
+							4,
+							2
+						],
+						"color_idx": 2
+					},
+					{
+						"type": 5,
+						"coord": [
+							1,
+							1
+						],
+						"value": 0,
+						"operation": 0,
+						"color_idx": 0
+					}
+				]
+			},
+			{
+				"grid_size": [
+					5,
+					5
+				],
+				"operators": [
+					{
+						"type": 0,
+						"value": 1,
+						"operation": 0,
+						"coord": [
+							0,
+							2
+						],
+						"color_idx": 1
+					},
+					{
+						"type": 0,
+						"value": -1,
+						"operation": 0,
+						"coord": [
+							2,
+							0
+						],
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"value": 0,
+						"operation": 3,
+						"coord": [
+							2,
+							4
+						],
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"value": 0,
+						"operation": 3,
+						"coord": [
+							4,
+							2
+						],
+						"color_idx": 1
+					}
+				]
+			},
+			{
+				"grid_size": [
+					5,
+					5
+				],
+				"operators": [
+					{
+						"type": 0,
+						"coord": [
+							0,
+							2
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							4,
+							2
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 2
+					},
+					{
+						"type": 0,
+						"coord": [
+							2,
+							0
+						],
+						"value": 2,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 1,
+						"coord": [
+							2,
+							4
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 1
+					}
+				]
+			},
+			{
+				"grid_size": [
+					5,
+					5
+				],
+				"operators": [
+					{
+						"type": 0,
+						"coord": [
+							2,
+							0
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 0,
+						"coord": [
+							0,
+							2
+						],
+						"value": -2,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							4,
+							2
+						],
+						"value": -1,
+						"operation": 3,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							2,
+							4
+						],
+						"value": -1,
+						"operation": 3,
+						"color_idx": 1
+					}
+				]
+			},
+			{
+				"grid_size": [
+					5,
+					5
+				],
+				"operators": [
+					{
+						"type": 0,
+						"coord": [
+							0,
+							2
+						],
+						"value": 2,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 1,
+						"coord": [
+							2,
+							4
+						],
+						"value": 2,
+						"operation": 3,
 						"color_idx": 0
 					},
 					{
+						"type": 0,
+						"coord": [
+							2,
+							0
+						],
+						"value": 2,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
 						"type": 1,
-						"value": 0,
-						"operation": 3,
 						"coord": [
 							4,
 							2
 						],
-						"color_idx": 1
+						"value": 2,
+						"operation": 3,
+						"color_idx": 0
 					}
 				]
 			},
@@ -245,43 +437,43 @@
 				"operators": [
 					{
 						"type": 0,
-						"value": 1,
-						"operation": 0,
-						"coord": [
-							0,
-							2
-						],
-						"color_idx": 1
-					},
-					{
-						"type": 0,
-						"value": -1,
-						"operation": 0,
-						"coord": [
-							2,
-							0
-						],
-						"color_idx": 1
-					},
-					{
-						"type": 1,
-						"value": 0,
-						"operation": 3,
-						"coord": [
-							2,
-							4
-						],
-						"color_idx": 1
-					},
-					{
-						"type": 1,
-						"value": 0,
-						"operation": 3,
 						"coord": [
 							4,
 							2
 						],
+						"value": 1,
+						"operation": 0,
 						"color_idx": 1
+					},
+					{
+						"type": 0,
+						"coord": [
+							0,
+							2
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							2,
+							4
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 1
+					},
+					{
+						"type": 1,
+						"coord": [
+							2,
+							0
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 2
 					}
 				]
 			},
@@ -309,7 +501,7 @@
 							3,
 							0
 						],
-						"color_idx": 1
+						"color_idx": 2
 					},
 					{
 						"type": 1,
@@ -329,7 +521,7 @@
 							3,
 							4
 						],
-						"color_idx": 1
+						"color_idx": 2
 					}
 				]
 			},
@@ -345,7 +537,7 @@
 							0,
 							2
 						],
-						"color_idx": 1,
+						"color_idx": 2,
 						"value": -1,
 						"operation": 0
 					},
@@ -365,7 +557,7 @@
 							4,
 							2
 						],
-						"color_idx": 1,
+						"color_idx": 2,
 						"value": 2,
 						"operation": 3
 					},
@@ -385,7 +577,7 @@
 							0,
 							0
 						],
-						"color_idx": 1,
+						"color_idx": 3,
 						"value": 1,
 						"operation": 0
 					},
@@ -395,7 +587,7 @@
 							4,
 							0
 						],
-						"color_idx": 1,
+						"color_idx": 3,
 						"value": 0,
 						"operation": 3
 					}
