@@ -66,4 +66,4 @@ func _on_next_level():
 	Level.init(next_chapter, next_level)
 
 func _on_redo_level():
-	Level.init(Level.chapter_data, Level.level_data)
+	Level.init(Level.chapter, Level.level)
