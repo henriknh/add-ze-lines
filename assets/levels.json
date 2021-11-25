@@ -355,7 +355,7 @@
 							0,
 							2
 						],
-						"value": -2,
+						"value": -1,
 						"operation": 0,
 						"color_idx": 2
 					},
@@ -365,9 +365,9 @@
 							4,
 							2
 						],
-						"value": -1,
+						"value": 0,
 						"operation": 3,
-						"color_idx": 2
+						"color_idx": 0
 					},
 					{
 						"type": 1,
@@ -375,9 +375,9 @@
 							2,
 							4
 						],
-						"value": -1,
+						"value": 0,
 						"operation": 3,
-						"color_idx": 1
+						"color_idx": 0
 					}
 				]
 			},
@@ -486,6 +486,54 @@
 					{
 						"type": 0,
 						"coord": [
+							1,
+							2
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 1,
+						"coord": [
+							3,
+							2
+						],
+						"value": 1,
+						"operation": 3,
+						"color_idx": 1
+					},
+					{
+						"type": 0,
+						"coord": [
+							2,
+							1
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							2,
+							3
+						],
+						"value": 1,
+						"operation": 3,
+						"color_idx": 0
+					}
+				]
+			},
+			{
+				"grid_size": [
+					5,
+					5
+				],
+				"operators": [
+					{
+						"type": 0,
+						"coord": [
 							4,
 							2
 						],
@@ -570,6 +618,94 @@
 							4
 						],
 						"color_idx": 2
+					}
+				]
+			},
+			{
+				"grid_size": [
+					5,
+					5
+				],
+				"operators": [
+					{
+						"type": 0,
+						"coord": [
+							0,
+							1
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 0,
+						"coord": [
+							1,
+							0
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 0,
+						"coord": [
+							0,
+							3
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 3
+					},
+					{
+						"type": 0,
+						"coord": [
+							3,
+							0
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 4
+					},
+					{
+						"type": 1,
+						"coord": [
+							4,
+							1
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 1
+					},
+					{
+						"type": 1,
+						"coord": [
+							3,
+							4
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 4
+					},
+					{
+						"type": 1,
+						"coord": [
+							1,
+							4
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							4,
+							3
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 3
 					}
 				]
 			},
