@@ -14,4 +14,4 @@ func _draw():
 			var angle_point = deg2rad((360 / nb_points) * i + -45)
 			points_arc.push_back(Vector2(cos(angle_point), sin(angle_point)) * Level.operator_diameter / 1.5)
 		
-		draw_polygon(points_arc, [colors.background], [], null, null, true)
+		#draw_polygon(points_arc, [colors.background], [], null, null, true)
