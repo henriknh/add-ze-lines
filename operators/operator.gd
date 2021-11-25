@@ -18,7 +18,8 @@ onready var colors: Colors = Colors.new()
 func _ready():
 	add_to_group("Operator")
 	
-	get_color_from_theme(color_idx || 0)
+	get_color_from_theme(color_idx)
+	
 	position = coord * Level.tile_size + Vector2.ONE * Level.tile_size / 2
 	
 	if get_node("Label"):
