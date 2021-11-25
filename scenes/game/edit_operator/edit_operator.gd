@@ -58,8 +58,9 @@ func on_add_operator():
 		color_button.toggle_mode = true
 		color_button.group = color_button_group
 		color_button.connect("pressed", self, "on_color_idx", [theme_color_idx])
-		if operator and operator.color_idx == theme_color_idx:
+		if operator and operator.color_idx == theme_color_idx or not operator and theme_color_idx == 0:
 			color_button.pressed = true
+			color_idx = theme_color_idx
 		
 		var texture_normal = ImageTexture.new()
 		var image_normal = Image.new()
