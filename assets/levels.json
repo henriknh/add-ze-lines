@@ -439,6 +439,54 @@
 						"type": 0,
 						"coord": [
 							4,
+							1
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							4,
+							3
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 2
+					},
+					{
+						"type": 0,
+						"coord": [
+							1,
+							0
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 1,
+						"coord": [
+							1,
+							4
+						],
+						"value": 3,
+						"operation": 3,
+						"color_idx": 1
+					}
+				]
+			},
+			{
+				"grid_size": [
+					5,
+					5
+				],
+				"operators": [
+					{
+						"type": 0,
+						"coord": [
+							4,
 							2
 						],
 						"value": 1,
