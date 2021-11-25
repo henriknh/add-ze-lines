@@ -91,8 +91,8 @@ func _on_delete(chapter: int):
 	
 	
 	
-func play_level(chapter, level, is_editor = false):
-	Level.init(chapter, level, is_editor)
+func play_level(chapter, level):
+	Level.init(chapter, level)
 	
 func _on_new_chapter():
 	Data.data.append({
@@ -144,7 +144,7 @@ func on_edit_level(action: String, level: int, chapter: int, dialog: AcceptDialo
 	var level_data = chapter_data.levels[level]
 	
 	if action is String and action == "edit":
-		play_level(chapter, level, true)
+		play_level(chapter, level)
 	elif action is String and action == "move_up":
 		chapter_data.levels.remove(level)
 		chapter_data.levels.insert(level - 1, level_data)

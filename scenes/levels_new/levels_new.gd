@@ -87,8 +87,8 @@ func load_levels():
 func _on_back():
 	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
 	
-func play_level(chapter, level, is_editor = false):
-	Level.init(chapter, level, is_editor)
+func play_level(chapter, level):
+	Level.init(chapter, level)
 	
 func new_chapter():
 	Data.data.append({

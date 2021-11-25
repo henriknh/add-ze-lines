@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	
-	if Level.is_editor == false:
+	if Storage.get_editor() == false:
 		return
 	
 	if Storage.editor:

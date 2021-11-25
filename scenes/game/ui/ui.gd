@@ -49,7 +49,7 @@ func _show_hide_ui():
 			break
 	$TopRight/MarginContainer/HBoxContainer/Restart.visible = get_parent().level_ready and line_has_two_points
 	
-	if Level.is_editor:
+	if Storage.get_editor():
 		$UIEditor.visible = true
 		$OnLevelComplete.visible = false
 	else:
@@ -66,4 +66,4 @@ func _on_next_level():
 	Level.init(next_chapter, next_level)
 
 func _on_redo_level():
-	Level.init(Level.chapter_data, Level.level_data, Level.is_editor)
+	Level.init(Level.chapter_data, Level.level_data)

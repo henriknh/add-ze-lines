@@ -17,4 +17,4 @@ func _on_changed(_v):
 	]
 	Data.save_data()
 	
-	Level.init(Level.chapter, Level.level, Level.is_editor)
+	Level.init(Level.chapter, Level.level)

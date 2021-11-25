@@ -7,19 +7,17 @@ var chapter: int = 0
 var level: int = 0
 var chapter_data = null
 var level_data = null
-var is_editor = false
 var previous_scene = null
 
 signal level_changed
 
-func init(_chapter: int, _level: int, _is_editor = false):
+func init(_chapter: int, _level: int):
 	tile_size = min(OS.window_size.x, get_viewport().get_size_override().x) / 6
 	tile_size = min(tile_size, 64)
 	chapter = _chapter
 	level = _level
 	chapter_data = Data.data[chapter]
 	level_data = chapter_data.levels[level]
-	is_editor = _is_editor
 	
 	if not get_tree().current_scene is Game:
 		previous_scene = get_tree().current_scene.filename

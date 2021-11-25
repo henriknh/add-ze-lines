@@ -6,7 +6,7 @@ func _ready():
 	add_to_group("Void")
 
 func _draw():
-	if Level.is_editor:
+	if Storage.get_editor():
 		var nb_points = 3
 		var points_arc = PoolVector2Array()
 		
