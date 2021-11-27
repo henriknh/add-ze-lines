@@ -56,6 +56,16 @@ func load_levels():
 		button_new_chapter.connect("pressed", self, "_on_new_chapter")
 		chapters_outlet.add_child(button_new_chapter)
 	
+	yield(get_tree(), "idle_frame")
+	var last_enabled = null
+	for button in get_tree().get_nodes_in_group("PlayLevelButton"):
+		if not button.disabled:
+			last_enabled = button
+	if last_enabled:
+		var scroll_container: ScrollContainer = $VBoxContainer/ScrollContainer
+		scroll_container.ensure_control_visible(last_enabled)
+		scroll_container.scroll_vertical += scroll_container.rect_size.y / 2
+	
 func _on_back():
 	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
 

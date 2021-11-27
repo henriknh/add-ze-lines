@@ -15,7 +15,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="Button" parent="."]
+[node name="Play" type="Button" parent="." groups=["PlayLevelButton"]]
 margin_right = 133.0
 margin_bottom = 700.0
 focus_mode = 0
