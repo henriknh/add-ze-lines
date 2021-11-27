@@ -20,7 +20,10 @@ func _on_theme_changed():
 	$TopRight/MarginContainer/HBoxContainer/Restart.self_modulate = Themes.theme.on_background
 
 func on_level_changed():
-	$TopLeft/MarginContainer2/VBoxContainer/LevelTitle.text = "Level %d" % (Level.level + 1)
+	var prev_levels = 0
+	for prev_chapter in range(Level.chapter):
+		prev_levels += Data.data[prev_chapter].levels.size()
+	$TopLeft/MarginContainer2/VBoxContainer/LevelTitle.text = "Level %d" % (prev_levels + Level.level + 1)
 	$TopLeft/MarginContainer2/VBoxContainer/ChapterTitle.text = "Chapter %d" % (Level.chapter + 1)
 	
 	next_chapter = null
