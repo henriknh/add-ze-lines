@@ -31,8 +31,11 @@ func create(_chapter: int, _level: int):
 	Data.connect("data_saved", self, "initalize")
 
 func destroy():
-	Data.disconnect("data_saved", self, "initalize")
+	if Data.is_connected("data_saved", self,  "initalize"):
+		Data.disconnect("data_saved", self, "initalize")
+	reset()
 	
+func reset():
 	level_ready = false
 	level_complete = false
 	
@@ -44,7 +47,7 @@ func destroy():
 		operator.get_parent().remove_child(operator)
 	
 func initalize():
-	destroy()
+	reset()
 	
 	chapter_data = Data.data[chapter]
 	level_data = chapter_data.levels[level]

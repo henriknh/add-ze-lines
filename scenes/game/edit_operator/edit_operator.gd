@@ -122,7 +122,7 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 	Data.save_data()
 
 func on_custom_action(action):
-	var idx_operator = null
+	var idx_operator = -1
 	for i in range(Level.level_data.operators.size()):
 		if Level.level_data.operators[i].coord[0] == operator.coord.x and Level.level_data.operators[i].coord[1] == operator.coord.y:
 			idx_operator = i
