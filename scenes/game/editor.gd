@@ -6,7 +6,7 @@ func _ready():
 		return
 	
 	if Storage.editor:
-		get_parent().connect("level_loaded", self, "editable_cells")
+		Level.connect("level_loaded", self, "editable_cells")
 	
 func editable_cells():
 	for child in get_children():

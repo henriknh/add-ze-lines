@@ -67,7 +67,7 @@ func _ready():
 	node_delete.visible = Storage.get_editor()
 
 func _on_play():
-	Level.init(chapter, level)
+	Level.create(chapter, level)
 
 func _on_move(dir: int):
 	var chapter_data = Data.data[chapter]

@@ -18,3 +18,12 @@ func _draw():
 		points_arc.push_back(Vector2(cos(angle_point), sin(angle_point)) * Level.operator_diameter / 2)
 	
 	draw_polygon(points_arc, [colors.background], [], null, null, true)
+
+
+func _on_reset_line():
+	print(coord + Vector2.ONE * Level.tile_size / 2)
+	var line = Level.get_lines(coord * Level.tile_size + Vector2.ONE * Level.tile_size / 2)
+	print(line)
+	if line:
+		print('reset line')
+		line[0].queue_free()

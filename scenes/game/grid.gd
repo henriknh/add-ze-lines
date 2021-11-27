@@ -1,14 +1,15 @@
 extends Node2D
 
 func _ready():
-	get_parent().connect("level_loaded", self, "generate_grid")
-	generate_grid()
+	Level.connect("level_loaded", self, "generate_grid")
 
 func generate_grid():
 	for child in get_children():
 		remove_child(child)
 	
 	var points = []
+	print(Level.level)
+	print(Level.level_data)
 	
 	for y in range(Level.level_data.grid_size[1]):
 		for x in range(Level.level_data.grid_size[0]):

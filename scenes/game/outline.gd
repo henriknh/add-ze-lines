@@ -1,8 +1,7 @@
 extends Node2D
 
 func _ready():
-	get_parent().connect("level_loaded", self, "generate_outline")
-	generate_outline()
+	Level.connect("level_loaded", self, "generate_outline")
 
 func generate_outline():
 	for child in get_children():

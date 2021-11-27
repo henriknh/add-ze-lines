@@ -4,10 +4,11 @@ class_name Line
 
 var points = [] setget set_points
 var colors: Colors
+var start_operator: Start = null
 
 func _ready():
 	add_to_group("Line")
-	
+	start_operator = Level.get_operator(points[0])
 	$Line2D.default_color = colors.background
 	$Line2D.points = points
 

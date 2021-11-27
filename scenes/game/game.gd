@@ -5,95 +5,14 @@ class_name Game
 var current_line: Line = null
 var valid_points = []
 
-signal level_loaded
-
-var level_ready = false
-var level_complete = false
-
 func _ready():
-	var fallback_chapter = null
-	var fallback_level = null
-	
-	if not Level.chapter_data and Data.data.size():
-		fallback_chapter = Data.data[0]
-	if not Level.chapter_data and Level.chapter_data and Level.chapter_data.levels.size():
-		fallback_level = Level.chapter_data.levels[0]
-	
-	if fallback_chapter and fallback_level:
-		Level.init(fallback_chapter, fallback_level)
-	
-	Data.connect("data_saved", self, "load_level")
-	Level.connect("level_changed", self, "load_level")
-	load_level()
-	
-func _physics_process(delta):
-	
-	if not level_ready:
-		return
-	
-	var to_satisfy = 0
-	var satisfied = 0
-	for goal in get_tree().get_nodes_in_group("Goal"):
-		to_satisfy += 1
-		if goal.status == Operator.OperatorStatus.SUCCESS:
-			satisfied += 1
-	for equals_hub in get_tree().get_nodes_in_group("Hub"):
-		if equals_hub.operation ==  Arithmetic.Operation.equals:
-			to_satisfy += 1
-			
-			for line in Level.get_lines(equals_hub.position):
-				if line.compute(equals_hub.position) == equals_hub.value:
-					satisfied += 1
-					break
-	
-	level_complete = to_satisfy > 0 and to_satisfy == satisfied
-	
-	if level_complete:
-		Storage.set_level_complete(Level.chapter, Level.level)
-	
-func load_level():
-	level_ready = false
-	level_complete = false
-	current_line = null
-	
-	for line in get_tree().get_nodes_in_group("Line"):
-		line.get_parent().remove_child(line)
-		line.queue_free()
-	
-	add_operators()
-	
-	emit_signal("level_loaded")
-	level_ready = true
+	Level.initalize()
 
-func add_operators():
-	for operator in get_tree().get_nodes_in_group("Operator"):
-		operator.get_parent().remove_child(operator)
+func _exit_tree():
+	Level.destroy()
 	
-	for operator in Level.level_data.operators:
-		
-		var operator_node = null
-		match operator.type as int:
-			Operator.OperatorType.START:
-				operator_node = preload("res://operators/start/start.tscn").instance()
-			Operator.OperatorType.GOAL:
-				operator_node = preload("res://operators/goal/goal.tscn").instance()
-			Operator.OperatorType.HUB:
-				operator_node = preload("res://operators/hub/hub.tscn").instance()
-			Operator.OperatorType.BLOCK:
-				operator_node = preload("res://operators/block/block.tscn").instance()
-			Operator.OperatorType.TWIST:
-				operator_node = preload("res://operators/twist/twist.tscn").instance()
-			Operator.OperatorType.VOID:
-				operator_node = preload("res://operators/void/void.tscn").instance()
-		
-		operator_node.coord = Vector2(operator.coord[0], operator.coord[1])
-		operator_node.value = operator.value
-		operator_node.operation = operator.operation
-		operator_node.color_idx = operator.color_idx
-		get_node("/root/Game/Nodes").add_child(operator_node)
-
 func _input(event):
-	if level_complete:
+	if Level.level_complete:
 		return
 	
 	if Data.is_mobile() and not event is InputEventScreenTouch and not event is InputEventScreenDrag:
@@ -112,6 +31,12 @@ func _input(event):
 	elif (event is InputEventMouseMotion or event is InputEventScreenDrag) and current_line and point_on_grid(mouse_coord):
 		var points = current_line.points
 		var mouse_operator = Level.get_operator(mouse_coord)
+	
+		if mouse_operator and current_line.start_operator.color_idx > 0:
+			var same_color = current_line.start_operator.color_idx == mouse_operator.color_idx
+			var operator_is_neutral = mouse_operator.color_idx == 0
+			if not (same_color || operator_is_neutral):
+				return
 		
 		if points.size() > 0 and points[points.size() - 1] == mouse_coord:
 			valid_points = []
@@ -140,12 +65,8 @@ func _input(event):
 		
 		current_line.points = points
 		
-		for goal in get_tree().get_nodes_in_group("Goal"):
-			goal.status = Operator.OperatorStatus.PENDING
-		
-		for line in get_tree().get_nodes_in_group("Line"):
-			line.compute()
-			
+		Level.update()
+	
 func point_on_grid(point: Vector2) -> bool:
 	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.level_data.grid_size[0] and point.y <= Level.tile_size * Level.level_data.grid_size[1]
 
@@ -202,7 +123,7 @@ func any_line_has_point(point: Vector2, exclude = null) -> Line:
 	return null
 
 func cross_existing_and_valid(from: Vector2, to: Vector2) -> Array:
-	var to_operator = Level.get_operator(to)
+	var to_operator: Operator = Level.get_operator(to)
 	var crossing = any_line_has_point(to)
 	var valid_points = [from]
 	

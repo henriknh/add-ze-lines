@@ -44,7 +44,7 @@ func _ready():
 		$VBoxContainer/VBoxContainer/PlayContainer/ChapterAndLevelTitles.text = "All levels completed!"
 
 func _on_continue():
-	Level.init(next_chapter, next_level)
+	Level.create(next_chapter, next_level)
 	
 func _on_levels():
 	get_tree().change_scene("res://scenes/levels/levels.tscn")

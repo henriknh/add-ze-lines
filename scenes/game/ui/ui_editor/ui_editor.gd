@@ -3,6 +3,9 @@ extends Control
 var loaded = false;
 
 func _ready():
+	Level.connect("level_loaded", self, "set_initial_values")
+	
+func set_initial_values():
 	$PanelContainer/HBoxContainer/CoordXSpinBox.value = Level.level_data.grid_size[0]
 	$PanelContainer/HBoxContainer/CoordYSpinBox.value = Level.level_data.grid_size[1]
 	loaded = true
@@ -17,4 +20,4 @@ func _on_changed(_v):
 	]
 	Data.save_data()
 	
-	Level.init(Level.chapter, Level.level)
+	Level.create(Level.chapter, Level.level)
