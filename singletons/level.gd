@@ -49,9 +49,6 @@ func initalize():
 	chapter_data = Data.data[chapter]
 	level_data = chapter_data.levels[level]
 	
-	print(chapter_data)
-	print(level_data)
-	
 	for operator in Level.level_data.operators:
 		
 		var operator_node = null

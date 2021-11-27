@@ -8,8 +8,6 @@ func generate_grid():
 		remove_child(child)
 	
 	var points = []
-	print(Level.level)
-	print(Level.level_data)
 	
 	for y in range(Level.level_data.grid_size[1]):
 		for x in range(Level.level_data.grid_size[0]):
