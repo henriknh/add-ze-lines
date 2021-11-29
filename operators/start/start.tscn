@@ -13,8 +13,8 @@ margin_top = -32.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
 text = "asdf1"
 align = 1
 valign = 1
@@ -25,7 +25,7 @@ __meta__ = {
 [node name="TutorialLabel" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
-text = "Start"
+text = "START"
 __meta__ = {
 "_edit_use_anchors_": false
 }

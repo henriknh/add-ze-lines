@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/replay.png-6426207d774df746748f9df4cab7ed69.stex"
+path="res://.import/chevron-down.png-0e3b7b55718ca5b3a0ed6cd969a61fa9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/replay.png"
-dest_files=[ "res://.import/replay.png-6426207d774df746748f9df4cab7ed69.stex" ]
+source_file="res://assets/icons/chevron-down.png"
+dest_files=[ "res://.import/chevron-down.png-0e3b7b55718ca5b3a0ed6cd969a61fa9.stex" ]
 
 [params]
 

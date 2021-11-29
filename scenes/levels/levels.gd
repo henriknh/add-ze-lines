@@ -19,7 +19,7 @@ func load_levels():
 			var chapter_editor = HBoxContainer.new()
 			
 			var chapter_label = Label.new()
-			chapter_label.text = "Chapter %d" % (chapter + 1)
+			chapter_label.text = tr("CHAPTER") + " %d" % (chapter + 1)
 			chapter_label.size_flags_horizontal = SIZE_FILL + SIZE_EXPAND
 			chapter_editor.add_child(chapter_label)
 			
@@ -45,6 +45,9 @@ func load_levels():
 		var chapter_instance = preload("res://scenes/levels/chapter/chapter.tscn").instance()
 		chapter_instance.chapter = chapter
 		chapters_outlet.add_child(chapter_instance)
+		
+		#if chapter + 1 < Data.data.size():
+		#	chapters_outlet.add_child(preload("res://scenes/levels/chapter_separator/chapter_separator.tscn").instance())
 	
 	# Button to add new chapter
 	if Storage.editor:

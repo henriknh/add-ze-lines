@@ -7,7 +7,7 @@ var on_background_white = Color(1,1,1,1)
 
 var themes = [
 	{
-		"title": "light",
+		"title": "LIGHT",
 		"background": Color('#fffce8'),
 		"on_background": Color('#110f3e'),
 		"grid": Color("#110f3e"),
@@ -35,7 +35,7 @@ var themes = [
 			}
 		]
 	}, {
-		"title": "dark",
+		"title": "DARK",
 		"background": Color('#110f3e'),
 		"on_background": on_background_white,
 		"grid": Color(1,1,1,1),
@@ -123,12 +123,20 @@ var themes = [
 
 onready var theme
 signal theme_changed
+var current_theme_idx = -1
 
 func _ready():
-	set_theme(0)
-
-func set_theme(idx: int):
-	theme = themes[idx]
+	Storage.connect("storage_changed", self, "_set_theme")
+	_set_theme()
+	
+func _set_theme():
+	var new_theme_idx = Storage.get_theme()
+	
+	if new_theme_idx == current_theme_idx:
+		return
+	
+	theme = themes[new_theme_idx]
+	current_theme_idx = new_theme_idx
 	
 	VisualServer.set_default_clear_color(theme.background)
 	
@@ -140,6 +148,7 @@ func set_theme(idx: int):
 	
 	propagate_call("update")
 	emit_signal("theme_changed")
+	get_tree().reload_current_scene()
 
 func update_theme(_theme: Theme, theme) -> Theme:
 	var font_color = theme.on_background
@@ -162,10 +171,10 @@ func update_theme(_theme: Theme, theme) -> Theme:
 	
 	return _theme
 
-func update_theme_solid(_theme_solid: Theme, theme) -> Theme:
+func update_theme_solid(_theme_solid: Theme, theme, inverted = false) -> Theme:
 	
 	_theme_solid = update_theme(_theme_solid, theme)
-	var font_color_solid = theme.on_background
+	var font_color_solid = theme.background if not inverted else theme.on_background
 	var font_color_solid_disabled = font_color_solid
 	font_color_solid_disabled.a = 0.38
 	var font_color_solid_hover = font_color_solid
@@ -173,7 +182,7 @@ func update_theme_solid(_theme_solid: Theme, theme) -> Theme:
 	var font_color_solid_pressed = font_color_solid
 	font_color_solid_pressed.lightened(0.3)
 	
-	var background = theme.background
+	var background = theme.on_background if not inverted else theme.background
 	var background_disabled = background
 	background_disabled.a = 0.38
 	var background_hover = background

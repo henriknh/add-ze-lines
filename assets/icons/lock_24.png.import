@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/replay.png-6426207d774df746748f9df4cab7ed69.stex"
+path="res://.import/lock_24.png-b793300ccb0f0e39d0cb5c8ad74c0298.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/replay.png"
-dest_files=[ "res://.import/replay.png-6426207d774df746748f9df4cab7ed69.stex" ]
+source_file="res://assets/icons/lock_24.png"
+dest_files=[ "res://.import/lock_24.png-b793300ccb0f0e39d0cb5c8ad74c0298.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

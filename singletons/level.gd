@@ -79,6 +79,9 @@ func initalize():
 	level_ready = true
 	
 func update():
+	if level_complete:
+		return
+	
 	for goal in get_tree().get_nodes_in_group("Goal"):
 		goal.status = Operator.OperatorStatus.PENDING
 		
@@ -87,7 +90,10 @@ func update():
 	
 	level_complete = check_for_level_completed()
 	if level_complete:
-		Storage.set_level_complete(Level.chapter, Level.level)
+		var already_completed = Storage.get_level_completed(Level.chapter, Level.level)
+		if not already_completed:
+			Storage.set_level_complete(Level.chapter, Level.level)
+			Storage.set_gems(Storage.get_gems() + 10)
 
 func check_for_level_completed() -> bool:
 	var to_satisfy = 0

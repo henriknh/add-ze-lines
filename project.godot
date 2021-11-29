@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://operators/line/line.gd"
 }, {
-"base": "MarginContainer",
+"base": "Control",
 "class": "MainMenu",
 "language": "GDScript",
 "path": "res://scenes/main_menu/main_menu.gd"
@@ -92,13 +92,14 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Storage="*res://singletons/storage.gd"
 Themes="*res://singletons/themes.gd"
 Random="*res://singletons/random.gd"
 Arithmetic="*res://singletons/arithmetic.gd"
 Level="*res://singletons/level.gd"
 UserInput="*res://singletons/user_input.gd"
 Data="*res://singletons/data.gd"
-Storage="*res://singletons/storage.gd"
+Localization="*res://singletons/localization.gd"
 
 [display]
 
@@ -118,18 +119,23 @@ texture={
 "compress/normal_map": 0,
 "detect_3d": false,
 "flags/anisotropic": false,
-"flags/filter": false,
+"flags/filter": true,
 "flags/mipmaps": false,
 "flags/repeat": 0,
 "flags/srgb": 2,
 "process/HDR_as_SRGB": false,
 "process/fix_alpha_border": true,
 "process/invert_color": false,
+"process/normal_map_invert_y": false,
 "process/premult_alpha": false,
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
 }
+
+[locale]
+
+translations=PoolStringArray( "res://assets/translations.en.translation", "res://assets/translations.sv.translation" )
 
 [physics]
 

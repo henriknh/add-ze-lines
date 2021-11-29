@@ -18,13 +18,14 @@ func _ready():
 
 func _on_theme_changed():
 	$TopRight/MarginContainer/HBoxContainer/Restart.self_modulate = Themes.theme.on_background
+	$TopRight/MarginContainer/HBoxContainer/Back.self_modulate = Themes.theme.on_background
 
 func on_level_changed():
 	var prev_levels = 0
 	for prev_chapter in range(Level.chapter):
 		prev_levels += Data.data[prev_chapter].levels.size()
-	$TopLeft/MarginContainer2/VBoxContainer/LevelTitle.text = "Level %d" % (prev_levels + Level.level + 1)
-	$TopLeft/MarginContainer2/VBoxContainer/ChapterTitle.text = "Chapter %d" % (Level.chapter + 1)
+	$TopLeft/MarginContainer2/VBoxContainer/LevelTitle.text = tr("LEVEL") + " %d" % (prev_levels + Level.level + 1)
+	$TopLeft/MarginContainer2/VBoxContainer/ChapterTitle.text = tr("CHAPTER") + " %d" % (Level.chapter + 1)
 	
 	next_chapter = null
 	next_level = null
@@ -37,7 +38,7 @@ func on_level_changed():
 		next_level = 0
 	
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.visible = next_chapter or next_level
-	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.text = "Next chapter" if next_chapter else "Next level"
+	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.text = tr("NEXT_CHAPTER") if next_chapter else tr("NEXT_LEVEL")
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NoMoreLevels.visible = not next_chapter and not next_level
 
 func _physics_process(delta):

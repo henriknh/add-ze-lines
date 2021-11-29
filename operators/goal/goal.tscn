@@ -26,7 +26,7 @@ __meta__ = {
 [node name="TutorialLabel" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
-text = "Goal"
+text = "GOAL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
