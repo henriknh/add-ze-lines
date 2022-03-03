@@ -27,6 +27,9 @@ func on_goal_input():
 	if points.size() <= 1:
 		points = []
 		queue_free()
+	else:
+		$Line2D.points = points
+		
 
 func _remove_on_other_line():
 	var _points = points
@@ -35,7 +38,6 @@ func _remove_on_other_line():
 			break
 		
 		var goal_on_other_line = get_node("/root/Game").any_line_has_point(_points[_points.size() - 1], self)
-		
 		if goal_on_other_line:
 			_points.remove(_points.size() - 1)
 		else:

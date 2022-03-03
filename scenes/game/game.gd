@@ -73,6 +73,7 @@ func point_on_grid(point: Vector2) -> bool:
 func goal_input():
 	if current_line:
 		current_line.on_goal_input()
+	Level.update()
 	
 	current_line = null
 	valid_points = []
