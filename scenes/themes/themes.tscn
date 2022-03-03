@@ -56,6 +56,7 @@ text = "123"
 margin_top = 154.0
 margin_right = 304.0
 margin_bottom = 573.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 24
 custom_constants/hseparation = 24

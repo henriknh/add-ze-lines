@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/font/font_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/icons/gem_24.png" type="Texture" id=2]
+[ext_resource path="res://scenes/themes/theme_button/theme_button.gd" type="Script" id=3]
+[ext_resource path="res://theme_solid.tres" type="Theme" id=4]
+
+[node name="ThemeButton" type="Button"]
+margin_right = 140.0
+margin_bottom = 283.0
+rect_min_size = Vector2( 0, 90 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="VBox"]
+margin_top = 118.0
+margin_right = 140.0
+margin_bottom = 132.0
+text = "default"
+align = 1
+
+[node name="Purchase" type="HBoxContainer" parent="VBox"]
+margin_top = 136.0
+margin_right = 140.0
+margin_bottom = 165.0
+alignment = 1
+
+[node name="GemIcon" type="TextureRect" parent="VBox/Purchase"]
+margin_left = 38.0
+margin_right = 62.0
+margin_bottom = 29.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="Price" type="Label" parent="VBox/Purchase"]
+margin_left = 66.0
+margin_right = 101.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 1 )
+text = "100"
+
+[node name="SelectionBorder" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="." to="." method="_on_click"]

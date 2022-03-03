@@ -7,6 +7,8 @@ var on_background_white = Color(1,1,1,1)
 
 var themes = [
 	{
+		"index": 0,
+		"price": 0,
 		"title": "LIGHT",
 		"background": Color('#fffce8'),
 		"on_background": Color('#110f3e'),
@@ -35,6 +37,8 @@ var themes = [
 			}
 		]
 	}, {
+		"index": 0,
+		"price": 0,
 		"title": "DARK",
 		"background": Color('#110f3e'),
 		"on_background": on_background_white,
@@ -63,6 +67,8 @@ var themes = [
 			}
 		]
 	}, {
+		"index": 1,
+		"price": 20,
 		"title": "outrun", # https://lospec.com/palette-list/funkyfuture-8
 		"background": Color('#2b0f54'),
 		"on_background": on_background_white,
@@ -91,6 +97,8 @@ var themes = [
 			}
 		]
 	}, {
+		"index": 2,
+		"price": 50,
 		"title": "sunset", # https://lospec.com/palette-list/dialup-sunset
 		"background": Color('#ffd7d7'),
 		"on_background": on_background_black,
@@ -119,6 +127,11 @@ var themes = [
 			}
 		]
 	}
+	# https://lospec.com/palette-list/bright-and-early
+	# https://lospec.com/palette-list/twilight-5
+	# https://lospec.com/palette-list/marumaru-gum
+	# https://lospec.com/palette-list/ru5ty
+	# https://lospec.com/palette-list/slimy-05
 ]
 
 onready var theme
@@ -191,7 +204,6 @@ func update_theme_solid(_theme_solid: Theme, theme, inverted = false) -> Theme:
 	background_pressed.lightened(0.3)
 	
 	for node_type in _theme_solid.get_type_list(""):
-		
 		if _theme_solid.has_color("font_color", node_type):
 			_theme_solid.set_color("font_color", node_type, font_color_solid)
 		if _theme_solid.has_color("font_color_disabled", node_type):
@@ -201,6 +213,9 @@ func update_theme_solid(_theme_solid: Theme, theme, inverted = false) -> Theme:
 		if _theme_solid.has_color("font_color_pressed", node_type):
 			_theme_solid.set_color("font_color_pressed", node_type, font_color_solid_pressed)
 		
+		if node_type == 'Label':
+			_theme_solid.set_color("font_color", node_type, background)
+			
 		if _theme_solid.has_stylebox("disabled", node_type):
 			var style_box_disabled = _theme_solid.get_stylebox("disabled", node_type)
 			style_box_disabled.bg_color = background_disabled
@@ -217,5 +232,9 @@ func update_theme_solid(_theme_solid: Theme, theme, inverted = false) -> Theme:
 			var style_box_pressed = _theme_solid.get_stylebox("pressed", node_type)
 			style_box_pressed.bg_color = background_pressed
 			_theme_solid.set_stylebox("pressed", node_type, style_box_pressed)
+		if _theme_solid.has_stylebox("panel", node_type):
+			var style_box_pressed = _theme_solid.get_stylebox("panel", node_type)
+			style_box_pressed.border_color = background
+			_theme_solid.set_stylebox("panel", node_type, style_box_pressed)
 	
 	return _theme_solid

@@ -45,6 +45,15 @@ func set_theme(theme: int):
 func get_theme() -> int:
 	return _get_config_value("user", "theme", 0)
 	
+func unlock_theme(index: int):
+	var unlocked_themes = _get_config_value("shop", "themes", [])
+	if not index in unlocked_themes:
+		unlocked_themes.append(index)
+	_set_config_value("shop", "themes", unlocked_themes)
+	
+func get_unlocked_themes() -> Array:
+	return _get_config_value("shop", "themes", [])
+
 func set_locale(locale: String):
 	_set_config_value("setting", "locale", locale)
 	
