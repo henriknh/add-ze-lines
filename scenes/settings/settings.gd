@@ -35,3 +35,6 @@ func _on_back():
 
 func _on_locale(index):
 	Storage.set_locale(Localization.LOCALES.keys()[index])
+
+func _on_clear_cache():
+	Storage.reset_storage()

@@ -20,6 +20,11 @@ func _ready():
 	if err != OK:
 		breakpoint
 
+func reset_storage():
+	config.clear()
+	config.save(SAVE_FILE)
+	emit_signal("storage_changed")
+
 func _set_config_value(section, key, value):
 	config.set_value(section, key, value)
 	config.save(SAVE_FILE)
