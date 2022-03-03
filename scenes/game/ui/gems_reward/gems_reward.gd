@@ -31,6 +31,7 @@ func _physics_process(delta):
 	if $Label.text != prev:
 		var audio = AudioStreamPlayer.new()
 		audio.stream = preload("res://assets/sounds/gem_ping.wav")
+		audio.pitch_scale = time / animation_time / 2 + 0.5
 		audio.connect("finished", audio, "queue_free")
 		audio.autoplay = true
 		add_child(audio)

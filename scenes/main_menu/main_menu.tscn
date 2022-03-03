@@ -61,6 +61,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "Chapter 1, task 2"
 
 [node name="ChallangesContainer" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
 margin_top = 223.0
 margin_right = 304.0
 margin_bottom = 282.0
@@ -83,17 +84,17 @@ custom_fonts/font = ExtResource( 2 )
 text = "COMING_SOON"
 
 [node name="Levels" type="Button" parent="VBoxContainer"]
-margin_top = 306.0
+margin_top = 223.0
 margin_right = 304.0
-margin_bottom = 345.0
+margin_bottom = 262.0
 theme = ExtResource( 1 )
 text = "LEVELS"
 align = 0
 
 [node name="ThemesContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 369.0
+margin_top = 286.0
 margin_right = 304.0
-margin_bottom = 432.0
+margin_bottom = 349.0
 custom_constants/separation = 0
 
 [node name="Themes" type="Button" parent="VBoxContainer/ThemesContainer"]
@@ -123,15 +124,15 @@ custom_fonts/font = ExtResource( 2 )
 text = "123"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
-margin_top = 456.0
+margin_top = 373.0
 margin_right = 304.0
-margin_bottom = 495.0
+margin_bottom = 412.0
 theme = ExtResource( 1 )
 text = "SETTINGS"
 align = 0
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 519.0
+margin_top = 436.0
 margin_right = 304.0
 margin_bottom = 573.0
 size_flags_vertical = 3

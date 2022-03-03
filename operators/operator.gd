@@ -27,7 +27,7 @@ func _ready():
 		label.valign = Label.VALIGN_CENTER
 		label.rect_position = Vector2.ONE * (-Level.tile_size / 2)
 		label.rect_size = Vector2.ONE * (Level.tile_size)
-		var arithmetic_symbol = Arithmetic.get_operation_string(operation, value)
+		var arithmetic_symbol = Arithmetic.get_operation_string(operation, value, is_in_group("Start"))
 		var string_format = "%s(%d)" if value < 0 and arithmetic_symbol != '' else "%s%d"
 		if value < 0 and arithmetic_symbol != '':
 			# Since parentheses and symbol take more space

@@ -26,10 +26,10 @@ func compute_operators(operators: Array):
 	# https://docs.godotengine.org/en/stable/classes/class_expression.html
 	return result
 
-func get_operation_string(operation: int, value: int) -> String:
+func get_operation_string(operation: int, value: int, is_start: bool = false) -> String:
 	match operation:
 		Arithmetic.Operation.addition:
-			return '+' if Storage.show_addition_symbol else ''
+			return '+' if Storage.show_addition_symbol and not is_start else ''
 		Arithmetic.Operation.multiplication:
 			return '×'
 		Arithmetic.Operation.division:

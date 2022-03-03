@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/font/font_24.tres" type="DynamicFont" id=1]
 [ext_resource path="res://operators/start/start.gd" type="Script" id=2]
 
-[node name="Start" type="Node2D"]
+[node name="Start" type="Node2D" groups=["Start"]]
 position = Vector2( 96, 0 )
 script = ExtResource( 2 )
 
