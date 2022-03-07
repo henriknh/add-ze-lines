@@ -34,6 +34,8 @@ func _update_ui():
 
 func _on_click():
 	if node_purchase.visible:
+		if Storage.get_gems() < theme_button.price:
+			return
 		Storage.unlock_theme(theme_index)
 		Storage.set_gems(Storage.get_gems() - theme_button.price)
 		Storage.set_theme(theme_index)
