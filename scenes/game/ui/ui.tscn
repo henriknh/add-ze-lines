@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://theme_solid.tres" type="Theme" id=2]
 [ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/icons/replay.png" type="Texture" id=4]
 [ext_resource path="res://scenes/game/ui/ui_editor/ui_editor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/icons/skip-next_36.png" type="Texture" id=6]
 [ext_resource path="res://scenes/game/ui/ui.gd" type="Script" id=7]
 [ext_resource path="res://scenes/game/ui/gems_reward/gems_reward.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/icons/home.png" type="Texture" id=9]
@@ -88,7 +89,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TopRight/MarginContainer"]
 margin_top = 12.0
-margin_right = 88.0
+margin_right = 140.0
 margin_bottom = 48.0
 custom_constants/separation = 16
 alignment = 2
@@ -99,9 +100,16 @@ margin_bottom = 36.0
 grow_horizontal = 0
 texture_normal = ExtResource( 4 )
 
-[node name="Back" type="TextureButton" parent="TopRight/MarginContainer/HBoxContainer"]
+[node name="Skip" type="TextureButton" parent="TopRight/MarginContainer/HBoxContainer"]
 margin_left = 52.0
 margin_right = 88.0
+margin_bottom = 36.0
+grow_horizontal = 0
+texture_normal = ExtResource( 6 )
+
+[node name="Back" type="TextureButton" parent="TopRight/MarginContainer/HBoxContainer"]
+margin_left = 104.0
+margin_right = 140.0
 margin_bottom = 36.0
 grow_horizontal = 0
 texture_normal = ExtResource( 9 )
@@ -179,5 +187,6 @@ process_material = SubResource( 3 )
 [node name="UIEditor" parent="." instance=ExtResource( 5 )]
 
 [connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Restart" to="." method="_on_redo_level"]
+[connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Skip" to="." method="_on_skip_level"]
 [connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Back" to="." method="_on_back"]
 [connection signal="pressed" from="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel" to="." method="_on_next_level"]

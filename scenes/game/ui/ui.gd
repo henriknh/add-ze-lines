@@ -40,6 +40,7 @@ func on_level_changed():
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.visible = next_chapter or next_level
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.text = tr("NEXT_CHAPTER") if next_chapter else tr("NEXT_LEVEL")
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NoMoreLevels.visible = not next_chapter and not next_level
+	$TopRight/MarginContainer/HBoxContainer/Skip.visible = not Storage.get_level_completed(Level.chapter, Level.level)
 
 func _physics_process(delta):
 	_show_hide_ui()
@@ -70,3 +71,6 @@ func _on_next_level():
 
 func _on_redo_level():
 	Level.create(Level.chapter, Level.level)
+
+func _on_skip_level():
+	prints('Skip', Level.chapter, Level.level)
