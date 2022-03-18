@@ -20,29 +20,33 @@ script = ExtResource( 4 )
 margin_left = 48.0
 margin_top = 32.0
 margin_right = 312.0
-margin_bottom = 628.0
+margin_bottom = 608.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 24
 
-[node name="Header" type="Label" parent="VBoxContainer"]
+[node name="CenterContainer" type="VBoxContainer" parent="VBoxContainer"]
 margin_right = 264.0
-margin_bottom = 157.0
+margin_bottom = 175.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+alignment = 1
+
+[node name="Header" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_top = 9.0
+margin_right = 264.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 210, 0 )
 size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
 custom_fonts/font = ExtResource( 3 )
 text = "add ze lines"
 autowrap = true
 
-[node name="Control2" type="Control" parent="VBoxContainer"]
-margin_top = 181.0
-margin_right = 264.0
-margin_bottom = 213.0
-rect_min_size = Vector2( 0, 32 )
-
 [node name="PlayContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 237.0
+margin_top = 199.0
 margin_right = 264.0
-margin_bottom = 296.0
+margin_bottom = 258.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,17 +91,17 @@ custom_fonts/font = ExtResource( 2 )
 text = "COMING_SOON"
 
 [node name="Levels" type="Button" parent="VBoxContainer"]
-margin_top = 320.0
+margin_top = 282.0
 margin_right = 264.0
-margin_bottom = 359.0
+margin_bottom = 321.0
 theme = ExtResource( 1 )
 text = "LEVELS"
 align = 0
 
 [node name="ThemesContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 383.0
+margin_top = 345.0
 margin_right = 264.0
-margin_bottom = 446.0
+margin_bottom = 408.0
 custom_constants/separation = 0
 
 [node name="Themes" type="Button" parent="VBoxContainer/ThemesContainer"]
@@ -127,23 +131,23 @@ custom_fonts/font = ExtResource( 2 )
 text = "123"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
-margin_top = 470.0
+margin_top = 432.0
 margin_right = 264.0
-margin_bottom = 509.0
+margin_bottom = 471.0
 theme = ExtResource( 1 )
 text = "# # DEBUG # #"
 align = 0
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 533.0
+margin_top = 495.0
 margin_right = 264.0
-margin_bottom = 533.0
+margin_bottom = 512.0
 size_flags_vertical = 3
 
 [node name="QuitDesktop" type="Button" parent="VBoxContainer"]
-margin_top = 557.0
+margin_top = 536.0
 margin_right = 264.0
-margin_bottom = 596.0
+margin_bottom = 575.0
 theme = ExtResource( 1 )
 text = "QUIT"
 align = 0

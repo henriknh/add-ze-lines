@@ -17,8 +17,8 @@ func _ready():
 	node_gem_icon.self_modulate = Themes.theme.on_background
 	node_gem_label.text = Storage.get_gems() as String
 	node_quit.visible = !Data.is_mobile()
-	$AdMob.load_banner()
-	$AdMob.show_banner()
+	#$AdMob.load_banner()
+	#$AdMob.show_banner()
 	
 	if rect_size.x > 600:
 		rect_size = Vector2(600, rect_size.y)
