@@ -2,7 +2,7 @@ extends MarginContainer
 
 class_name Levels
 
-onready var chapters_outlet = $VBoxContainer/ScrollContainer/VBoxContainer
+onready var chapters_outlet = $VBoxContainer/CenterContainer/ScrollContainer/VBoxContainer
 var _theme = preload("res://theme_solid.tres")
 
 func _ready():
@@ -65,7 +65,7 @@ func load_levels():
 		if not button.disabled:
 			last_enabled = button
 	if last_enabled:
-		var scroll_container: ScrollContainer = $VBoxContainer/ScrollContainer
+		var scroll_container: ScrollContainer = $VBoxContainer/CenterContainer/ScrollContainer
 		scroll_container.ensure_control_visible(last_enabled)
 		scroll_container.scroll_vertical += scroll_container.rect_size.y / 2
 	

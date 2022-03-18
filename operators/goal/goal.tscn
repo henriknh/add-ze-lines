@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/font/font_24.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/spritesheet2.png" type="Texture" id=2]
+[ext_resource path="res://assets/goal/goal_62.png" type="Texture" id=2]
 [ext_resource path="res://operators/goal/goal.gd" type="Script" id=3]
 
 [node name="Goal" type="Node2D"]

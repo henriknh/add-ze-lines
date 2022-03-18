@@ -12,9 +12,13 @@ var next_chapter = null
 var next_level = null
 
 func _ready():
+	$VBoxContainer/Settings.visible = OS.is_debug_build()
+	
 	node_gem_icon.self_modulate = Themes.theme.on_background
 	node_gem_label.text = Storage.get_gems() as String
 	node_quit.visible = !Data.is_mobile()
+	$AdMob.load_banner()
+	$AdMob.show_banner()
 	
 	if rect_size.x > 600:
 		rect_size = Vector2(600, rect_size.y)
@@ -32,7 +36,6 @@ func _ready():
 			 next_level = last_level + 1
 		else:
 			var next_chapter_has_level = Data.data.size() > (last_chapter + 1) and Data.data[last_chapter + 1].levels.size() > 1
-			
 			if next_chapter_has_level:
 				next_chapter = last_chapter + 1
 				next_level = 0
@@ -47,7 +50,7 @@ func _ready():
 	node_play.visible = next_chapter != null and next_level != null
 	node_play.text = tr("CONTINUE") if storage_next else tr("PLAY")
 	if next_chapter != null and next_level != null:
-		node_current_level.text = tr("CHAPTER") + " %s, " % (next_chapter + 1) + tr("LEVEL") + " %s" % (next_level + 1)
+		node_current_level.text = tr("LEVEL") + " %s" % Level.get_absolute_level(next_chapter, next_level)
 	else:
 		node_current_level.text = tr("ALL_LEVELS_COMPLETED")
 

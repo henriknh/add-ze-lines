@@ -72,32 +72,40 @@ func set_editor(_editor):
 func get_editor() -> bool:
 	return OS.is_debug_build() and _get_config_value("setting", "editor", false)
 
-func set_level_complete(chapter: int, level: int):
-	var value = chapter * CHAPTER_MULTIPLIER + level
+func set_level_complete(level_id: int):
 	var completed_levels = _get_config_value("level", "completed", [])
-	if not value in completed_levels:
-		completed_levels.append(value)
+	if not level_id in completed_levels:
+		completed_levels.append(level_id)
 	_set_config_value("level", "completed", completed_levels)
 
-func get_level_completed(chapter: int, level: int) -> bool:
-	var value = chapter * CHAPTER_MULTIPLIER + level
+func get_level_completed(level_id: int) -> bool:
 	var completed_levels = _get_config_value("level", "completed", [])
-	return value in completed_levels
+	var skipped_levels = _get_config_value("level", "skipped", [])
+	return level_id in completed_levels or level_id in skipped_levels
 
-func get_last_completed_level():
+func get_last_completed_level() -> int:
 	var completed_levels = _get_config_value("level", "completed", [])
+	var skipped_levels = _get_config_value("level", "skipped", [])
 	
-	if completed_levels.size() > 0:
-		var largest = 0
-		
-		for level in completed_levels:
-			if level > largest:
-				largest = level
-		
-		var level = largest % CHAPTER_MULTIPLIER
-		var chapter = int(largest / CHAPTER_MULTIPLIER)
-		return [chapter, level]
-	return null
+	var last_completed_level = null
+	for idx_chapter in range(Data.data.size()):
+		var chapter = Data.data[idx_chapter]
+		for idx_level in range(chapter.levels.size()):
+			var level = chapter.levels[idx_level]
+			if level.id in completed_levels or level.id in skipped_levels:
+				last_completed_level = [idx_chapter, idx_level]
+	return last_completed_level
+
+func set_level_skipped(level_id: int):
+	var skipped_levels = _get_config_value("level", "skipped", [])
+	if not level_id in skipped_levels:
+		skipped_levels.append(level_id)
+	_set_config_value("level", "skipped", skipped_levels)
+
+func get_level_skipped(level_id: int) -> bool:
+	var skipped_levels = _get_config_value("level", "skipped", [])
+	return level_id in skipped_levels
 	
-func clear_completed_levels():
+func clear_level_data():
 	_set_config_value("level", "completed", [])
+	_set_config_value("level", "skipped", [])

@@ -1,7 +1,7 @@
-extends MarginContainer
+extends Control
 
-onready var node_gem_icon: TextureRect = $VBoxContainer/HBoxContainer/GemIcon
-onready var node_gems_label: Label = $VBoxContainer/HBoxContainer/GemsLabel
+onready var node_gem_icon: TextureRect = $VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/GemIcon
+onready var node_gems_label: Label = $VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/GemsLabel
 
 func _ready():
 	Storage.connect("storage_changed", self, "_update_ui")
@@ -12,7 +12,8 @@ func _ready():
 		var theme_button = preload("res://scenes/themes/theme_button/theme_button.tscn").instance()
 		theme_button.theme_index = i
 		theme_button.theme_button = theme
-		$VBoxContainer/GridContainer.add_child(theme_button)
+		#$VBoxContainer/GridContainer.add_child(theme_button)
+		$VBoxContainer/ScrollContainer/HBoxContainer.add_child(theme_button)
 		theme_button._update_ui()
 
 func _update_ui():

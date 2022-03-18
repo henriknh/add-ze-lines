@@ -12,7 +12,7 @@ func save_data():
 	file.store_string(JSON.print(data, "\t"))
 	file.close()
 	
-	Storage.clear_completed_levels()
+	Storage.clear_level_data()
 	
 	emit_signal("data_saved")
 
@@ -29,3 +29,17 @@ func load_data():
 	
 func is_mobile():
 	return OS.get_name() in ["Android", "iOS"]
+
+func _any_level_has_id(id: int) -> bool:
+	for chapter in data:
+		for level in chapter.levels:
+			if 'id' in level:
+				if level.id == id:
+					return true
+	return false
+	
+func generate_id() -> int:
+	var id = OS.get_unix_time() +  OS.get_ticks_usec()
+	if _any_level_has_id(id):
+		id = generate_id()
+	return id

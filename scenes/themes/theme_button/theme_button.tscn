@@ -1,65 +1,174 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/font/font_24.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/icons/gem_24.png" type="Texture" id=2]
 [ext_resource path="res://scenes/themes/theme_button/theme_button.gd" type="Script" id=3]
 [ext_resource path="res://theme_solid.tres" type="Theme" id=4]
+[ext_resource path="res://assets/icons/close_36.png" type="Texture" id=5]
+[ext_resource path="res://assets/icons/check_32.png" type="Texture" id=6]
+[ext_resource path="res://assets/font/font_32.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/icons/gem_36.png" type="Texture" id=8]
 
-[node name="ThemeButton" type="Button"]
-margin_right = 140.0
-margin_bottom = 283.0
-rect_min_size = Vector2( 0, 90 )
+[node name="ThemeButton" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 300, 90 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/margin_right = 48
+custom_constants/margin_top = 32
+custom_constants/margin_left = 48
+custom_constants/margin_bottom = 32
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 48.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 608.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 48.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 608.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 32
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 32
+
+[node name="Browse" type="TextureButton" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 248.0
+margin_bottom = 544.0
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Browse"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Title" type="Label" parent="VBox"]
-margin_top = 118.0
-margin_right = 140.0
-margin_bottom = 132.0
+[node name="Title" type="Label" parent="MarginContainer/Browse/VBox"]
+margin_top = 249.0
+margin_right = 232.0
+margin_bottom = 263.0
 text = "default"
 align = 1
+autowrap = true
 
-[node name="Purchase" type="HBoxContainer" parent="VBox"]
-margin_top = 136.0
-margin_right = 140.0
-margin_bottom = 165.0
+[node name="Purchase" type="TextureButton" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 248.0
+margin_bottom = 544.0
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Purchase"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="GemIcon" type="TextureRect" parent="VBox/Purchase"]
-margin_left = 38.0
-margin_right = 62.0
+[node name="Title" type="Label" parent="MarginContainer/Purchase/VBox"]
+margin_top = 232.0
+margin_right = 232.0
+margin_bottom = 246.0
+text = "default"
+align = 1
+autowrap = true
+
+[node name="Purchase" type="HBoxContainer" parent="MarginContainer/Purchase/VBox"]
+margin_top = 250.0
+margin_right = 232.0
+margin_bottom = 279.0
+alignment = 1
+
+[node name="GemIcon" type="TextureRect" parent="MarginContainer/Purchase/VBox/Purchase"]
+margin_left = 84.0
+margin_right = 108.0
 margin_bottom = 29.0
 texture = ExtResource( 2 )
 stretch_mode = 4
 
-[node name="Price" type="Label" parent="VBox/Purchase"]
-margin_left = 66.0
-margin_right = 101.0
+[node name="Price" type="Label" parent="MarginContainer/Purchase/VBox/Purchase"]
+margin_left = 112.0
+margin_right = 147.0
 margin_bottom = 29.0
 custom_fonts/font = ExtResource( 1 )
 text = "100"
 
-[node name="SelectionBorder" type="Panel" parent="."]
+[node name="Confirm" type="Control" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 248.0
+margin_bottom = 544.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Confirm"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_vertical = 3
+
+[node name="Cost" type="HBoxContainer" parent="MarginContainer/Confirm/CenterContainer"]
+margin_left = 72.0
+margin_top = 236.0
+margin_right = 160.0
+margin_bottom = 275.0
+alignment = 1
+
+[node name="Price" type="Label" parent="MarginContainer/Confirm/CenterContainer/Cost"]
+margin_right = 48.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 7 )
+text = "100"
+
+[node name="GemIcon" type="TextureRect" parent="MarginContainer/Confirm/CenterContainer/Cost"]
+margin_left = 52.0
+margin_right = 88.0
+margin_bottom = 39.0
+texture = ExtResource( 8 )
+stretch_mode = 4
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/Confirm"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_top = -16.0
+use_top_left = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Confirm/CenterContainer2"]
+margin_left = -44.0
+margin_top = -18.0
+margin_right = 44.0
+margin_bottom = 18.0
+custom_constants/separation = 16
+
+[node name="Cancel" type="TextureButton" parent="MarginContainer/Confirm/CenterContainer2/HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 5 )
+
+[node name="Proceed" type="TextureButton" parent="MarginContainer/Confirm/CenterContainer2/HBoxContainer"]
+margin_left = 52.0
+margin_right = 88.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 6 )
+
+[node name="SelectionBorder" type="Panel" parent="."]
+margin_left = 48.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 608.0
 mouse_filter = 2
 theme = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="." to="." method="_on_click"]
+[connection signal="pressed" from="MarginContainer/Browse" to="." method="_on_select"]
+[connection signal="pressed" from="MarginContainer/Purchase" to="." method="_on_purchase"]
+[connection signal="pressed" from="MarginContainer/Confirm/CenterContainer2/HBoxContainer/Cancel" to="." method="_reset_state"]
+[connection signal="pressed" from="MarginContainer/Confirm/CenterContainer2/HBoxContainer/Proceed" to="." method="_on_confirm_buy"]

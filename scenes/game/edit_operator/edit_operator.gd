@@ -11,7 +11,8 @@ func _ready():
 func on_add_operator():
 	
 	# Type
-	var type = $AcceptDialog/VBoxContainer/Type/OptionButton
+	var type: OptionButton = $AcceptDialog/VBoxContainer/Type/OptionButton
+	type.clear()
 	for _operator in Operator.OperatorType:
 		type.add_item(_operator, Operator.OperatorType[_operator])
 	if operator is Start:
@@ -41,7 +42,8 @@ func on_add_operator():
 		value.value = operator.value
 	
 	# Operation
-	var operation = $AcceptDialog/VBoxContainer/Operation/OptionButton
+	var operation: OptionButton = $AcceptDialog/VBoxContainer/Operation/OptionButton
+	operation.clear()
 	for _operation in Arithmetic.Operation:
 		operation.add_item(_operation, Arithmetic.Operation.get(_operation))
 	if operator:
@@ -49,6 +51,9 @@ func on_add_operator():
 	
 	# Color
 	var color = $AcceptDialog/VBoxContainer/Color/GridContainer
+	for child in color.get_children():
+		color.remove_child(child)
+	
 	var color_button_group = ButtonGroup.new()
 	
 	for theme_color_idx in range(Themes.theme.colors.size()):

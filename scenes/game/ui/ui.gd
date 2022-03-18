@@ -8,6 +8,9 @@ func _ready():
 	$OnLevelComplete/ConfettiLeft.position = Vector2(center - 150, -80)
 	$OnLevelComplete/ConfettiRight.position = Vector2(center + 150, -80)
 	
+	$AdMob.load_banner()
+	$AdMob.load_rewarded_video()
+	
 	_show_hide_ui()
 	
 	Themes.connect("theme_changed", self, "_on_theme_changed")
@@ -18,9 +21,11 @@ func _ready():
 
 func _on_theme_changed():
 	$TopRight/MarginContainer/HBoxContainer/Restart.self_modulate = Themes.theme.on_background
+	$TopRight/MarginContainer/HBoxContainer/Skip.self_modulate = Themes.theme.on_background
 	$TopRight/MarginContainer/HBoxContainer/Back.self_modulate = Themes.theme.on_background
 
 func on_level_changed():
+	yield(get_tree(), "idle_frame")
 	var prev_levels = 0
 	for prev_chapter in range(Level.chapter):
 		prev_levels += Data.data[prev_chapter].levels.size()
@@ -40,7 +45,14 @@ func on_level_changed():
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.visible = next_chapter or next_level
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.text = tr("NEXT_CHAPTER") if next_chapter else tr("NEXT_LEVEL")
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NoMoreLevels.visible = not next_chapter and not next_level
-	$TopRight/MarginContainer/HBoxContainer/Skip.visible = not Storage.get_level_completed(Level.chapter, Level.level)
+	var level_data = Data.data[Level.chapter].levels[Level.level]
+	var level_completed = Storage.get_level_completed(level_data.id)
+	var level_skipped = Storage.get_level_skipped(level_data.id)
+	$TopRight/MarginContainer/HBoxContainer/Skip.visible = not level_completed or level_skipped
+	if level_skipped:
+		$TopRight/MarginContainer/HBoxContainer/Skip.disabled = true
+		$TopRight/MarginContainer/HBoxContainer/Skip.self_modulate.a = 0.38
+	
 
 func _physics_process(delta):
 	_show_hide_ui()
@@ -73,4 +85,22 @@ func _on_redo_level():
 	Level.create(Level.chapter, Level.level)
 
 func _on_skip_level():
-	prints('Skip', Level.chapter, Level.level)
+	$AdMob.show_rewarded_video()
+	
+	_on_AdMob_rewarded(-1, -1)
+
+
+func _on_AdMob_rewarded_video_loaded():
+	print("_on_AdMob_rewarded_video_loaded")
+	pass # Replace with function body.
+
+
+func _on_AdMob_rewarded_video_opened():
+	print("_on_AdMob_rewarded_video_opened")
+	pass # Replace with function body.
+
+
+func _on_AdMob_rewarded(currency, ammount):
+	prints("_on_AdMob_rewarded", currency, ammount)
+	Storage.set_level_skipped(Level.level_data.id)
+	_on_next_level()

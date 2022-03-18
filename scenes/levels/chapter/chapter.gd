@@ -29,6 +29,7 @@ func _ready():
 
 func _on_new_level():
 	Data.data[chapter].levels.append({
+		"id": Data.generate_id(),
 		"grid_size": [5,5],
 		"operators": []
 	})

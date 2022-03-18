@@ -46,7 +46,7 @@ func _ready():
 		tutorial_label.valign = Label.VALIGN_CENTER
 		#tutorial_label.rect_position = Vector2.ONE * (-Level.tile_size / 2)
 		tutorial_label.rect_size = Vector2.ONE * (Level.tile_size)
-
+	
 func get_color_from_theme(idx: int):
 	colors.get_from_theme(idx)
 	if label:

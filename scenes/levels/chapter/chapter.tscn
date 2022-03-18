@@ -6,9 +6,6 @@
 margin_left = 400.0
 margin_right = 400.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_constants/separation = 8

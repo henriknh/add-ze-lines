@@ -126,16 +126,342 @@ var themes = [
 				'on_background': on_background_black
 			}
 		]
+	}, {
+		"index": 3,
+		"price": 50,
+		"title": "cryptic ocean", # https://lospec.com/palette-list/cryptic-ocean
+		"background": Color('#95c5ac'),
+		"on_background": on_background_white,
+		"grid": on_background_black,
+		"error": Color('#ff0f0f'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#2a173b'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#3f2c5f'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#443f7b'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#4c5c87'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#69809e'),
+				'on_background': on_background_white
+			}
+		]
+	}, {
+		"index": 4,
+		"price": 0,
+		"title": "curiosities", # https://lospec.com/palette-list/curiosities
+		"background": Color('#46425e'),
+		"on_background": on_background_white,
+		"grid": Color('#46425e').lightened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#15788c'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#00b9be'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#ffeecc'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#ffb0a3'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#ff6973'),
+				'on_background': on_background_white
+			}
+		]
+	}, {
+		"index": 5,
+		"price": 0,
+		"title": "inkpink", # https://lospec.com/palette-list/inkpink
+		"background": Color('#ffffff'),
+		"on_background": on_background_black,
+		"grid": Color('#fff').darkened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#cd5981'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#824882'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#b26e9b'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#dd94d2'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#ebcbeb'),
+				'on_background': on_background_black
+			}
+		]
+	}, {
+		"index": 6,
+		"price": 0,
+		"title": "hotel paintings", # https://lospec.com/palette-list/hotel-paintings-6
+		"background": Color('#f7ede2'),
+		"on_background": on_background_black,
+		"grid": Color('#f7ede2').darkened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#f6bd60'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#f5cac3'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#f28482'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#84a59d'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#3c3744'),
+				'on_background': on_background_black
+			}
+		]
+	}, {
+		"index": 7,
+		"price": 0,
+		"title": "stormy", # https://lospec.com/palette-list/stormy-6
+		"background": Color('#7f9860'),
+		"on_background": on_background_white,
+		"grid": Color('#7f9860').lightened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#f8eebf'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#edbb70'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#a95a3f'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#242828'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#3a5043'),
+				'on_background': on_background_white
+			}
+		]
+	}, {
+		"index": 8,
+		"price": 0,
+		"title": "puffball", # https://lospec.com/palette-list/puffball-8
+		"background": Color('#eedbc8'),
+		"on_background": on_background_black,
+		"grid": Color('#eedbc8').darkened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#e0bb68'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#97b34e'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#d58353'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#548b71'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#5a473e'),
+				'on_background': on_background_white
+			}
+		]
+	}, {
+		"index": 9,
+		"price": 0,
+		"title": "vintage voltage", # https://lospec.com/palette-list/vintage-voltage
+		"background": Color('#191930'),
+		"on_background": on_background_white,
+		"grid": Color('#191930').lightened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#263d6e'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#2f729e'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#eba254'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#f5d689'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#fff5d9'),
+				'on_background': on_background_black
+			}
+		]
+	}, {
+		"index": 10,
+		"price": 0,
+		"title": "sunny days", # https://lospec.com/palette-list/sunny-days
+		"background": Color('#f7ffed'),
+		"on_background": on_background_black,
+		"grid": Color('#f7ffed').darkened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#00177c'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#84396c'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#598344'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#d09071'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#eace75'),
+				'on_background': on_background_black
+			}
+		]
+	}, {
+		"index": 11,
+		"price": 0,
+		"title": "theo", # https://lospec.com/palette-list/theo
+		"background": Color('#2e243f'),
+		"on_background": on_background_white,
+		"grid": Color('#2e243f').lightened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#d3473d'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#f6ad0f'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#f5efeb'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#86bcd1'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#316a96'),
+				'on_background': on_background_white
+			}
+		]
+	}, {
+		"index": 12,
+		"price": 0,
+		"title": "cozy christmas", # https://lospec.com/palette-list/cozy-christmas
+		"background": Color('#121a16'),
+		"on_background": on_background_white,
+		"grid": Color('#121a16').lightened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#1f3325'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#36593b'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#80193b'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#cc2944'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#ffb3bf'),
+				'on_background': on_background_black
+			}
+		]
+	}, {
+		"index": 13,
+		"price": 0,
+		"title": "journey", # https://lospec.com/palette-list/journey-6
+		"background": Color('#261f1f'),
+		"on_background": on_background_white,
+		"grid": Color('#261f1f').lightened(0.2),
+		"error": Color('#ff708b'),
+		"on_error": on_background_white,
+		"colors": [
+			{
+				'background': Color("#fff"),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#ff2d2d'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#0f4d32'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#319835'),
+				'on_background': on_background_white
+			}, {
+				'background': Color('#f1f1d1'),
+				'on_background': on_background_black
+			}, {
+				'background': Color('#c0aa74'),
+				'on_background': on_background_white
+			}
+		]
 	}
-	# https://lospec.com/palette-list/bright-and-early
-	# https://lospec.com/palette-list/twilight-5
-	# https://lospec.com/palette-list/marumaru-gum
-	# https://lospec.com/palette-list/ru5ty
-	# https://lospec.com/palette-list/slimy-05
 ]
 
 onready var theme
 signal theme_changed
+signal theme_purchase_initiated
 var current_theme_idx = -1
 
 func _ready():
@@ -161,7 +487,7 @@ func _set_theme():
 	
 	propagate_call("update")
 	emit_signal("theme_changed")
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
 
 func update_theme(_theme: Theme, theme) -> Theme:
 	var font_color = theme.on_background

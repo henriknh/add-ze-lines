@@ -1,10 +1,11 @@
 extends Control
 
-onready var node_play = $Play
-onready var node_move = $Move
-onready var node_move_up = $Move/Up
-onready var node_move_down = $Move/Down
-onready var node_delete = $Delete
+onready var node_skipped = $Skipped
+onready var node_play = $Buttons/Play
+onready var node_move = $Buttons/Move
+onready var node_move_up = $Buttons/Move/Up
+onready var node_move_down = $Buttons/Move/Down
+onready var node_delete = $Buttons/Delete
 
 var chapter: int = -1
 var level: int = -1
@@ -12,10 +13,7 @@ var level: int = -1
 func _ready():
 	
 	# Text
-	var prev_levels = 0
-	for prev_chapter in range(chapter):
-		prev_levels += Data.data[prev_chapter].levels.size()
-	node_play.text = (prev_levels + level + 1) as String
+	node_play.text = Level.get_absolute_level(chapter, level) as String
 	
 	# Check if should be disabled
 	if Storage.get_editor():
@@ -23,9 +21,16 @@ func _ready():
 	elif (level - 1) < 0 and (chapter - 1) < 0:
 		node_play.disabled = false
 	elif (level - 1) < 0:
-		node_play.disabled = not Storage.get_level_completed(chapter - 1, Data.data[chapter - 1].levels.size() - 1)
+		var prev_chapter = Data.data[chapter - 1]
+		var prev_level = prev_chapter.levels[prev_chapter.levels.size() - 1]
+		node_play.disabled = not Storage.get_level_completed(prev_level.id)
 	else:
-		node_play.disabled = not Storage.get_level_completed(chapter, level - 1)
+		var curr_chapter = Data.data[chapter]
+		var prev_level = curr_chapter.levels[level - 1]
+		node_play.disabled = not Storage.get_level_completed(prev_level.id)
+	
+	var level_data = Data.data[chapter].levels[level]
+	node_skipped.visible = not Storage.get_editor() and Storage.get_level_skipped(level_data.id)
 	
 	var theme_color = Themes.theme.colors[chapter + 1]
 	var button_theme: Theme = node_play.theme.duplicate(true)
@@ -60,6 +65,7 @@ func _ready():
 			
 	for button in [node_play, node_move_up, node_move_down, node_delete]:
 		button.theme = button_theme
+	node_skipped.self_modulate = theme_color.on_background
 	
 	node_move.visible = Storage.get_editor()
 	node_move_up.disabled = level == 0

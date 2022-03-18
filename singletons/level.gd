@@ -24,11 +24,11 @@ func create(_chapter: int, _level: int):
 	if not get_tree().current_scene is Game:
 		previous_scene = get_tree().current_scene.filename
 	
-	emit_signal("level_changed")
 	
 	get_tree().change_scene("res://scenes/game/game.tscn")
 	
 	Data.connect("data_saved", self, "initalize")
+	emit_signal("level_changed")
 
 func destroy():
 	if Data.is_connected("data_saved", self,  "initalize"):
@@ -88,11 +88,12 @@ func update():
 	for line in get_tree().get_nodes_in_group("Line"):
 		line.compute()
 	
+	
 	level_complete = check_for_level_completed()
 	if level_complete:
-		var already_completed = Storage.get_level_completed(Level.chapter, Level.level)
+		var already_completed = Storage.get_level_completed(Level.level_data.id)
 		if not already_completed:
-			Storage.set_level_complete(Level.chapter, Level.level)
+			Storage.set_level_complete(Level.level_data.id)
 			Storage.set_gems(Storage.get_gems() + 10)
 
 func check_for_level_completed() -> bool:
@@ -139,3 +140,9 @@ func get_lines(point: Vector2, exclude = null) -> Array:
 		if point in line.points and line != exclude:
 			lines.append(line)
 	return lines
+
+func get_absolute_level(chapter: int, level: int) -> int:
+	var prev_levels = 0
+	for prev_chapter in range(chapter):
+		prev_levels += Data.data[prev_chapter].levels.size()
+	return  prev_levels + level + 1
