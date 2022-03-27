@@ -68,7 +68,7 @@ func load_levels():
 		button_new_chapter.connect("pressed", self, "_on_new_chapter")
 		chapters_outlet.add_child(button_new_chapter)
 	
-	yield(get_tree(), "idle_frame")
+	#yield(get_tree(), "idle_frame")
 	var last_enabled = null
 	for button in get_tree().get_nodes_in_group("PlayLevelButton"):
 		if not button.disabled:
