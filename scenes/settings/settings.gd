@@ -5,6 +5,8 @@ onready var node_add_symbol: CheckButton = $VBoxContainer/AddSymbolContainer/Add
 onready var node_editor: CheckButton = $VBoxContainer/Editor
 
 func _ready():
+	yield(get_tree(), "idle_frame")
+	
 	for idx in Localization.LOCALES.size():
 		var locale = Localization.LOCALES.keys()[idx]
 		var text = Localization.LOCALES.values()[idx]
@@ -31,7 +33,8 @@ func _on_editor_toggled(editor: bool):
 	Storage.editor = editor
 
 func _on_back():
-	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	#get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	SceneHandler.back()
 
 func _on_locale(index):
 	Storage.set_locale(Localization.LOCALES.keys()[index])

@@ -1,8 +1,14 @@
 extends Node2D
 
+var points = []
+
 func _ready():
 	Level.connect("level_loaded", self, "generate_outline")
 
+func _draw():
+	print(points)
+	draw_polygon(points, [Color.red])
+	
 func generate_outline():
 	for child in get_children():
 		remove_child(child)
@@ -20,6 +26,10 @@ func generate_outline():
 				
 			if not has_void:
 				var origin = Vector2(x,y)*Level.tile_size
+				origin -= Vector2.ONE * (Level.tile_size / 2) * Vector2(
+					Level.level_data.grid_size[0], 
+					Level.level_data.grid_size[1]
+				)
 				
 				points.append(origin) #topleft
 				points.append(origin + Vector2(0, 1) * Level.tile_size) #bottomleft
@@ -28,6 +38,8 @@ func generate_outline():
 				
 		if points.size() > 4:
 			points.append(points[points.size() - 4])
+	
+	points = get_edge_points(points)
 
 	var outline = Line2D.new()
 	outline.default_color = Themes.theme.grid
@@ -36,8 +48,10 @@ func generate_outline():
 	outline.begin_cap_mode = Line2D.LINE_CAP_BOX
 	outline.end_cap_mode = Line2D.LINE_CAP_BOX
 	outline.antialiased = true
-	outline.points = get_edge_points(points)
+	outline.points = points
 	add_child(outline)
+	
+	update()
 
 func get_edge_points(points):
 	var dirs = {

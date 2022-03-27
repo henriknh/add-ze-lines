@@ -6,11 +6,21 @@ var current_line: Line = null
 var valid_points = []
 
 func _ready():
-	Level.initalize()
+	#position = get_viewport().size / 2
+	#Level.initalize()
+	get_tree().get_root().connect("size_changed", self, "_on_resize")
+	_on_resize()
+	
+func _on_resize():
+	var offset = get_viewport().get_visible_rect().size / 2
+	$Grid.position = offset
+	$Outline.position = offset
+	$Lines.position = offset
+	$Nodes.position = offset
 
 func _exit_tree():
 	Level.destroy()
-	
+
 func _input(event):
 	if Level.level_complete:
 		return
@@ -28,7 +38,7 @@ func _input(event):
 		else:
 			goal_input()
 	
-	elif (event is InputEventMouseMotion or event is InputEventScreenDrag) and current_line and point_on_grid(mouse_coord):
+	elif (event is InputEventMouseMotion or event is InputEventScreenDrag) and is_instance_valid(current_line) and point_on_grid(mouse_coord):
 		var points = current_line.points
 		var mouse_operator = Level.get_operator(mouse_coord)
 	
@@ -68,10 +78,12 @@ func _input(event):
 		Level.update()
 	
 func point_on_grid(point: Vector2) -> bool:
-	return point.x >= 0 and point.y >= 0 and point.x <= Level.tile_size * Level.level_data.grid_size[0] and point.y <= Level.tile_size * Level.level_data.grid_size[1]
+	var half_width = Level.tile_size * Level.level_data.grid_size[0] / 2
+	var half_height = Level.tile_size * Level.level_data.grid_size[1] / 2
+	return point.x >= -half_width and point.y >= -half_height and point.x <= half_width and point.y <= half_height
 
 func goal_input():
-	if current_line:
+	if is_instance_valid(current_line):
 		current_line.on_goal_input()
 	Level.update()
 	
@@ -92,7 +104,7 @@ func _get_existing_or_create(mouse_coord: Vector2):
 	else:
 		var is_on_start = null
 		for start in get_tree().get_nodes_in_group("Start"):
-			if start.position == mouse_coord:
+			if start.position== mouse_coord:
 				is_on_start = start
 		
 		if is_on_start:
@@ -106,12 +118,11 @@ func _get_mouse_coord(event) -> Vector2:
 	if not event.get('position'):
 		return Vector2.INF
 	
-	var offset = Vector2(Level.level_data.grid_size[0], Level.level_data.grid_size[1]) * Level.tile_size / 2
-	var mouse_coord = event.position - get_viewport().get_visible_rect().size / 2  + offset
+	var mouse_coord = event.position - get_viewport().get_visible_rect().size / 2
+	mouse_coord += Vector2.ONE * Level.tile_size / 2
 	mouse_coord /= Level.tile_size
 	mouse_coord = mouse_coord.floor()
 	mouse_coord *= Level.tile_size
-	mouse_coord += Vector2.ONE * Level.tile_size / 2
 	return mouse_coord
 
 func any_line_has_point(point: Vector2, exclude = null) -> Line:

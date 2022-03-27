@@ -25,7 +25,7 @@ func _on_theme_changed():
 	$TopRight/MarginContainer/HBoxContainer/Back.self_modulate = Themes.theme.on_background
 
 func on_level_changed():
-	yield(get_tree(), "idle_frame")
+	#yield(get_tree(), "idle_frame")
 	var prev_levels = 0
 	for prev_chapter in range(Level.chapter):
 		prev_levels += Data.data[prev_chapter].levels.size()
@@ -73,17 +73,20 @@ func _show_hide_ui():
 		$OnLevelComplete.visible = Level.level_ready and Level.level_complete
 
 func _on_back():
-	if Level.previous_scene:
-		get_tree().change_scene(Level.previous_scene)
-	else:
-		get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+#	if Level.previous_scene:
+#		get_tree().change_scene(Level.previous_scene)
+#	else:
+#		get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	SceneHandler.back()
 
 func _on_next_level():
 	Level.create(next_chapter, next_level)
+	Level.initalize()
 
 func _on_redo_level():
-	Level.create(Level.chapter, Level.level)
-
+	#Level.create(Level.chapter, Level.level)
+	Level.initalize()
+	
 func _on_skip_level():
 	$AdMob.show_rewarded_video()
 	

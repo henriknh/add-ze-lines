@@ -4,7 +4,9 @@ onready var node_gem_icon: TextureRect = $VBoxContainer/MarginContainer/VBoxCont
 onready var node_gems_label: Label = $VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/GemsLabel
 
 func _ready():
+	yield(get_tree(), "idle_frame")
 	Storage.connect("storage_changed", self, "_update_ui")
+	Themes.connect("theme_changed", self, "_update_ui")
 	_update_ui()
 	
 	for i in range(Themes.themes.size()):
@@ -21,4 +23,5 @@ func _update_ui():
 	node_gems_label.text = Storage.get_gems() as String
 
 func _on_back():
-	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	#get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	SceneHandler.back()

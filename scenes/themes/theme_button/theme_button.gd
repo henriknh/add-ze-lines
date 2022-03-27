@@ -6,6 +6,7 @@ enum STATE { BROWSE, PURCHASE, CONFIRM }
 var state: int = STATE.BROWSE 
 
 onready var node_background = $ColorRect
+onready var node_container = $MarginContainer
 onready var node_browse = $MarginContainer/Browse
 onready var node_browse_title = $MarginContainer/Browse/VBox/Title
 onready var node_purchase = $MarginContainer/Purchase
@@ -33,12 +34,15 @@ func _reset_state():
 	_update_ui()
 
 func _update_ui():
-	
-	theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, true)
-	node_browse_title.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
-	node_purchase_title.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
-	node_purchase_price.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
-	node_confirm_cost.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
+	#theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, true)
+	#node_browse_title.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
+	#node_purchase_title.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
+	#node_purchase_price.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
+	#node_confirm_cost.theme = Themes.update_theme_solid(_theme_solid.duplicate(true), theme_button, false)
+	node_browse_title.add_color_override("font_color", theme_button.on_background)
+	node_purchase_title.add_color_override("font_color", theme_button.on_background)
+	node_purchase_price.add_color_override("font_color", theme_button.on_background)
+	node_confirm_cost.add_color_override("font_color", theme_button.on_background)
 	
 	node_browse.visible = state == STATE.BROWSE
 	node_purchase.visible = state == STATE.PURCHASE
@@ -56,8 +60,8 @@ func _update_ui():
 	node_confirm_proceed.self_modulate = theme_button.on_background
 
 	node_background.color = theme_button.background
-	
-	modulate.a = 0.38 if state != STATE.BROWSE and Storage.get_gems() < theme_button.price else 1
+
+	node_container.modulate.a = 0.38 if state != STATE.BROWSE and Storage.get_gems() < theme_button.price else 1
 	
 func _on_purchase():
 	if Storage.get_gems() < theme_button.price:

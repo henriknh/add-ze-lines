@@ -19,7 +19,11 @@ func generate_grid():
 					break
 				
 			if not has_void:
-				var origin = Vector2(x,y)*Level.tile_size
+				var origin = Vector2(x,y)*Level.tile_size 
+				origin -= Vector2.ONE * (Level.tile_size / 2) * Vector2(
+					Level.level_data.grid_size[0], 
+					Level.level_data.grid_size[1]
+				)
 				
 				points.append(origin) #topleft
 				points.append(origin + Vector2(0, 1) * Level.tile_size) #bottomleft

@@ -1,13 +1,22 @@
-extends MarginContainer
+extends Control
 
 class_name Levels
 
-onready var chapters_outlet = $VBoxContainer/CenterContainer/ScrollContainer/VBoxContainer
+onready var scroll_container: ScrollContainer = $ScrollContainer
+onready var chapters_outlet = $ScrollContainer/MarginContainer/ChapterOutlet
+onready var node_header = $MarginContainer/Header
 var _theme = preload("res://theme_solid.tres")
 
 func _ready():
+	yield(get_tree(), "idle_frame")
 	Data.connect("data_saved", self, "load_levels")
 	load_levels()
+	
+	Themes.connect("theme_changed", self, "_update_ui")
+	_update_ui()
+	
+func _update_ui():
+	node_header.add_color_override("font_color", Themes.theme.on_background)
 
 func load_levels():
 	for child in chapters_outlet.get_children():
@@ -65,12 +74,12 @@ func load_levels():
 		if not button.disabled:
 			last_enabled = button
 	if last_enabled:
-		var scroll_container: ScrollContainer = $VBoxContainer/CenterContainer/ScrollContainer
 		scroll_container.ensure_control_visible(last_enabled)
 		scroll_container.scroll_vertical += scroll_container.rect_size.y / 2
 	
 func _on_back():
-	get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	#get_tree().change_scene("res://scenes/main_menu/main_menu.tscn")
+	SceneHandler.switch_to(SceneHandler.SCENES.MAIN_MENU)
 
 func _on_move(chapter: int, dir: int):
 	var chapter_data = Data.data[chapter]

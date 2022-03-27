@@ -8,23 +8,31 @@ onready var node_gem_icon: TextureRect = $VBoxContainer/ThemesContainer/HBoxCont
 onready var node_gem_label: Label = $VBoxContainer/ThemesContainer/HBoxContainer/GemsLabel
 onready var node_quit: Button = $VBoxContainer/QuitDesktop
 
+onready var scene_levels = preload("res://scenes/levels/levels.tscn")
+onready var scene_themes = preload("res://scenes/themes/themes.tscn")
+onready var scene_settings = preload("res://scenes/settings/settings.tscn")
+
 var next_chapter = null
 var next_level = null
 
 func _ready():
-	$VBoxContainer/Settings.visible = OS.is_debug_build()
+	yield(get_tree(), "idle_frame")
 	
-	node_gem_icon.self_modulate = Themes.theme.on_background
-	node_gem_label.text = Storage.get_gems() as String
+	$VBoxContainer/Settings.visible = OS.is_debug_build() and not Data.is_mobile()
+	
 	node_quit.visible = !Data.is_mobile()
 	#$AdMob.load_banner()
 	#$AdMob.show_banner()
 	
-	if rect_size.x > 600:
-		rect_size = Vector2(600, rect_size.y)
-		
-	var storage_next = Storage.get_last_completed_level()
+	Storage.connect("storage_changed", self, "_update_ui")
+	Themes.connect("theme_changed", self, "_update_ui")
+	_update_ui()
+
+func _update_ui():
+	node_gem_icon.self_modulate = Themes.theme.on_background
+	node_gem_label.text = Storage.get_gems() as String
 	
+	var storage_next = Storage.get_last_completed_level()
 	if storage_next:
 		var last_chapter = storage_next[0]
 		var last_level = storage_next[1]
@@ -53,18 +61,23 @@ func _ready():
 		node_current_level.text = tr("LEVEL") + " %s" % Level.get_absolute_level(next_chapter, next_level)
 	else:
 		node_current_level.text = tr("ALL_LEVELS_COMPLETED")
-
+	
 func _on_continue():
+	SceneHandler.switch_to(SceneHandler.SCENES.GAME)
 	Level.create(next_chapter, next_level)
+	Level.initalize()
 	
 func _on_levels():
-	get_tree().change_scene("res://scenes/levels/levels.tscn")
+	#get_tree().change_scene_to(scene_levels)
+	SceneHandler.switch_to(SceneHandler.SCENES.LEVELS)
 	
 func _on_themes():
-	get_tree().change_scene("res://scenes/themes/themes.tscn")
+	#get_tree().change_scene_to(scene_themes)
+	SceneHandler.switch_to(SceneHandler.SCENES.THEMES)
 	
 func _on_settings():
-	get_tree().change_scene("res://scenes/settings/settings.tscn")
+	SceneHandler.switch_to(SceneHandler.SCENES.SETTINGS)
+	#get_tree().change_scene_to(scene_settings)
 
 func _on_quit():
 	get_tree().quit()

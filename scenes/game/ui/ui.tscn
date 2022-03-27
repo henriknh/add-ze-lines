@@ -183,6 +183,7 @@ process_material = SubResource( 3 )
 
 [node name="AdMob" type="Node" parent="."]
 script = ExtResource( 10 )
+banner_on_top = false
 banner_id = "ca-app-pub-3940256099942544/6300978111"
 rewarded_id = "ca-app-pub-3940256099942544/5224354917"
 

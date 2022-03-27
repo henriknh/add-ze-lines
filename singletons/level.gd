@@ -7,7 +7,6 @@ var chapter: int = 0
 var chapter_data = null
 var level: int = 0
 var level_data = null
-var previous_scene = null
 
 signal level_changed
 signal level_loaded
@@ -20,12 +19,6 @@ func create(_chapter: int, _level: int):
 	tile_size = min(tile_size, 64)
 	chapter = _chapter
 	level = _level
-	
-	if not get_tree().current_scene is Game:
-		previous_scene = get_tree().current_scene.filename
-	
-	
-	get_tree().change_scene("res://scenes/game/game.tscn")
 	
 	Data.connect("data_saved", self, "initalize")
 	emit_signal("level_changed")

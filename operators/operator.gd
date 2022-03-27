@@ -21,6 +21,10 @@ func _ready():
 	get_color_from_theme(color_idx)
 	
 	position = coord * Level.tile_size + Vector2.ONE * Level.tile_size / 2
+	position -= Vector2.ONE * (Level.tile_size / 2) * Vector2(
+		Level.level_data.grid_size[0], 
+		Level.level_data.grid_size[1]
+	)
 	
 	if get_node("Label"):
 		label.align = Label.ALIGN_CENTER
