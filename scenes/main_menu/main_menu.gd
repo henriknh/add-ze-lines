@@ -2,6 +2,7 @@ extends Control
 
 class_name MainMenu
 
+onready var node_header: Label = $VBoxContainer/CenterContainer/Header
 onready var node_play: Button = $VBoxContainer/PlayContainer/Play
 onready var node_current_level: Label = $VBoxContainer/PlayContainer/ChapterAndLevelTitles
 onready var node_gem_icon: TextureRect = $VBoxContainer/ThemesContainer/HBoxContainer/GemIcon
@@ -15,10 +16,12 @@ onready var scene_settings = preload("res://scenes/settings/settings.tscn")
 var next_chapter = null
 var next_level = null
 
+var header_click_count = 0
+
 func _ready():
 	yield(get_tree(), "idle_frame")
 	
-	$VBoxContainer/Settings.visible = OS.is_debug_build() and not Data.is_mobile()
+	$VBoxContainer/Settings.visible = false
 	
 	node_quit.visible = !Data.is_mobile()
 	
@@ -79,3 +82,11 @@ func _on_settings():
 
 func _on_quit():
 	get_tree().quit()
+
+func _on_header_click(event):
+	if (event is InputEventMouseButton && event.pressed && event.button_index == 1) and OS.is_debug_build():
+		header_click_count += 1
+		prints("Header click:", header_click_count)
+		
+		if header_click_count >= 5:
+			$VBoxContainer/Settings.visible = OS.is_debug_build()
