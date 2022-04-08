@@ -23,6 +23,7 @@ onready var scenes = {
 }
 
 onready var root = get_tree().root
+onready var current_id = -1
 onready var current = scenes[SCENES.MAIN_MENU]#get_tree().current_scene
 onready var previous = null
 
@@ -32,6 +33,7 @@ func _ready():
 	switch_to(SCENES.MAIN_MENU)
 
 func switch_to(scene: int):
+	current_id = scene
 	_set_scene(scenes[scene])
 	
 func back():
@@ -48,4 +50,7 @@ func _set_scene(scene):
 	scene.set_process(true)
 	get_tree().current_scene = scene
 	current = scene
+	
+func is_current(scene: int) -> bool:
+	return scene == current_id
 	

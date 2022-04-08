@@ -8,9 +8,6 @@ func _ready():
 	$OnLevelComplete/ConfettiLeft.position = Vector2(center - 150, -80)
 	$OnLevelComplete/ConfettiRight.position = Vector2(center + 150, -80)
 	
-	$AdMob.load_banner()
-	$AdMob.load_rewarded_video()
-	
 	_show_hide_ui()
 	
 	Themes.connect("theme_changed", self, "_on_theme_changed")
@@ -80,6 +77,7 @@ func _on_back():
 	SceneHandler.back()
 
 func _on_next_level():
+	AdHelper.show_ad()
 	Level.create(next_chapter, next_level)
 	Level.initalize()
 
@@ -88,22 +86,12 @@ func _on_redo_level():
 	Level.initalize()
 	
 func _on_skip_level():
-	$AdMob.show_rewarded_video()
+	print("1skipped")
+	AdHelper.show_ad(true)
+	print("2skipped")
 	
-	_on_AdMob_rewarded(-1, -1)
-
-
-func _on_AdMob_rewarded_video_loaded():
-	print("_on_AdMob_rewarded_video_loaded")
-	pass # Replace with function body.
-
-
-func _on_AdMob_rewarded_video_opened():
-	print("_on_AdMob_rewarded_video_opened")
-	pass # Replace with function body.
-
-
-func _on_AdMob_rewarded(currency, ammount):
-	prints("_on_AdMob_rewarded", currency, ammount)
+	yield(AdHelper.ad_mob, "interstitial_closed")
+	print("3skipped")
 	Storage.set_level_skipped(Level.level_data.id)
 	_on_next_level()
+	print("4skipped")

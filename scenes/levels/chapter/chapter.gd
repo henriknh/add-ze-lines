@@ -24,6 +24,7 @@ func _ready():
 	
 	Storage.connect("storage_changed", self, "_update_ui")
 	Themes.connect("theme_changed", self, "_update_ui")
+	get_tree().get_root().connect("size_changed", self, "_on_resize")
 	_update_ui()
 
 func _on_new_level():
@@ -35,7 +36,18 @@ func _on_new_level():
 	Data.save_data()
 
 func _update_ui():
-	columns = 1 if Storage.get_editor() else 4
+	if Data.data.size() < chapter - 1:
+		queue_free()
+		return
+	
+	_on_resize()
+	
 	button_new_level.visible = Storage.get_editor()
 	for level in levels:
 		level.theme_color = Themes.theme.colors[chapter + 1]
+
+func _on_resize():
+	if Storage.get_editor():
+		columns = 1
+	else:
+		columns = int(ceil((get_viewport().size.x - 100) / 75))

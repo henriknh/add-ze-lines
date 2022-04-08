@@ -15,8 +15,10 @@ func _on_resize():
 	var offset = get_viewport().get_visible_rect().size / 2
 	$Grid.position = offset
 	$Outline.position = offset
+	$Background.position = offset
 	$Lines.position = offset
 	$Nodes.position = offset
+	$Editor.position = offset
 
 func _exit_tree():
 	Level.destroy()
@@ -104,10 +106,12 @@ func _get_existing_or_create(mouse_coord: Vector2):
 	else:
 		var is_on_start = null
 		for start in get_tree().get_nodes_in_group("Start"):
+			prints(start.position, mouse_coord)
 			if start.position== mouse_coord:
 				is_on_start = start
 		
 		if is_on_start:
+			prints(is_on_start, is_on_start.position)
 			var line = preload("res://operators/line/line.tscn").instance()
 			line.colors = is_on_start.colors
 			line.points = [is_on_start.position]

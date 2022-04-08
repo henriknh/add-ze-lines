@@ -30,11 +30,17 @@ func on_add_operator():
 	
 	# Coord
 	var coord_x = $AcceptDialog/VBoxContainer/Coord/HBoxContainer/XSpinBox
+	print((Level.level_data.grid_size[0] / 2))
+	
+	var new_x = (position / Level.tile_size).x + int(Level.level_data.grid_size[0] / 2)
+	var new_y = (position / Level.tile_size).y + int(Level.level_data.grid_size[1] / 2)
+	
+	prints(new_x, new_y)
 	coord_x.max_value = Level.level_data.grid_size[0] - 1
-	coord_x.value = operator.coord.x if operator else ((position - Vector2.ONE * Level.tile_size / 2) / Level.tile_size).x
+	coord_x.value = operator.coord.x if operator else new_x
 	var coord_y = $AcceptDialog/VBoxContainer/Coord/HBoxContainer/YSpinBox
 	coord_y.max_value = Level.level_data.grid_size[1] - 1
-	coord_y.value = operator.coord.y if operator else ((position - Vector2.ONE * Level.tile_size / 2) / Level.tile_size).y
+	coord_y.value = operator.coord.y if operator else new_y
 
 	# Value
 	var value = $AcceptDialog/VBoxContainer/Value/SpinBox
@@ -89,7 +95,7 @@ func on_add_operator():
 	node_dialog.window_title = "Edit operator" if operator else "Add new operator"
 	if operator:
 		node_dialog.add_button("delete", false, "delete")
-	node_dialog.popup(Rect2(-80, -130, 160, 260))
+	node_dialog.popup_centered(Vector2(160, 260))
 	node_dialog.connect("custom_action", self, "on_custom_action")
 	node_dialog.connect("confirmed", self, "dialog_edit_operator", [type, coord_x, coord_y, value, operation])
 
@@ -127,6 +133,7 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 	Data.save_data()
 
 func on_custom_action(action):
+	print(operator.coord)
 	var idx_operator = -1
 	for i in range(Level.level_data.operators.size()):
 		if Level.level_data.operators[i].coord[0] == operator.coord.x and Level.level_data.operators[i].coord[1] == operator.coord.y:

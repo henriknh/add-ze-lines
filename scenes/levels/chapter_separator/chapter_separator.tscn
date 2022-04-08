@@ -20,9 +20,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-margin_left = 170.0
+margin_left = 150.0
 margin_top = 7.0
-margin_right = 230.0
+margin_right = 210.0
 margin_bottom = 9.0
 custom_constants/separation = 4
 

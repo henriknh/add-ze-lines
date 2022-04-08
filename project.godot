@@ -118,6 +118,9 @@ Localization="*res://singletons/localization.gd"
 Screenshot="*res://singletons/screenshot.gd"
 GlobalParallaxBackground="*res://singletons/parallax_background/parallax_background.gd"
 SceneHandler="*res://singletons/scene_handler.gd"
+GridHelper="*res://singletons/grid_helper.gd"
+Admob="*res://admob-lib/admob.gd"
+AdHelper="*res://singletons/ad_helper.gd"
 
 [display]
 

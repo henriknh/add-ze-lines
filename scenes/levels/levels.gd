@@ -19,6 +19,10 @@ func _update_ui():
 	node_header.add_color_override("font_color", Themes.theme.on_background)
 
 func load_levels():
+	
+	if not SceneHandler.is_current(SceneHandler.SCENES.LEVELS):
+		return
+	
 	for child in chapters_outlet.get_children():
 		chapters_outlet.remove_child(child)
 	

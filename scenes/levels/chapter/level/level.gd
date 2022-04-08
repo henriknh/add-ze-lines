@@ -19,6 +19,14 @@ func _ready():
 	node_play.text = Level.get_absolute_level(chapter, level) as String
 	
 func _update_ui():
+	if Data.data.size() == chapter:
+		queue_free()
+		return
+	
+	if Data.data[chapter].levels.size() == level:
+		queue_free()
+		return
+	
 	# Check if should be disabled
 	if Storage.get_editor():
 		node_play.disabled = false

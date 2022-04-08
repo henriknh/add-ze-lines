@@ -7,6 +7,10 @@ const LOCALES = {
 var current_locale = null
 
 func _ready():
+	
+	Storage.set_locale(OS.get_locale_language())
+	Storage.set_locale('en')
+	
 	set_storage_locale()
 	Storage.connect("storage_changed", self, "set_storage_locale")
 	

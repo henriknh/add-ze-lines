@@ -21,8 +21,6 @@ func _ready():
 	$VBoxContainer/Settings.visible = OS.is_debug_build() and not Data.is_mobile()
 	
 	node_quit.visible = !Data.is_mobile()
-	#$AdMob.load_banner()
-	#$AdMob.show_banner()
 	
 	Storage.connect("storage_changed", self, "_update_ui")
 	Themes.connect("theme_changed", self, "_update_ui")
