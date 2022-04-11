@@ -30,12 +30,8 @@ func on_add_operator():
 	
 	# Coord
 	var coord_x = $AcceptDialog/VBoxContainer/Coord/HBoxContainer/XSpinBox
-	print((Level.level_data.grid_size[0] / 2))
-	
 	var new_x = (position / Level.tile_size).x + int(Level.level_data.grid_size[0] / 2)
 	var new_y = (position / Level.tile_size).y + int(Level.level_data.grid_size[1] / 2)
-	
-	prints(new_x, new_y)
 	coord_x.max_value = Level.level_data.grid_size[0] - 1
 	coord_x.value = operator.coord.x if operator else new_x
 	var coord_y = $AcceptDialog/VBoxContainer/Coord/HBoxContainer/YSpinBox
@@ -133,7 +129,6 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 	Data.save_data()
 
 func on_custom_action(action):
-	print(operator.coord)
 	var idx_operator = -1
 	for i in range(Level.level_data.operators.size()):
 		if Level.level_data.operators[i].coord[0] == operator.coord.x and Level.level_data.operators[i].coord[1] == operator.coord.y:

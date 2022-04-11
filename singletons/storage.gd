@@ -105,6 +105,16 @@ func set_level_skipped(level_id: int):
 func get_level_skipped(level_id: int) -> bool:
 	var skipped_levels = _get_config_value("level", "skipped", [])
 	return level_id in skipped_levels
+
+func get_skipped_level_count() -> int:
+	var skipped_levels = _get_config_value("level", "skipped", [])
+	return skipped_levels.size()
+	
+func set_number_of_skippable_levels(number_of_skippable_levels: int):
+	_set_config_value("level", "number_of_skippable_levels", number_of_skippable_levels)
+	
+func get_number_of_skippable_levels() -> int :
+	return _get_config_value("level", "number_of_skippable_levels", 2)
 	
 func clear_level_data():
 	_set_config_value("level", "completed", [])

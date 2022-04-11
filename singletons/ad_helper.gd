@@ -20,12 +20,10 @@ func _physics_process(delta):
 		time_since_ad += delta
 
 func show_ad(force: bool = false):
-	prints("show_ad", force)
 	if time_since_ad >= ad_frequenzy or force:
 		ad_mob.show_interstitial()
 
 func _on_interstitial_closed():
-	print("_on_interstitial_closed")
 	ad_mob.load_interstitial()
 	time_since_ad = 0
 	

@@ -47,6 +47,9 @@ func _update_ui():
 		level.theme_color = Themes.theme.colors[chapter + 1]
 
 func _on_resize():
+	if not SceneHandler.is_current(SceneHandler.SCENES.LEVELS):
+		return
+	
 	if Storage.get_editor():
 		columns = 1
 	else:

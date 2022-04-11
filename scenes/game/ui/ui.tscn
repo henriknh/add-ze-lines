@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://theme_solid.tres" type="Theme" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://scenes/game/ui/ui.gd" type="Script" id=7]
 [ext_resource path="res://scenes/game/ui/gems_reward/gems_reward.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/icons/home.png" type="Texture" id=9]
+[ext_resource path="res://assets/icons/close_36.png" type="Texture" id=10]
+[ext_resource path="res://assets/icons/filmstrip-box_36.png" type="Texture" id=11]
+[ext_resource path="res://assets/icons/check_36.png" type="Texture" id=12]
+[ext_resource path="res://assets/font/font_32.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/font/font_24.tres" type="DynamicFont" id=14]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.0425537, 0, 0, Vector2( 0.940909, 0.395455 ), -3.04, -3.04, 0, 0, Vector2( 0.995454, 0.0409091 ), -11.2, 0.0, 0, 0 ]
@@ -34,6 +39,7 @@ hue_variation_random = 1.0
 script = ExtResource( 7 )
 
 [node name="TopLeft" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 1 )
@@ -71,9 +77,6 @@ anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="TopRight"]
 grow_horizontal = 0
@@ -180,7 +183,110 @@ process_material = SubResource( 3 )
 
 [node name="UIEditor" parent="." instance=ExtResource( 5 )]
 
+[node name="PopupDialog" type="Popup" parent="."]
+visible = true
+grow_horizontal = 2
+grow_vertical = 2
+popup_exclusive = true
+
+[node name="PanelContainer" type="PanelContainer" parent="PopupDialog"]
+margin_right = 286.0
+margin_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupDialog/PanelContainer"]
+margin_left = 7.0
+margin_top = 38.0
+margin_right = 279.0
+margin_bottom = 222.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/margin_right = 16
+custom_constants/margin_top = 8
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupDialog/PanelContainer/MarginContainer"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 256.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 240, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 16
+
+[node name="Header" type="Label" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 39.0
+size_flags_horizontal = 5
+custom_fonts/font = ExtResource( 13 )
+text = "skip level?"
+align = 1
+autowrap = true
+
+[node name="Description" type="Label" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 55.0
+margin_right = 240.0
+margin_bottom = 116.0
+size_flags_horizontal = 5
+custom_fonts/font = ExtResource( 14 )
+text = "test test test test test test test t"
+align = 1
+autowrap = true
+
+[node name="Actions" type="HBoxContainer" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 240.0
+margin_bottom = 168.0
+size_flags_horizontal = 5
+size_flags_vertical = 4
+custom_constants/separation = 0
+alignment = 1
+
+[node name="Cancel" type="CenterContainer" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions"]
+margin_right = 80.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+
+[node name="TextureButton" type="TextureButton" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions/Cancel"]
+margin_left = 22.0
+margin_right = 58.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 10 )
+
+[node name="WatchAd" type="CenterContainer" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions"]
+margin_left = 80.0
+margin_right = 160.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+
+[node name="TextureButton" type="TextureButton" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions/WatchAd"]
+margin_left = 22.0
+margin_right = 58.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 11 )
+
+[node name="Confirm" type="CenterContainer" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions"]
+margin_left = 160.0
+margin_right = 240.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+
+[node name="TetureButton" type="TextureButton" parent="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions/Confirm"]
+margin_left = 22.0
+margin_right = 58.0
+margin_bottom = 36.0
+texture_normal = ExtResource( 12 )
+
 [connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Restart" to="." method="_on_redo_level"]
 [connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Skip" to="." method="_on_skip_level"]
 [connection signal="pressed" from="TopRight/MarginContainer/HBoxContainer/Back" to="." method="_on_back"]
 [connection signal="pressed" from="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel" to="." method="_on_next_level"]
+[connection signal="pressed" from="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions/Cancel/TextureButton" to="." method="_on_dialog_cancel"]
+[connection signal="pressed" from="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions/WatchAd/TextureButton" to="." method="_on_dialog_watch_ad"]
+[connection signal="pressed" from="PopupDialog/PanelContainer/MarginContainer/VBoxContainer/Actions/Confirm/TetureButton" to="." method="_on_dialog_confirm"]

@@ -1,4 +1,4 @@
-,en,sv
+https://docs.google.com/spreadsheets/d/17f0dQawb-s_Fd7DHgmVvJoEGDMH_yoSd8EYigrb0zmM/edit#gid=296134756,en,sv
 CHAPTER,chapter,kapitel
 LEVEL,level,nivå
 LEVELS,levels,nivåer
@@ -22,3 +22,6 @@ INFRONT_START_OPERATOR_NODES,in front of value's of Start and Operator nodes,fra
 LEVEL_EDITOR,level editor,nivåskapare
 LIGHT,light,ljust
 DARK,dark,mörkt
+SKIP_LEVEL_QUESTION,skip level?,hoppa över nivån
+%s_OF_%s_LEVELS_SKIPPED,%s of %s levels skipped,%s av %s nivåer hoppade över
+MAX_LEVELS_SKIPPED,max levels skipped,max antal nivåer hoppade över
