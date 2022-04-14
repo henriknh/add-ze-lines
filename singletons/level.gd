@@ -20,10 +20,12 @@ func create(_chapter: int, _level: int):
 	chapter = _chapter
 	level = _level
 	
-	Data.connect("data_saved", self, "initalize")
+	if not Data.is_connected("data_saved", self,  "initalize"):
+		Data.connect("data_saved", self, "initalize")
 	emit_signal("level_changed")
 
 func destroy():
+	prints("is connected", Data.is_connected("data_saved", self,  "initalize"))
 	if Data.is_connected("data_saved", self,  "initalize"):
 		Data.disconnect("data_saved", self, "initalize")
 	reset()
