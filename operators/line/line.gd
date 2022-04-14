@@ -32,12 +32,18 @@ func on_goal_input():
 		
 
 func _remove_on_other_line():
+	
+	var game = get_node_or_null("/root/Game")
+	if not game:
+		points = []
+		return
+		
 	var _points = points
 	while true:
 		if points.size() == 0:
-			break
+			break		
 		
-		var goal_on_other_line = get_node("/root/Game").any_line_has_point(_points[_points.size() - 1], self)
+		var goal_on_other_line = game.any_line_has_point(_points[_points.size() - 1], self)
 		if goal_on_other_line:
 			_points.remove(_points.size() - 1)
 		else:

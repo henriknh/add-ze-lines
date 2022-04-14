@@ -24,7 +24,7 @@ func _exit_tree():
 	Level.destroy()
 
 func _input(event):
-	if Level.level_complete:
+	if Level.level_complete or not Level.level_ready:
 		return
 		
 	if $CanvasLayer.node_dialog.visible:
