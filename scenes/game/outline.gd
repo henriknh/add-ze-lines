@@ -1,7 +1,6 @@
 extends Line2D
 
 onready var outline = $Line
-onready var background = $Background
 
 func _ready():
 	Level.connect("level_loaded", self, "generate_outline")
