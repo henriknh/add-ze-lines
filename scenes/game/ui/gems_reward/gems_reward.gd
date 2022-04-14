@@ -38,6 +38,8 @@ func _physics_process(delta):
 	
 	if time >= animation_time:
 		set_physics_process(false)
+		gems_initial = Storage.get_gems()
+		time = 0
 
 func _show_animation():
 	set_physics_process(true)
