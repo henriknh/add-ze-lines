@@ -1,15 +1,19 @@
 extends Node
 
-var time_since_ad = 5*60*1000
-var ad_frequenzy = 5*60*1000
+var time_since_ad = 0
+var ad_frequency = 5*60*1000
 
 onready var ad_mob: AdMob = get_tree().root.get_node_or_null("Admob")
 
 func _ready():
-	ad_mob.is_real = !OS.is_debug_build()
-	prints("Running AdMob in:", ad_mob.is_real)
+	if OS.is_debug_build():
+		time_since_ad = ad_frequency
 	
-	ad_mob.interstitial_id = "ca-app-pub-2844992969839905/8302076947"
+	ad_mob.is_real = !OS.is_debug_build()
+	prints("Running AdMob with real ads:", ad_mob.is_real)
+	
+	#ad_mob.interstitial_id = "ca-app-pub-3940256099942544/8691691433" # Test app
+	ad_mob.interstitial_id = "ca-app-pub-2844992969839905/8302076947" # Real app
 	ad_mob.load_interstitial()
 	
 	ad_mob.connect("interstitial_closed", self, "_on_interstitial_closed")
@@ -19,7 +23,7 @@ func _physics_process(delta):
 		time_since_ad += delta
 
 func show_ad(force: bool = false):
-	if time_since_ad >= ad_frequenzy or force:
+	if time_since_ad >= ad_frequency or force:
 		ad_mob.show_interstitial()
 
 func _on_interstitial_closed():
