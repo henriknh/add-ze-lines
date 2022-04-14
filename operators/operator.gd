@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Operator
 
-onready var label = $Label
+onready var label = get_node_or_null("Label")
 enum OperatorType { START, GOAL, HUB, BLOCK, TWIST, VOID }
 enum OperatorStatus {PENDING = 0, SUCCESS = 1, FAIL = -1}
 
@@ -26,7 +26,7 @@ func _ready():
 		Level.level_data.grid_size[1]
 	)
 	
-	if get_node("Label"):
+	if label:
 		label.align = Label.ALIGN_CENTER
 		label.valign = Label.VALIGN_CENTER
 		label.rect_position = Vector2.ONE * (-Level.tile_size / 2)
