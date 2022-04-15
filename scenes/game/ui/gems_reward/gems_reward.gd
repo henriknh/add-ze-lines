@@ -13,6 +13,10 @@ func _ready():
 	set_physics_process(false)
 
 func gems_changed():
+	
+	if not SceneHandler.is_current(SceneHandler.SCENES.GAME):
+		return reset()
+	
 	if Storage.get_gems() == gems_initial:
 		return
 	
@@ -38,8 +42,11 @@ func _physics_process(delta):
 	
 	if time >= animation_time:
 		set_physics_process(false)
-		gems_initial = Storage.get_gems()
-		time = 0
+		reset()
+
+func reset():
+	gems_initial = Storage.get_gems()
+	time = 0
 
 func _show_animation():
 	set_physics_process(true)
