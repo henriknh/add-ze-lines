@@ -117,5 +117,12 @@ func get_number_of_skippable_levels() -> int :
 	return _get_config_value("level", "number_of_skippable_levels", 2)
 	
 func clear_level_data():
+	_set_config_value("user", "gems", 0)
+	_set_config_value("user", "theme", 0)
+	
+	_set_config_value("shop", "themes", [])
+	
 	_set_config_value("level", "completed", [])
 	_set_config_value("level", "skipped", [])
+	_set_config_value("level", "number_of_skippable_levels", 2)
+
