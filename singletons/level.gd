@@ -25,7 +25,6 @@ func create(_chapter: int, _level: int):
 	emit_signal("level_changed")
 
 func destroy():
-	prints("is connected", Data.is_connected("data_saved", self,  "initalize"))
 	if Data.is_connected("data_saved", self,  "initalize"):
 		Data.disconnect("data_saved", self, "initalize")
 	reset()

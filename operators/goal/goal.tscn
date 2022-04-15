@@ -27,6 +27,3 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 14.0
 text = "GOAL"
-__meta__ = {
-"_edit_use_anchors_": false
-}
