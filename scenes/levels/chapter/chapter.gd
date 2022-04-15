@@ -53,4 +53,5 @@ func _on_resize():
 	if Storage.get_editor():
 		columns = 1
 	else:
-		columns = int(ceil((get_viewport().size.x - 100) / 75))
+		var display_width = ProjectSettings.get_setting("display/window/size/width")
+		columns = int(ceil((display_width - 48*2) / 66))
