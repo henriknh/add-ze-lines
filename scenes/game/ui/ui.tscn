@@ -39,7 +39,6 @@ hue_variation_random = 1.0
 script = ExtResource( 7 )
 
 [node name="TopLeft" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 1 )
