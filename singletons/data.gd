@@ -12,8 +12,6 @@ func save_data():
 	file.store_string(JSON.print(data, "\t"))
 	file.close()
 	
-	Storage.clear_level_data()
-	
 	emit_signal("data_saved")
 
 func load_data():

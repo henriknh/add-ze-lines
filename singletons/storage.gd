@@ -55,22 +55,22 @@ func get_unlocked_themes() -> Array:
 	return _get_config_value("shop", "themes", [])
 
 func set_locale(locale: String):
-	_set_config_value("setting", "locale", locale)
+	_set_config_value("general", "locale", locale)
 	
 func get_locale() -> String:
-	return _get_config_value("setting", "locale", "en")
+	return _get_config_value("general", "locale", OS.get_locale_language())
 
 func set_show_addition_symbol(show_addition_symbol):
-	_set_config_value("setting", "show_addition_symbol", show_addition_symbol)
+	_set_config_value("general", "show_addition_symbol", show_addition_symbol)
 
 func get_show_addition_symbol() -> bool:
-	return _get_config_value("setting", "show_addition_symbol", false)
+	return _get_config_value("general", "show_addition_symbol", false)
 
 func set_editor(_editor):
-	_set_config_value("setting", "editor", _editor)
+	_set_config_value("general", "editor", _editor)
 
 func get_editor() -> bool:
-	return OS.is_debug_build() and _get_config_value("setting", "editor", false)
+	return OS.is_debug_build() and _get_config_value("general", "editor", false)
 
 func set_level_complete(level_id: int):
 	var completed_levels = _get_config_value("level", "completed", [])
@@ -113,16 +113,14 @@ func get_skipped_level_count() -> int:
 func set_number_of_skippable_levels(number_of_skippable_levels: int):
 	_set_config_value("level", "number_of_skippable_levels", number_of_skippable_levels)
 	
-func get_number_of_skippable_levels() -> int :
-	return _get_config_value("level", "number_of_skippable_levels", 2)
+func get_number_of_skippable_levels() -> int:
+	return (_get_config_value("level", "skippable_count_tier", 0) + 1) * 2
 	
-func clear_level_data():
-	_set_config_value("user", "gems", 0)
-	_set_config_value("user", "theme", 0)
+func clear_user_data():
+	config.erase_section("user")
+	config.erase_section("shop")
+	config.erase_section("level")
 	
-	_set_config_value("shop", "themes", [])
-	
-	_set_config_value("level", "completed", [])
-	_set_config_value("level", "skipped", [])
-	_set_config_value("level", "number_of_skippable_levels", 2)
+	config.save(SAVE_FILE)
+	emit_signal("storage_changed")
 
