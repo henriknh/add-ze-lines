@@ -85,10 +85,13 @@ func update():
 	
 	level_complete = check_for_level_completed()
 	if level_complete:
-		var already_completed = Storage.get_level_completed(Level.level_data.id)
-		if not already_completed:
+		if Storage.get_level_skipped(Level.level_data.id):
+			Storage.set_level_not_skipped(Level.level_data.id)
+		
+		if not Storage.get_level_completed(Level.level_data.id):
 			Storage.set_level_complete(Level.level_data.id)
 			Storage.set_gems(Storage.get_gems() + 10)
+		
 
 func check_for_level_completed() -> bool:
 	var to_satisfy = 0

@@ -25,6 +25,7 @@ func _ready():
 	_on_theme_changed()
 	
 	Level.connect("level_changed", self, "on_level_changed")
+	Storage.connect("storage_changed", self, "on_level_changed")
 	on_level_changed()
 	
 	
@@ -55,18 +56,28 @@ func on_level_changed():
 	elif Level.chapter + 1 < Data.data.size() and Data.data[Level.chapter + 1].levels.size():
 		next_chapter = Level.chapter + 1
 		next_level = 0
+		
+	var skippable_count_tier = Storage.get_skippable_count_tier()
+	if skippable_count_tier < Level.chapter:
+		Storage.set_skippable_count_tier(Level.chapter)
 	
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.visible = next_chapter or next_level
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NextLevel.text = tr("NEXT_CHAPTER") if next_chapter else tr("NEXT_LEVEL")
 	$OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer/NoMoreLevels.visible = not next_chapter and not next_level
+
 	var level_data = Data.data[Level.chapter].levels[Level.level]
 	var level_completed = Storage.get_level_completed(level_data.id)
 	var level_skipped = Storage.get_level_skipped(level_data.id)
-	$TopRight/MarginContainer/HBoxContainer/Skip.visible = not level_completed or level_skipped
-	if level_skipped:
-		$TopRight/MarginContainer/HBoxContainer/Skip.disabled = true
-		$TopRight/MarginContainer/HBoxContainer/Skip.self_modulate.a = 0.38
+	var skip_disabled = level_completed or level_skipped
+	$TopRight/MarginContainer/HBoxContainer/Skip.disabled = skip_disabled
+	$TopRight/MarginContainer/HBoxContainer/Skip.self_modulate.a = 0.38 if skip_disabled else 1
 	
+	if Storage.get_editor():
+		$UIEditor.visible = true
+		$OnLevelComplete.visible = false
+	else:
+		$UIEditor.visible = false
+		$OnLevelComplete.visible = Level.level_ready and Level.level_complete
 
 func _physics_process(delta):
 	_show_hide_ui()
@@ -77,14 +88,10 @@ func _show_hide_ui():
 		if line.points.size() >= 2:
 			line_has_two_points = true
 			break
-	$TopRight/MarginContainer/HBoxContainer/Restart.visible = Level.level_ready and line_has_two_points
 	
-	if Storage.get_editor():
-		$UIEditor.visible = true
-		$OnLevelComplete.visible = false
-	else:
-		$UIEditor.visible = false
-		$OnLevelComplete.visible = Level.level_ready and Level.level_complete
+	var restart_disabled = not line_has_two_points
+	$TopRight/MarginContainer/HBoxContainer/Restart.disabled = restart_disabled
+	$TopRight/MarginContainer/HBoxContainer/Restart.self_modulate.a = 0.38 if restart_disabled else 1
 
 func _on_back():
 #	if Level.previous_scene:
