@@ -44,7 +44,9 @@ func _set_scene(scene):
 	if is_instance_valid(current):
 		current.set_process(false)
 		previous = current
-		root.remove_child(current)
+		
+		if root.is_a_parent_of(current):
+			root.remove_child(current)
 	
 	root.add_child(scene)
 	scene.set_process(true)
