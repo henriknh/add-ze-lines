@@ -12,8 +12,8 @@ func _ready():
 	ad_mob.is_real = !OS.is_debug_build()
 	prints("Running AdMob with real ads:", ad_mob.is_real)
 	
-	#ad_mob.interstitial_id = "ca-app-pub-3940256099942544/8691691433" # Test app
-	ad_mob.interstitial_id = "ca-app-pub-2844992969839905/8302076947" # Real app
+	ad_mob.interstitial_id = "ca-app-pub-3940256099942544/8691691433" # Test app
+	#ad_mob.interstitial_id = "ca-app-pub-2844992969839905/8302076947" # Real app
 	ad_mob.load_interstitial()
 	
 	ad_mob.connect("interstitial_closed", self, "_on_interstitial_closed")
