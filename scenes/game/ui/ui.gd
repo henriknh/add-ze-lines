@@ -77,7 +77,7 @@ func on_level_changed():
 		$OnLevelComplete.visible = false
 	else:
 		$UIEditor.visible = false
-		$OnLevelComplete.visible = Level.level_ready and Level.level_complete
+		$OnLevelComplete.visible = level_completed
 
 func _physics_process(delta):
 	_show_hide_ui()
