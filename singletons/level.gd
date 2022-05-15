@@ -20,6 +20,9 @@ func create(_chapter: int, _level: int):
 	chapter = _chapter
 	level = _level
 	
+	chapter_data = Data.data[chapter]
+	level_data = chapter_data.levels[level]
+	
 	if not Data.is_connected("data_saved", self,  "initalize"):
 		Data.connect("data_saved", self, "initalize")
 	emit_signal("level_changed")
