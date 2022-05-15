@@ -21,6 +21,11 @@ var header_click_count = 0
 func _ready():
 	yield(get_tree(), "idle_frame")
 	
+	if OS.is_debug_build():
+		OS.window_fullscreen = false
+		OS.window_borderless = false
+		OS.window_size = Vector2(800, 600)
+	
 	$VBoxContainer/Settings.visible = false
 	
 	node_quit.visible = !Data.is_mobile()

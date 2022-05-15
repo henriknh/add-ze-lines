@@ -6,21 +6,28 @@
 [ext_resource path="res://assets/sounds/gem_ping.wav" type="AudioStream" id=4]
 
 [node name="GemsReward" type="HBoxContainer"]
-anchor_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.01 )
 theme = ExtResource( 2 )
 alignment = 1
 script = ExtResource( 3 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 136.0
-margin_right = 172.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 36.0
 margin_bottom = 39.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_top = 1.0
+margin_right = 36.0
+margin_bottom = 37.0
 texture = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 176.0
-margin_right = 224.0
+margin_left = 40.0
+margin_right = 112.0
 margin_bottom = 39.0
+rect_min_size = Vector2( 72, 0 )
 text = "+10"
 
 [node name="Timer" type="Timer" parent="."]

@@ -6,7 +6,9 @@ var time: float = 0
 var animation_time = 0.8
 
 func _ready():
-	$TextureRect.self_modulate = Themes.theme.on_background
+	reset()
+	
+	$CenterContainer/TextureRect.self_modulate = Themes.theme.on_background
 	
 	Storage.connect("storage_changed", self, "gems_changed")
 	visible = false
@@ -26,6 +28,7 @@ func gems_changed():
 	$Label.text = "+%d" % diff
 	$Timer.start()
 
+
 func _physics_process(delta):
 	time += delta
 	
@@ -34,9 +37,8 @@ func _physics_process(delta):
 	
 	if $Label.text != prev:
 		var audio = AudioStreamPlayer.new()
-		audio.stream = preload("res://assets/sounds/gem_ping.wav")
-		audio.pitch_scale = time / animation_time / 2 + 0.5
-		audio.connect("finished", audio, "queue_free")
+		audio.stream = preload("res://assets/sounds/gem_ping_thud.wav")
+		audio.volume_db = -10 + time / animation_time * 5
 		audio.autoplay = true
 		add_child(audio)
 	

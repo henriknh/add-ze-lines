@@ -24,6 +24,7 @@ func _ready():
 	Themes.connect("theme_changed", self, "_on_theme_changed")
 	_on_theme_changed()
 	
+	Level.connect("level_loaded", self, "on_level_changed")
 	Level.connect("level_changed", self, "on_level_changed")
 	Storage.connect("storage_changed", self, "on_level_changed")
 	on_level_changed()
@@ -77,7 +78,7 @@ func on_level_changed():
 		$OnLevelComplete.visible = false
 	else:
 		$UIEditor.visible = false
-		$OnLevelComplete.visible = level_completed
+		$OnLevelComplete.visible = Level.level_ready and Level.level_complete
 
 func _physics_process(delta):
 	_show_hide_ui()
