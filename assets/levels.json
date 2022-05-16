@@ -2780,7 +2780,96 @@
 					5
 				],
 				"operators": [
-
+					{
+						"type": 3,
+						"coord": [
+							2,
+							1
+						],
+						"value": 0,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 0,
+						"coord": [
+							0,
+							0
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 0,
+						"coord": [
+							0,
+							4
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							4,
+							4
+						],
+						"value": 0,
+						"operation": 3,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							4,
+							0
+						],
+						"value": 0,
+						"operation": 3,
+						"color_idx": 1
+					},
+					{
+						"type": 3,
+						"coord": [
+							2,
+							3
+						],
+						"value": 0,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							2,
+							2
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							2,
+							0
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							2,
+							4
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 0
+					}
 				]
 			},
 			{
@@ -2790,7 +2879,96 @@
 					5
 				],
 				"operators": [
-
+					{
+						"type": 0,
+						"coord": [
+							0,
+							0
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 0,
+						"coord": [
+							0,
+							4
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							1,
+							0
+						],
+						"value": 1,
+						"operation": 3,
+						"color_idx": 2
+					},
+					{
+						"type": 1,
+						"coord": [
+							1,
+							4
+						],
+						"value": 1,
+						"operation": 3,
+						"color_idx": 1
+					},
+					{
+						"type": 3,
+						"coord": [
+							1,
+							2
+						],
+						"value": 0,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 3,
+						"coord": [
+							0,
+							2
+						],
+						"value": 0,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							2,
+							2
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							4,
+							4
+						],
+						"value": 2,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							4,
+							0
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 0
+					}
 				]
 			},
 			{
