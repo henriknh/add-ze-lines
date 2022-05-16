@@ -104,7 +104,7 @@ func dialog_edit_operator(type: OptionButton, coord_x: SpinBox, coord_y: SpinBox
 	if Level.get_operator(coord):
 		prints('Coord already used by operator. Try to remove:', Level.get_operator(coord).coord)
 		breakpoint
-		return
+		#return
 
 	if operator:
 		var level_operator = null
