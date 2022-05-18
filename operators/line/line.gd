@@ -53,8 +53,9 @@ func _remove_on_other_line():
 func compute(last_point = null) -> bool:
 	var result = 0
 	
-	for child in $Heads.get_children():
-		child.queue_free()
+	if last_point == null:
+		for child in $Heads.get_children():
+			child.queue_free()
 		
 	if points.size() <= 1:
 		return false
@@ -84,26 +85,33 @@ func compute(last_point = null) -> bool:
 				if line_successful:
 					operator.colors = colors.duplicate()
 				else:
-					instance_head(result, curr_point - prev_point_diff * 0.33)
+					instance_head(result, curr_point - prev_point_diff * 0.33, last_point == null)
 				
 				return line_successful
 			elif operator is Hub:
 				last_point_has_hub = curr_point == points[points.size() - 1]
-				instance_head(result, curr_point - next_point_diff * 0.33 if next_point_diff != Vector2.ZERO else curr_point - prev_point_diff * 0.33)
-			
+				if last_point_has_hub:
+					var offset = (curr_point as Vector2).direction_to(prev_point) * Level.tile_size * 0.33
+					instance_head(result, curr_point + offset, last_point == null)
+				else:
+					var offset = (curr_point as Vector2).direction_to(next_point) * Level.tile_size * 0.33
+					instance_head(result, curr_point + offset, last_point == null)
+		
 		if last_point and curr_point == last_point:
 			break
 	
 	# Make end of line head
 	if not last_point_has_hub and points.size() >= 2:
-		instance_head(result, points[points.size() - 1])
+		instance_head(result, points[points.size() - 1], last_point == null)
 	
 	if last_point:
 		return result
 	else:
 		return false
 
-func instance_head(value, position: Vector2):
+func instance_head(value, position: Vector2, should_render):
+	if should_render == false:
+		return
 	var head = preload("res://operators/line/head/head.tscn").instance()
 	head.value = value
 	head.colors = colors
