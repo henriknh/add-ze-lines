@@ -3076,14 +3076,14 @@
 		"levels": [
 			{
 				"grid_size": [
-					5,
+					3,
 					5
 				],
 				"operators": [
 					{
-						"type": 2,
-						"value": 4,
-						"operation": 1,
+						"type": 0,
+						"value": 1,
+						"operation": 0,
 						"coord": [
 							1,
 							1
@@ -3092,100 +3092,130 @@
 					},
 					{
 						"type": 1,
-						"value": 2,
-						"operation": 3,
 						"coord": [
-							3,
-							3
+							1,
+							0
 						],
+						"value": 1,
+						"operation": 3,
 						"color_idx": 1
 					},
 					{
-						"type": 0,
-						"value": 1,
-						"operation": 0,
+						"type": 2,
 						"coord": [
 							0,
-							0
-						],
-						"color_idx": 1
-					},
-					{
-						"type": 2,
-						"value": 2,
-						"operation": 2,
-						"coord": [
-							2,
-							2
-						],
-						"color_idx": 1
-					},
-					{
-						"type": 2,
-						"value": 2,
-						"operation": 3,
-						"coord": [
-							4,
 							4
 						],
-						"color_idx": 1
-					},
-					{
-						"type": 0,
 						"value": 1,
 						"operation": 0,
-						"coord": [
-							3,
-							0
-						],
-						"color_idx": 1
+						"color_idx": 0
 					},
 					{
-						"type": 1,
-						"value": 1,
-						"operation": 3,
+						"type": 2,
 						"coord": [
-							3,
-							2
+							1,
+							4
 						],
-						"color_idx": 1
+						"value": 2,
+						"operation": 3,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							2,
+							4
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 0
 					}
 				],
 				"id": 1647859064
 			},
 			{
 				"grid_size": [
-					3,
-					3
+					5,
+					5
 				],
 				"operators": [
 					{
 						"type": 0,
 						"coord": [
 							0,
-							1
+							0
 						],
-						"value": 0,
+						"value": 1,
 						"operation": 0,
 						"color_idx": 1
 					},
 					{
-						"type": 0,
+						"type": 1,
 						"coord": [
-							1,
-							0
+							4,
+							4
 						],
-						"value": 0,
-						"operation": 0,
-						"color_idx": 2
+						"value": 1,
+						"operation": 3,
+						"color_idx": 1
 					},
 					{
-						"type": 3,
+						"type": 2,
 						"coord": [
-							2,
+							1,
+							3
+						],
+						"value": 1,
+						"operation": 3,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							3,
 							1
 						],
-						"value": 0,
+						"value": -1,
+						"operation": 3,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							0,
+							2
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							2,
+							0
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							3,
+							2
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 0
+					},
+					{
+						"type": 2,
+						"coord": [
+							2,
+							3
+						],
+						"value": 1,
 						"operation": 0,
 						"color_idx": 0
 					}
@@ -3274,26 +3304,6 @@
 			},
 			{
 				"id": 1729047519,
-				"grid_size": [
-					5,
-					5
-				],
-				"operators": [
-
-				]
-			},
-			{
-				"id": 1732249467,
-				"grid_size": [
-					5,
-					5
-				],
-				"operators": [
-
-				]
-			},
-			{
-				"id": 1735789270,
 				"grid_size": [
 					5,
 					5
