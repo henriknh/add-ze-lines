@@ -104,6 +104,7 @@ run/low_processor_mode=true
 boot_splash/image="res://assets/splashscreen.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 0.988235, 0.909804, 1 )
+config/icon="res://assets/logo.png"
 
 [autoload]
 
@@ -130,6 +131,10 @@ window/size/fullscreen=true
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[global]
+
+icon=false
 
 [importer_defaults]
 

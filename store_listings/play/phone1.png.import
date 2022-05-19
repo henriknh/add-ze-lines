@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/feature_graphic.PNG-0a997435ff16738efe09c56ba1feeb84.stex"
+path="res://.import/phone1.png-2d5d153f8c2f5d13839d18a7edd41409.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://feature_graphics/feature_graphic.PNG"
-dest_files=[ "res://.import/feature_graphic.PNG-0a997435ff16738efe09c56ba1feeb84.stex" ]
+source_file="res://store_listings/play/phone1.png"
+dest_files=[ "res://.import/phone1.png-2d5d153f8c2f5d13839d18a7edd41409.stex" ]
 
 [params]
 
