@@ -5,20 +5,21 @@ var _theme_solid = preload("res://theme_solid.tres")
 enum STATE { BROWSE, PURCHASE, CONFIRM }
 var state: int = STATE.BROWSE 
 
-onready var node_background = $ColorRect
-onready var node_container = $MarginContainer
-onready var node_browse = $MarginContainer/Browse
-onready var node_browse_title = $MarginContainer/Browse/VBox/Title
-onready var node_purchase = $MarginContainer/Purchase
-onready var node_purchase_title = $MarginContainer/Purchase/VBox/Title
-onready var node_purchase_gem_icon = $MarginContainer/Purchase/VBox/Purchase/GemIcon
-onready var node_purchase_price = $MarginContainer/Purchase/VBox/Purchase/Price
-onready var node_confirm = $MarginContainer/Confirm
-onready var node_confirm_gem_icon = $MarginContainer/Confirm/CenterContainer/Cost/GemIcon
-onready var node_confirm_cost = $MarginContainer/Confirm/CenterContainer/Cost/Price
-onready var node_confirm_cancel = $MarginContainer/Confirm/CenterContainer2/HBoxContainer/Cancel
-onready var node_confirm_proceed = $MarginContainer/Confirm/CenterContainer2/HBoxContainer/Proceed
+onready var node_background = $VBoxContainer/Control/ColorRect
+onready var node_container = $VBoxContainer/Control/MarginContainer
+onready var node_browse = $VBoxContainer/Control/MarginContainer/Browse
+onready var node_browse_title = $VBoxContainer/Control/MarginContainer/Browse/VBox/Title
+onready var node_purchase = $VBoxContainer/Control/MarginContainer/Purchase
+onready var node_purchase_title = $VBoxContainer/Control/MarginContainer/Purchase/VBox/Title
+onready var node_purchase_gem_icon = $VBoxContainer/Control/MarginContainer/Purchase/VBox/Purchase/GemIcon
+onready var node_purchase_price = $VBoxContainer/Control/MarginContainer/Purchase/VBox/Purchase/Price
+onready var node_confirm = $VBoxContainer/Control/MarginContainer/Confirm
+onready var node_confirm_gem_icon = $VBoxContainer/Control/MarginContainer/Confirm/CenterContainer/VBoxContainer/Cost/GemIcon
+onready var node_confirm_cost = $VBoxContainer/Control/MarginContainer/Confirm/CenterContainer/VBoxContainer/Cost/Price
+onready var node_confirm_cancel = $VBoxContainer/Control/MarginContainer/Confirm/CenterContainer/VBoxContainer/HBoxContainer/Cancel
+onready var node_confirm_proceed = $VBoxContainer/Control/MarginContainer/Confirm/CenterContainer/VBoxContainer/HBoxContainer/Proceed
 onready var node_selection_border = $SelectionBorder
+onready var node_theme_color_blobs = $VBoxContainer/ThemeColorBlobs
 
 var theme_button
 var theme_index = 0
@@ -62,6 +63,9 @@ func _update_ui():
 	node_background.color = theme_button.background
 
 	node_container.modulate.a = 0.38 if state != STATE.BROWSE and Storage.get_gems() < theme_button.price else 1
+	
+	node_theme_color_blobs.theme_colors = theme_button
+	node_theme_color_blobs._update_ui()
 	
 func _on_purchase():
 	if Storage.get_gems() < theme_button.price:

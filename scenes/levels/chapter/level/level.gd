@@ -14,6 +14,9 @@ var theme_color = null setget set_theme_color
 
 func _ready():
 	
+	if not Data.is_mobile():
+		rect_min_size.x = 200
+	
 	Storage.connect("storage_changed",self, "_update_ui")
 	_update_ui()
 	
