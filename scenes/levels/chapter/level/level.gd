@@ -1,5 +1,6 @@
 extends Control
 
+onready var node_color_rect: ColorRect = $ColorRect
 onready var node_skipped = $Skipped
 onready var node_play = $Buttons/Play
 onready var node_move = $Buttons/Move
@@ -70,6 +71,7 @@ func set_theme_color(_theme_color):
 		button.add_stylebox_override("disabled", style_box_disabled)
 	
 	node_skipped.self_modulate = theme_color.on_background
+	node_color_rect.color = Themes.theme.background
 	
 func _on_play():
 	SceneHandler.switch_to(SceneHandler.SCENES.GAME)
