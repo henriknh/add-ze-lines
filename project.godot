@@ -98,7 +98,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="add_ze_lines"
+config/name="add ze lines"
+config/description="Challange your brain with a math puzzle where each line has to connect to a goal."
 run/main_scene="res://scenes/base.tscn"
 run/low_processor_mode=true
 boot_splash/image="res://assets/splashscreen.png"
