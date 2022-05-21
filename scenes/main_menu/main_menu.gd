@@ -13,8 +13,8 @@ onready var scene_levels = preload("res://scenes/levels/levels.tscn")
 onready var scene_themes = preload("res://scenes/themes/themes.tscn")
 onready var scene_settings = preload("res://scenes/settings/settings.tscn")
 
-var next_chapter = null
-var next_level = null
+var next_chapter = 0
+var next_level = 0
 
 var header_click_count = 0
 
@@ -53,13 +53,6 @@ func _update_ui():
 			if next_chapter_has_level:
 				next_chapter = last_chapter + 1
 				next_level = 0
-	else:
-		if Data.data.size():
-			next_chapter = 0
-		if Data.data[next_chapter] and Data.data[next_chapter].levels.size():
-			next_level = 0
-		else:
-			breakpoint
 	
 	node_play.visible = next_chapter != null and next_level != null
 	node_play.text = tr("CONTINUE") if storage_next else tr("PLAY")
