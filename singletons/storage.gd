@@ -88,12 +88,13 @@ func get_last_completed_level() -> int:
 	var skipped_levels = _get_config_value("level", "skipped", [])
 	
 	var last_completed_level = null
-	for idx_chapter in range(Data.data.size()):
-		var chapter = Data.data[idx_chapter]
-		for idx_level in range(chapter.levels.size()):
-			var level = chapter.levels[idx_level]
-			if level.id in completed_levels or level.id in skipped_levels:
-				last_completed_level = [idx_chapter, idx_level]
+	if Data.data:
+		for idx_chapter in range(Data.data.size()):
+			var chapter = Data.data[idx_chapter]
+			for idx_level in range(chapter.levels.size()):
+				var level = chapter.levels[idx_level]
+				if level.id in completed_levels or level.id in skipped_levels:
+					last_completed_level = [idx_chapter, idx_level]
 	return last_completed_level
 
 func set_level_skipped(level_id: int):
