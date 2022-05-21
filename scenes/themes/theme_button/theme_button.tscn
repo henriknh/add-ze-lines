@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/themes/theme_button/theme_button.gd" type="Script" id=3]
 [ext_resource path="res://theme_solid.tres" type="Theme" id=4]
 [ext_resource path="res://assets/icons/close_36.png" type="Texture" id=5]
-[ext_resource path="res://assets/icons/check_32.png" type="Texture" id=6]
+[ext_resource path="res://assets/icons/check_36.png" type="Texture" id=6]
 [ext_resource path="res://assets/font/font_32.tres" type="DynamicFont" id=7]
 [ext_resource path="res://assets/icons/gem_36.png" type="Texture" id=8]
 
