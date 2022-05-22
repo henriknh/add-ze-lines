@@ -165,6 +165,7 @@ texture={
 [locale]
 
 translations=PoolStringArray( "res://assets/translations.en.translation", "res://assets/translations.sv.translation" )
+locale_filter=[ 0, [  ] ]
 
 [physics]
 
