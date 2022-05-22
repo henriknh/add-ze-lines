@@ -8,7 +8,6 @@ func _ready():
 	add_to_group("Goal")
 	
 	initial_colors = colors
-	print(initial_colors)
 	
 	var tutorial_label = get_node_or_null("TutorialLabel")
 	if tutorial_label:
@@ -45,7 +44,6 @@ func set_line_color(color):
 	
 func reset_color():
 	colors = initial_colors
-	print(initial_colors)
 
 func compute(_value: int, start: Start = null) -> int:
 	
