@@ -11,8 +11,8 @@ func _ready():
 
 func _draw():
 	
-	var _background = colors.background
-	var text_color = colors.on_background
+	var _background = Color.white
+	var text_color = Color(0,0,0,0.87)
 	if status == OperatorStatus.SUCCESS:
 		_background = colors.background 
 		text_color = colors.on_background
