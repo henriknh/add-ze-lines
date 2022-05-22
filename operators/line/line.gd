@@ -63,6 +63,9 @@ func compute(last_point = null) -> bool:
 	var start = Level.get_operator(points[0])
 	var last_point_has_hub = false
 	
+	for goal in get_tree().get_nodes_in_group("Goal"):
+		goal.reset_color()
+	
 	for i in range(points.size()):
 		var curr_point = points[i]
 		var prev_point = points[i - 1]
@@ -83,7 +86,7 @@ func compute(last_point = null) -> bool:
 				
 				operator.status = Operator.OperatorStatus.SUCCESS if line_successful else Operator.OperatorStatus.FAIL
 				if line_successful:
-					operator.colors = colors.duplicate()
+					operator.set_line_color(colors.duplicate())
 				else:
 					instance_head(result, curr_point - prev_point_diff * 0.33, last_point == null)
 				

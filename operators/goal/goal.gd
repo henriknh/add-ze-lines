@@ -2,17 +2,21 @@ extends Operator
 
 class_name Goal
 
+var initial_colors
+
 func _ready():
 	add_to_group("Goal")
+	
+	initial_colors = colors
+	print(initial_colors)
 	
 	var tutorial_label = get_node_or_null("TutorialLabel")
 	if tutorial_label:
 		tutorial_label.rect_position = Vector2(1, -0.5) * (-Level.tile_size / 2)
 
 func _draw():
-	
-	var _background = Color.white
-	var text_color = Color(0,0,0,0.87)
+	var _background = colors.background 
+	var text_color = colors.on_background
 	if status == OperatorStatus.SUCCESS:
 		_background = colors.background 
 		text_color = colors.on_background
@@ -36,6 +40,12 @@ func _draw():
 	
 	draw_arc(Vector2.ZERO, Level.operator_diameter / 2, 0, 2 * PI, 32, border, 2, true)
 
+func set_line_color(color):
+	colors = color
+	
+func reset_color():
+	colors = initial_colors
+	print(initial_colors)
 
 func compute(_value: int, start: Start = null) -> int:
 	
