@@ -35,7 +35,7 @@ func _physics_process(delta):
 	var prev = $Label.text
 	$Label.text = "%d" % int(lerp(gems_initial, gems_target, time / animation_time))
 	
-	if $Label.text != prev:
+	if $Label.text != prev and Storage.has_sound():
 		var audio = AudioStreamPlayer.new()
 		audio.stream = preload("res://assets/sounds/gem_ping_thud.wav")
 		audio.volume_db = -10 + time / animation_time * 5

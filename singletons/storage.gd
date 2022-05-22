@@ -60,6 +60,12 @@ func set_locale(locale: String):
 func get_locale() -> String:
 	return _get_config_value("general", "locale", OS.get_locale_language())
 
+func set_has_sound(has_sound: bool):
+	_set_config_value("general", "has_sound", has_sound)
+	
+func has_sound() -> bool:
+	return _get_config_value("general", "has_sound", true)
+
 func set_show_addition_symbol(show_addition_symbol):
 	_set_config_value("general", "show_addition_symbol", show_addition_symbol)
 

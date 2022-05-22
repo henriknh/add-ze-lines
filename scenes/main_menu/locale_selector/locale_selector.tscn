@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/main_menu/locale_selector/locale_selector.gd" type="Script" id=1]
+[ext_resource path="res://assets/icons/web_24.png" type="Texture" id=2]
+
+[node name="MenuButton" type="MenuButton"]
+margin_left = 52.0
+margin_right = 116.0
+margin_bottom = 640.0
+text = "en"
+icon = ExtResource( 2 )
+script = ExtResource( 1 )

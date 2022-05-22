@@ -1,12 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/font/font_64.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/main_menu/main_menu.gd" type="Script" id=4]
 [ext_resource path="res://assets/icons/gem_24.png" type="Texture" id=5]
+[ext_resource path="res://scenes/main_menu/sound_toggler/sound_toggler.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/main_menu/locale_selector/locale_selector.tscn" type="PackedScene" id=7]
 
-[node name="MainMenu" type="MarginContainer"]
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -14,9 +21,8 @@ custom_constants/margin_right = 48
 custom_constants/margin_top = 32
 custom_constants/margin_left = 48
 custom_constants/margin_bottom = 32
-script = ExtResource( 4 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 48.0
 margin_top = 32.0
 margin_right = 312.0
@@ -25,14 +31,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 24
 
-[node name="CenterContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="CenterContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_right = 264.0
 margin_bottom = 175.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 alignment = 1
 
-[node name="Header" type="Label" parent="VBoxContainer/CenterContainer"]
+[node name="Header" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
 margin_top = 9.0
 margin_right = 264.0
 margin_bottom = 166.0
@@ -44,7 +50,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "add ze lines"
 autowrap = true
 
-[node name="PlayContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="PlayContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 199.0
 margin_right = 264.0
 margin_bottom = 258.0
@@ -53,14 +59,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Play" type="Button" parent="VBoxContainer/PlayContainer"]
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer/PlayContainer"]
 margin_right = 264.0
 margin_bottom = 39.0
 theme = ExtResource( 1 )
 text = "continue"
 align = 0
 
-[node name="ChapterAndLevelTitles" type="Label" parent="VBoxContainer/PlayContainer"]
+[node name="ChapterAndLevelTitles" type="Label" parent="MarginContainer/VBoxContainer/PlayContainer"]
 self_modulate = Color( 1, 1, 1, 0.380392 )
 margin_top = 39.0
 margin_right = 264.0
@@ -68,14 +74,14 @@ margin_bottom = 59.0
 custom_fonts/font = ExtResource( 2 )
 text = "Chapter 1, task 2"
 
-[node name="ChallangesContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="ChallangesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
 margin_top = 226.0
 margin_right = 264.0
 margin_bottom = 285.0
 custom_constants/separation = 0
 
-[node name="Challanges" type="Button" parent="VBoxContainer/ChallangesContainer"]
+[node name="Challanges" type="Button" parent="MarginContainer/VBoxContainer/ChallangesContainer"]
 margin_right = 264.0
 margin_bottom = 39.0
 theme = ExtResource( 1 )
@@ -83,7 +89,7 @@ disabled = true
 text = "CHALLANGES"
 align = 0
 
-[node name="ChapterAndLevelTitles2" type="Label" parent="VBoxContainer/ChallangesContainer"]
+[node name="ChapterAndLevelTitles2" type="Label" parent="MarginContainer/VBoxContainer/ChallangesContainer"]
 self_modulate = Color( 1, 1, 1, 0.38 )
 margin_top = 39.0
 margin_right = 264.0
@@ -91,7 +97,7 @@ margin_bottom = 59.0
 custom_fonts/font = ExtResource( 2 )
 text = "COMING_SOON"
 
-[node name="Levels" type="Button" parent="VBoxContainer"]
+[node name="Levels" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 282.0
 margin_right = 264.0
 margin_bottom = 321.0
@@ -99,31 +105,31 @@ theme = ExtResource( 1 )
 text = "LEVELS"
 align = 0
 
-[node name="ThemesContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="ThemesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 345.0
 margin_right = 264.0
 margin_bottom = 408.0
 custom_constants/separation = 0
 
-[node name="Themes" type="Button" parent="VBoxContainer/ThemesContainer"]
+[node name="Themes" type="Button" parent="MarginContainer/VBoxContainer/ThemesContainer"]
 margin_right = 264.0
 margin_bottom = 39.0
 theme = ExtResource( 1 )
 text = "THEMES"
 align = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ThemesContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ThemesContainer"]
 modulate = Color( 1, 1, 1, 0.38 )
 margin_top = 39.0
 margin_right = 264.0
 margin_bottom = 63.0
 
-[node name="GemIcon" type="TextureRect" parent="VBoxContainer/ThemesContainer/HBoxContainer"]
+[node name="GemIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ThemesContainer/HBoxContainer"]
 margin_right = 24.0
 margin_bottom = 24.0
 texture = ExtResource( 5 )
 
-[node name="GemsLabel" type="Label" parent="VBoxContainer/ThemesContainer/HBoxContainer"]
+[node name="GemsLabel" type="Label" parent="MarginContainer/VBoxContainer/ThemesContainer/HBoxContainer"]
 margin_left = 28.0
 margin_top = 2.0
 margin_right = 50.0
@@ -131,7 +137,7 @@ margin_bottom = 22.0
 custom_fonts/font = ExtResource( 2 )
 text = "123"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 432.0
 margin_right = 264.0
 margin_bottom = 471.0
@@ -139,13 +145,13 @@ theme = ExtResource( 1 )
 text = "# # DEBUG # #"
 align = 0
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
 margin_top = 495.0
 margin_right = 264.0
 margin_bottom = 512.0
 size_flags_vertical = 3
 
-[node name="QuitDesktop" type="Button" parent="VBoxContainer"]
+[node name="QuitDesktop" type="Button" parent="MarginContainer/VBoxContainer"]
 margin_top = 536.0
 margin_right = 264.0
 margin_bottom = 575.0
@@ -153,9 +159,37 @@ theme = ExtResource( 1 )
 text = "QUIT"
 align = 0
 
-[connection signal="gui_input" from="VBoxContainer/CenterContainer/Header" to="." method="_on_header_click"]
-[connection signal="pressed" from="VBoxContainer/PlayContainer/Play" to="." method="_on_continue"]
-[connection signal="pressed" from="VBoxContainer/Levels" to="." method="_on_levels"]
-[connection signal="pressed" from="VBoxContainer/ThemesContainer/Themes" to="." method="_on_themes"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings"]
-[connection signal="pressed" from="VBoxContainer/QuitDesktop" to="." method="_on_quit"]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchor_right = 1.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2"]
+margin_top = 16.0
+margin_right = 336.0
+margin_bottom = 46.0
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer2/HBoxContainer"]
+margin_left = 253.0
+margin_right = 277.0
+margin_bottom = 30.0
+
+[node name="SoundToggler" parent="MarginContainer2/HBoxContainer/CenterContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 3.0
+margin_right = 24.0
+margin_bottom = 27.0
+
+[node name="LocaleSelector" parent="MarginContainer2/HBoxContainer" instance=ExtResource( 7 )]
+margin_left = 281.0
+margin_right = 336.0
+margin_bottom = 30.0
+
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/CenterContainer/Header" to="." method="_on_header_click"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayContainer/Play" to="." method="_on_continue"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Levels" to="." method="_on_levels"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ThemesContainer/Themes" to="." method="_on_themes"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitDesktop" to="." method="_on_quit"]

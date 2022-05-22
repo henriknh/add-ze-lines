@@ -2,12 +2,12 @@ extends Control
 
 class_name MainMenu
 
-onready var node_header: Label = $VBoxContainer/CenterContainer/Header
-onready var node_play: Button = $VBoxContainer/PlayContainer/Play
-onready var node_current_level: Label = $VBoxContainer/PlayContainer/ChapterAndLevelTitles
-onready var node_gem_icon: TextureRect = $VBoxContainer/ThemesContainer/HBoxContainer/GemIcon
-onready var node_gem_label: Label = $VBoxContainer/ThemesContainer/HBoxContainer/GemsLabel
-onready var node_quit: Button = $VBoxContainer/QuitDesktop
+onready var node_header: Label = $MarginContainer/VBoxContainer/CenterContainer/Header
+onready var node_play: Button = $MarginContainer/VBoxContainer/PlayContainer/Play
+onready var node_current_level: Label = $MarginContainer/VBoxContainer/PlayContainer/ChapterAndLevelTitles
+onready var node_gem_icon: TextureRect = $MarginContainer/VBoxContainer/ThemesContainer/HBoxContainer/GemIcon
+onready var node_gem_label: Label = $MarginContainer/VBoxContainer/ThemesContainer/HBoxContainer/GemsLabel
+onready var node_quit: Button = $MarginContainer/VBoxContainer/QuitDesktop
 
 onready var scene_levels = preload("res://scenes/levels/levels.tscn")
 onready var scene_themes = preload("res://scenes/themes/themes.tscn")
@@ -26,7 +26,7 @@ func _ready():
 		OS.window_borderless = false
 		OS.window_size = Vector2(800, 600)
 	
-	$VBoxContainer/Settings.visible = false
+	$MarginContainer/VBoxContainer/Settings.visible = false
 	
 	node_quit.visible = !Data.is_mobile()
 	
