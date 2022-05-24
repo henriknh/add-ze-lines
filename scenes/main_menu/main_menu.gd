@@ -87,4 +87,4 @@ func _on_header_click(event):
 		prints("Header click:", header_click_count)
 		
 		if header_click_count >= 5:
-			$VBoxContainer/Settings.visible = OS.is_debug_build()
+			$MarginContainer/VBoxContainer/Settings.visible = OS.is_debug_build()
