@@ -26,6 +26,7 @@ custom_constants/separation = 0
 [node name="Control" type="Control" parent="VBoxContainer"]
 margin_right = 360.0
 margin_bottom = 176.0
+mouse_filter = 1
 size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/Control"]

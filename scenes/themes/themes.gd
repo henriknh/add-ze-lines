@@ -32,7 +32,7 @@ func _on_resize():
 	if not SceneHandler.is_current(SceneHandler.SCENES.THEMES):
 		return
 	
-	if Storage.get_editor():
+	if Data.is_mobile():
 		node_grid.columns = 1
 	else:
 		var display_width = OS.window_size.x
