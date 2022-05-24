@@ -8,7 +8,7 @@ func _ready():
 	_on_storage_changed()
 	
 	for locale in TranslationServer.get_loaded_locales():
-		get_popup().add_item(locale)
+		get_popup().add_item(locale.to_upper())
 	get_popup().connect("id_pressed", self, "_on_index_pressed")
 
 func _on_theme_changed():

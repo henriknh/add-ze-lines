@@ -537,15 +537,29 @@ func update_theme(_theme: Theme, theme) -> Theme:
 			_theme.set_color("font_color_hover", node_type, font_color_hover)
 		if _theme.has_color("font_color_pressed", node_type):
 			_theme.set_color("font_color_pressed", node_type, font_color_pressed)
-			
+		
 		if node_type == 'PanelContainer':
-			var style_box: StyleBoxFlat = _theme.get_stylebox("panel", node_type)
-			style_box.bg_color = theme.background
-			style_box.bg_color.a = 1
-			style_box.border_color = theme.on_background
-			style_box.shadow_color = theme.background
-			style_box.shadow_color.a = 0.6
-			_theme.set_stylebox("panel", node_type, style_box)
+			var panel: StyleBoxFlat = _theme.get_stylebox("panel", node_type)
+			panel.bg_color = theme.background
+			panel.bg_color.a = 1
+			panel.border_color = theme.on_background
+			panel.shadow_color = theme.background
+			panel.shadow_color.a = 0.6
+			_theme.set_stylebox("panel", node_type, panel)
+			
+		if node_type == 'PopupMenu':
+			var panel: StyleBoxFlat = _theme.get_stylebox("panel", node_type)
+			panel.bg_color = theme.on_background
+			panel.bg_color.a = 1
+			_theme.set_stylebox("panel", node_type, panel)
+			
+			var hover: StyleBoxFlat = _theme.get_stylebox("hover", node_type)
+			hover.bg_color = theme.background
+			hover.bg_color.a = 0.2
+			_theme.set_stylebox("hover", node_type, hover)
+			
+			_theme.set_color("font_color", node_type, theme.background)
+			_theme.set_color("font_color_hover", node_type, theme.background)
 	
 	return _theme
 

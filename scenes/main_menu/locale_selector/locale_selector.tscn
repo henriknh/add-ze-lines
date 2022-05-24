@@ -1,12 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/main_menu/locale_selector/locale_selector.gd" type="Script" id=1]
 [ext_resource path="res://assets/icons/web_24.png" type="Texture" id=2]
+[ext_resource path="res://theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=4]
 
 [node name="MenuButton" type="MenuButton"]
 margin_left = 52.0
 margin_right = 116.0
 margin_bottom = 640.0
+theme = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "en"
 icon = ExtResource( 2 )
 script = ExtResource( 1 )
