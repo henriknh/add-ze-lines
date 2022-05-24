@@ -139,9 +139,9 @@ custom_constants/separation = 16
 alignment = 2
 
 [node name="GemsReward" parent="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 8 )]
-anchor_right = 0.0
 margin_right = 178.0
 margin_bottom = 39.0
+rect_scale = Vector2( 1, 1 )
 
 [node name="NextLevel" type="Button" parent="OnLevelComplete/MarginContainer/CenterContainer/VBoxContainer"]
 margin_top = 55.0
