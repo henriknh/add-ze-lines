@@ -40,6 +40,7 @@ func _physics_process(delta):
 		audio.stream = preload("res://assets/sounds/gem_ping_thud.wav")
 		audio.volume_db = -10 + time / animation_time * 5
 		audio.autoplay = true
+		audio.connect("finished", audio, "queue_free")
 		add_child(audio)
 	
 	if time >= animation_time:
