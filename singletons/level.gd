@@ -105,11 +105,13 @@ func check_for_level_completed() -> bool:
 			satisfied += 1
 	
 	for equals_hub in get_tree().get_nodes_in_group("Hub"):
-		if equals_hub.operation ==  Arithmetic.Operation.equals:
+		
+		if equals_hub.operation == Arithmetic.Operation.equals:
 			to_satisfy += 1
 			
 			for line in Level.get_lines(equals_hub.position):
-				if line.compute(equals_hub.position) == equals_hub.value:
+				var line_result = line.compute(equals_hub.position)
+				if typeof(line_result) == TYPE_INT and line_result == equals_hub.value:
 					satisfied += 1
 					break
 	
