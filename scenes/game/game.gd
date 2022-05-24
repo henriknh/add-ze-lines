@@ -12,6 +12,9 @@ func _ready():
 	_on_resize()
 	
 func _on_resize():
+	if not SceneHandler.is_current(SceneHandler.SCENES.GAME):
+		return
+	
 	var offset = get_viewport().get_visible_rect().size / 2
 	$Grid.position = offset
 	$Outline.position = offset
