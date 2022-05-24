@@ -64,7 +64,8 @@ func compute(last_point = null) -> bool:
 	var last_point_has_hub = false
 	
 	for goal in get_tree().get_nodes_in_group("Goal"):
-		goal.reset_color()
+		if Level.get_lines(goal.position).size() == 0:
+			goal.reset_color()
 	
 	for i in range(points.size()):
 		var curr_point = points[i]
