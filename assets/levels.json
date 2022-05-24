@@ -315,23 +315,23 @@
 						"color_idx": 2
 					},
 					{
-						"type": 0,
+						"type": 1,
 						"coord": [
 							2,
 							0
 						],
-						"value": 2,
-						"operation": 0,
+						"value": 3,
+						"operation": 3,
 						"color_idx": 1
 					},
 					{
-						"type": 1,
+						"type": 0,
 						"coord": [
 							2,
 							4
 						],
-						"value": 3,
-						"operation": 3,
+						"value": 2,
+						"operation": 0,
 						"color_idx": 1
 					}
 				],
