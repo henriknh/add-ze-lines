@@ -2012,7 +2012,7 @@
 							1,
 							0
 						],
-						"value": 3,
+						"value": 4,
 						"operation": 3,
 						"color_idx": 1
 					},
@@ -2634,7 +2634,7 @@
 					},
 					{
 						"type": 1,
-						"value": -1,
+						"value": 2,
 						"operation": 3,
 						"coord": [
 							0,
@@ -2644,7 +2644,7 @@
 					},
 					{
 						"type": 1,
-						"value": 1,
+						"value": -2,
 						"operation": 3,
 						"coord": [
 							4,
@@ -2688,9 +2688,9 @@
 							4,
 							2
 						],
-						"value": 1,
+						"value": 2,
 						"operation": 0,
-						"color_idx": 1
+						"color_idx": 2
 					},
 					{
 						"type": 2,
@@ -2698,9 +2698,9 @@
 							0,
 							2
 						],
-						"value": -1,
+						"value": -2,
 						"operation": 0,
-						"color_idx": 2
+						"color_idx": 1
 					},
 					{
 						"type": 3,
