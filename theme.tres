@@ -1,8 +1,6 @@
-[gd_resource type="Theme" load_steps=21 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://assets/font/font_32.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/icons/checkbox.png" type="Texture" id=2]
-[ext_resource path="res://assets/icons/checkbox-checked.png" type="Texture" id=3]
 [ext_resource path="res://assets/font/font_16.tres" type="DynamicFont" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -109,8 +107,8 @@ CheckButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 CheckButton/constants/check_vadjust = 0
 CheckButton/constants/hseparation = 4
 CheckButton/fonts/font = null
-CheckButton/icons/off = ExtResource( 2 )
-CheckButton/icons/on = ExtResource( 3 )
+CheckButton/icons/off = null
+CheckButton/icons/on = null
 CheckButton/styles/disabled = null
 CheckButton/styles/focus = null
 CheckButton/styles/hover = null
