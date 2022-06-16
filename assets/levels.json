@@ -1068,7 +1068,7 @@
 							2,
 							0
 						],
-						"value": 0,
+						"value": 2,
 						"operation": 0,
 						"color_idx": 2
 					},
@@ -1088,7 +1088,7 @@
 							4,
 							4
 						],
-						"value": -1,
+						"value": 3,
 						"operation": 3,
 						"color_idx": 3
 					},
@@ -1098,7 +1098,7 @@
 							2,
 							4
 						],
-						"value": 0,
+						"value": 2,
 						"operation": 3,
 						"color_idx": 2
 					},
@@ -1108,7 +1108,7 @@
 							0,
 							4
 						],
-						"value": 1,
+						"value": 5,
 						"operation": 3,
 						"color_idx": 1
 					}
@@ -1238,8 +1238,8 @@
 			},
 			{
 				"grid_size": [
-					4,
-					4
+					5,
+					5
 				],
 				"operators": [
 					{
@@ -1325,8 +1325,8 @@
 					{
 						"type": 1,
 						"coord": [
-							3,
-							3
+							4,
+							4
 						],
 						"value": 0,
 						"operation": 3,
@@ -1339,6 +1339,46 @@
 							0
 						],
 						"value": -3,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 2,
+						"coord": [
+							1,
+							4
+						],
+						"value": -1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 2,
+						"coord": [
+							4,
+							1
+						],
+						"value": 1,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 2,
+						"coord": [
+							3,
+							4
+						],
+						"value": 2,
+						"operation": 0,
+						"color_idx": 1
+					},
+					{
+						"type": 2,
+						"coord": [
+							4,
+							3
+						],
+						"value": -2,
 						"operation": 0,
 						"color_idx": 1
 					}
