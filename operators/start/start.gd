@@ -20,6 +20,6 @@ func _draw():
 	draw_polygon(points_arc, [colors.background], [], null, null, true)
 
 func _on_reset_line():
-	var line = Level.get_lines(coord * Level.tile_size + Vector2.ONE * Level.tile_size / 2)
+	var line = Level.get_lines(position)
 	if line:
 		line[0].queue_free()
